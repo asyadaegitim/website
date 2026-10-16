@@ -1,34 +1,26 @@
-# Asya’da Eğitim
+# Asya’da Eğitim · Atlas
 
-Çin, Japonya, Güney Kore, Singapur ve Hong Kong için hazırlanmış çok sayfalı eğitim danışmanlığı sitesi.
+Çin, Hong Kong, Japonya, Güney Kore ve Singapur ülkelerini tanıtan eğitim danışmanlığı web sitesi.
 
-## Dosya yapısı
+## Depo içeriği
 
-- `src/`: Python sayfa üreticisi, üniversite verileri ve CSS kaynağı.
-- `dist/`: Yayına hazır HTML, CSS, JavaScript, logolar ve kampüs görselleri.
-- `.openai/hosting.json`: Mevcut ChatGPT Sites projesinin yayın yapılandırması.
+- `dist/`: ChatGPT Sites üzerinde yayınlanan sitenin 17 Ekim 2026 tarihinde alınmış, bağımsız barındırılabilir HTML, CSS, JavaScript, SVG, JPEG ve PNG dosyaları.
+- `dist/index.html`: Ana sayfa. Alt sayfalar kendi klasörlerindeki `index.html` dosyalarıdır.
 
-## Yerelde çalıştırma
+**Kaynak ayrımı:** Bu aktarım yayınlanmış sitenin statik çıktısını içerir. ChatGPT Sites içindeki özgün Python sayfa üreticisi, üniversite veri kaynakları ve `.openai/hosting.json` henüz bu depoya aktarılmamıştır. Bu dosyalar elde edilmedikçe bu repo, Sites projesinin eksiksiz kaynak kodu olarak değerlendirilmemelidir.
 
-Python 3.12 veya üzeri yeterlidir; ek Python paketi gerekmez. Komutları repo kökünde çalıştırın:
+## Yerelde açma
 
 ```sh
-python3 -B src/build.py
 python3 -m http.server 8000 --directory dist
 ```
 
-Ardından `http://localhost:8000` adresini açın. Statik barındırmada yayın kökü `dist/` olmalıdır; site bağlantıları alan adı köküne göre düzenlenmiştir.
+Ardından http://localhost:8000 adresini açın. Statik sunucunun yayın kökü `dist/` olmalıdır.
 
-## Düzenleme
+## Kaynak proje
 
-Metinler ve üniversiteler `src/` altındaki Python dosyalarından, tasarım `src/site.css` dosyasından düzenlenir. Sonra sayfa üreticisi yeniden çalıştırılır. Etkileşimler `dist/site.js`, görseller `dist/assets/` altındadır. Görsel kaynakları ve ikon lisansları sitenin `/gorsel-kaynaklar/` sayfasında bulunur.
+- Canlı yayın: https://asya-egitim-atlas.iakfiratt.chatgpt.site/
+- ChatGPT Sites projesi: `appgprj_6abbb39f777c81918fb1842d994630a6`
+- Yayın dosyası kopyası: 17 Ekim 2026
 
-Ön görüşme formu, sunucuya kayıt yapmak yerine e-posta uygulamasını açan `mailto:` bağlantısını kullanır.
-
-## Aktarılan sürüm
-
-- Canlı site: https://asya-egitim-atlas.iakfiratt.chatgpt.site
-- ChatGPT Sites sürümü: 11
-- Kaynak commit: `dd664b8477e9e675d7eb05472c434b10ebf8dcb7`
-
-Bu repo, yukarıdaki Sites sürümünün kaynaklarını ve statik çıktısını içerir. GitHub’a gönderilen değişiklikler mevcut Sites yayınına kendiliğinden aktarılmaz.
+Bu GitHub deposuna yapılan değişiklikler mevcut ChatGPT Sites yayınına otomatik yansımaz.
