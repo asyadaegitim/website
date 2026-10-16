@@ -24,3 +24,20 @@ Ardından http://localhost:8000 adresini açın. Statik sunucunun yayın kökü 
 - Yayın dosyası kopyası: 17 Ekim 2026
 
 Bu GitHub deposuna yapılan değişiklikler mevcut ChatGPT Sites yayınına otomatik yansımaz.
+
+## Cloudflare Pages üzerinden yayın
+
+Bu depo herhangi bir derleme aracına ihtiyaç duymayan, önceden oluşturulmuş bir statik site içerir. Cloudflare Pages'de **GitHub bağlantılı** yeni bir proje oluşturulurken:
+
+| Ayar | Değer |
+| --- | --- |
+| GitHub deposu | `asyadaegitim/website` |
+| Production branch | `main` |
+| Framework preset | `None` |
+| Root directory | `/` (depo kökü) |
+| Build command | Boş veya `exit 0` |
+| Build output directory | `dist` |
+
+Cloudflare Workers & Pages GitHub uygulamasının yalnızca bu depoya erişmesine izin verilmesi tavsiye edilir. Bağlantı ve ilk dağıtım başarılı olduktan sonra `*.pages.dev` adresinde ana sayfa, ülke sayfaları, üniversite sayfaları, CSS/JS ve görsel bağlantıları test edilmelidir. Ardından özel alan adı ve DNS yapılandırması yapılabilir.
+
+**Not:** Bu ayarlar tek başına Cloudflare projesini oluşturmaz ya da yayını başlatmaz. GitHub uygulamasının yetkilendirilmesi ve Cloudflare Pages projesinin oluşturulması ayrıca gereklidir. Üretim alan adında, eski ChatGPT Sites adresindeki kopya için arama motoru yönlendirme/kanonik URL stratejisi de ayrıca kararlaştırılmalıdır.
