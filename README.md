@@ -25,19 +25,26 @@ Ardından http://localhost:8000 adresini açın. Statik sunucunun yayın kökü 
 
 Bu GitHub deposuna yapılan değişiklikler mevcut ChatGPT Sites yayınına otomatik yansımaz.
 
-## Cloudflare Pages üzerinden yayın
+## Cloudflare Workers üzerinden yayın (BRIQ modeli)
 
-Bu depo herhangi bir derleme aracına ihtiyaç duymayan, önceden oluşturulmuş bir statik site içerir. Cloudflare Pages'de **GitHub bağlantılı** yeni bir proje oluşturulurken:
+BRIQ'ı örnek alan yayın hattı:
+
+`GitHub main → Cloudflare Workers Builds → Wrangler → Cloudflare Workers Static Assets → alan adı`
+
+Bu site BRIQ'ın aksine Next.js/Vinext veya R2 gerektirmez; 48 sayfanın HTML çıktısı ve CSS/JS/görselleri `dist/` altında hazırdır. Kök dizindeki `wrangler.jsonc` yapılandırması yalnızca statik varlıkları yayınlar. Worker kodu yoktur.
+
+Workers & Pages → Create application → **Continue with GitHub** akışında `asyadaegitim/website` reposunu seçin ve aşağıdaki ayarları kullanın:
 
 | Ayar | Değer |
 | --- | --- |
-| GitHub deposu | `asyadaegitim/website` |
+| Uygulama / Worker adı | `asyadaegitim` |
+| GitHub | `asyadaegitim/website` |
 | Production branch | `main` |
-| Framework preset | `None` |
-| Root directory | `/` (depo kökü) |
-| Build command | Boş veya `exit 0` |
-| Build output directory | `dist` |
+| Root directory | `/` |
+| Build command | Boş (derleme gerekmiyor) |
+| Deploy command | `npx --yes wrangler@4.92.0 deploy` |
+| Preview build | Başlangıçta kapalı olabilir |
 
-Cloudflare Workers & Pages GitHub uygulamasının yalnızca bu depoya erişmesine izin verilmesi tavsiye edilir. Bağlantı ve ilk dağıtım başarılı olduktan sonra `*.pages.dev` adresinde ana sayfa, ülke sayfaları, üniversite sayfaları, CSS/JS ve görsel bağlantıları test edilmelidir. Ardından özel alan adı ve DNS yapılandırması yapılabilir.
+Cloudflare GitHub uygulamasına yalnızca bu depoya erişim izni vermek yeterlidir. Her `main` güncellemesi için otomatik dağıtım açık olmalıdır. İlk olarak `*.workers.dev` bağlantısında ana sayfa, ülke/üniversite sayfaları ve statik dosyalar doğrulanmalıdır; ardından `asyadaegitim.com` alan adı Worker'a bağlanabilir.
 
-**Not:** Bu ayarlar tek başına Cloudflare projesini oluşturmaz ya da yayını başlatmaz. GitHub uygulamasının yetkilendirilmesi ve Cloudflare Pages projesinin oluşturulması ayrıca gereklidir. Üretim alan adında, eski ChatGPT Sites adresindeki kopya için arama motoru yönlendirme/kanonik URL stratejisi de ayrıca kararlaştırılmalıdır.
+**Önemli:** Bu GitHub deposundaki statik kopyanın Sites'ın özgün kaynak koduyla eşit olduğu varsayılmamalıdır. Cloudflare yapılandırma dosyası GitHub'a eklendi diye Cloudflare'de henüz bir uygulama oluşmuş ya da alan adı yönlendirilmiş olmaz. Mevcut ChatGPT Sites yayını ayrıca çalışmaya devam eder.
