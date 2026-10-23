@@ -28,6 +28,12 @@ REQUIRED = [
     "ulkeler/japonya/index.html",
     "ulkeler/singapur/index.html",
     "on-gorusme/index.html",
+    "catalogue-guides.css",
+    "burslar-ve-maliyetler/index.html",
+    "basvuru-rehberi/index.html",
+    "ulkeler/karsilastirma/index.html",
+    "neden-asya/index.html",
+    "hakkimizda/index.html",
 ]
 
 
@@ -93,7 +99,7 @@ def main() -> int:
                 errors.append(
                     f"{page.relative_to(ROOT)} {attr}={value} -> missing {target.relative_to(ROOT)}"
                 )
-    if len(pages) < 48:
+    if len(pages) < 53:
         errors.append(f"Expected at least 48 HTML pages, found {len(pages)}")
     print(f"Audited {len(pages)} HTML pages under dist/")
     if errors:
