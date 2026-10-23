@@ -32,3 +32,13 @@ Development branch: `develop/site-foundation-20261023`.
 
 ## Release guard
 **Do not merge to main or modify the production Worker until visual review and explicit approval.**
+
+## Homepage pilot — verified 2026-10-23
+- Updated `dist/index.html` homepage H1 to the official slogan: **Üniversite için başka bir dünya var.**
+- Updated hero support text and page title, preserving all 5 campus visuals, university selection, original logo, and navigation behavior.
+- Scoped responsive H1/grid CSS adjustments in `dist/site.css`; no global typography or other page layout changes.
+- Opened production and preview in Chrome. Confirmed new slogan only on preview; production still says `Geleceğini Asya’da keşfet.`.
+- Desktop 1280px and mobile 390px manual Chrome renders checked; no horizontal page overflow and no failed images on the homepage.
+- HTTP fetch from the preview: homepage, China, Hong Kong, school directory, consultation, CSS and logo returned **200** and correct `X-Preview-Branch` and `X-Robots-Tag: noindex` headers.
+- GitHub Actions preflight passed: run `39958787945`.
+- **Not yet implemented:** country-order changes throughout all 48 pages, scholarship/costs content, substantive editorial homepage redesign, source-generator reconstruction, production deployment. The live site remains unchanged.
