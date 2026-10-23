@@ -18,6 +18,8 @@ REQUIRED = [
     "site.js",
     "home-edition.css",
     "home-edition.js",
+    "home-v3.css",
+    "home-v3.js",
     "assets/asya-logo.svg",
     "ulkeler/cin/index.html",
     "ulkeler/hong-kong/index.html",
