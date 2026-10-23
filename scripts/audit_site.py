@@ -16,6 +16,8 @@ REQUIRED = [
     "index.html",
     "site.css",
     "site.js",
+    "home-edition.css",
+    "home-edition.js",
     "assets/asya-logo.svg",
     "ulkeler/cin/index.html",
     "ulkeler/hong-kong/index.html",
