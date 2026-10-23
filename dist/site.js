@@ -1,13 +1,22 @@
-// Preview and production footers always navigate to the canonical public site.
-document.querySelectorAll('footer a[href]').forEach(link => {
-  const raw = link.getAttribute('href');
-  if (raw && raw.startsWith('/') && !raw.startsWith('//')) {
-    link.href = new URL(raw, 'https://asyadaegitim.com').href;
-  } else if (raw && /^https:\/\/asyadaegitim-preview\.[^/]+\.workers\.dev(?=\/|$)/i.test(raw)) {
-    const old = new URL(raw);
-    link.href = 'https://asyadaegitim.com' + old.pathname + old.search + old.hash;
+// Keep local links on the current host: on a preview build, unreleased
+// editorial guides must never silently redirect to the old live website.
+// Relative links also work unmodified once the site is eventually published.
+const footerLinks = document.querySelector('.footer-links');
+if (footerLinks && !footerLinks.querySelector('[data-guide-link]')) {
+  for (const [name, href] of [
+    ['Neden Asya?', '/neden-asya/'],
+    ['Burslar ve Maliyetler', '/burslar-ve-maliyetler/'],
+    ['Başvuru Rehberi', '/basvuru-rehberi/'],
+    ['Ülke Karşılaştırması', '/ulkeler/karsilastirma/'],
+    ['Hakkımızda', '/hakkimizda/']
+  ]) {
+    const item = document.createElement('a');
+    item.href = href;
+    item.textContent = name;
+    item.setAttribute('data-guide-link', '');
+    footerLinks.appendChild(item);
   }
-});
+}
 const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
 /* Preview: make catalogue guides discoverable on every existing route. */
 if(nav && !nav.querySelector('.nav-guides')) {
