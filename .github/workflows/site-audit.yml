@@ -1,0 +1,16 @@
+name: Static site preflight
+on:
+  push:
+    branches:
+      - 'develop/**'
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  link-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links, assets and required routes
+        run: python3 scripts/audit_site.py
