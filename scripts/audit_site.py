@@ -34,6 +34,14 @@ REQUIRED = [
     "ulkeler/karsilastirma/index.html",
     "neden-asya/index.html",
     "hakkimizda/index.html",
+    "university-atlas.css",
+    "universite-burslari/index.html",
+    "universiteler/seoul-national-university/index.html",
+    "universiteler/shanghai-university/index.html",
+    "universiteler/the-hong-kong-polytechnic-university/index.html",
+    "universiteler/tohoku-university/index.html",
+    "universiteler/national-university-of-singapore/index.html",
+    "universiteler/nanyang-technological-university/index.html",
 ]
 
 
@@ -99,7 +107,7 @@ def main() -> int:
                 errors.append(
                     f"{page.relative_to(ROOT)} {attr}={value} -> missing {target.relative_to(ROOT)}"
                 )
-    if len(pages) < 53:
+    if len(pages) < 55:
         errors.append(f"Expected at least 48 HTML pages, found {len(pages)}")
     print(f"Audited {len(pages)} HTML pages under dist/")
     if errors:
