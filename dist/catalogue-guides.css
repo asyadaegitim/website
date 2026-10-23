@@ -1,0 +1,90 @@
+/* Catalogue-informed guides • isolated from production/homepage visual grammar */
+.cg-rich,.cg-page{--cg-line:#d9d0c4;--cg-paper:#f7f3eb;--cg-ink:#282521;--cg-accent:#842923;color:var(--cg-ink)}
+.cg-rich{padding-top:55px;padding-bottom:65px}
+.cg-rich .cg-eyebrow,.cg-page .cg-eyebrow{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;font-weight:750;color:var(--cg-accent)}
+.cg-rich h2,.cg-page h1,.cg-page h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:-.035em;line-height:1.05}
+.cg-rich h2{font-size:clamp(2.9rem,4.5vw,4.9rem);margin:11px 0 17px}
+.cg-rich h2 em,.cg-page h1 em,.cg-page h2 em{font-weight:400;color:var(--cg-accent)}
+.cg-rich .cg-lede{max-width:760px;font-size:1.05rem;line-height:1.75;margin:0 0 30px}
+.cg-rich .cg-head-row{display:grid;grid-template-columns:1fr minmax(230px,.45fr);gap:48px;align-items:end}
+.cg-rich .cg-head-row aside{color:#6e645e;font-size:.8rem;line-height:1.7;border-left:2px solid var(--cg-accent);padding:8px 0 8px 16px}
+.cg-rich .cg-dossier{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:25px 0 40px}
+.cg-rich .cg-stat{padding:21px;border:1px solid var(--cg-line);background:#fffefa99}
+.cg-rich .cg-stat small{display:block;font-size:.65rem;font-weight:700;letter-spacing:.12em;color:var(--cg-accent);text-transform:uppercase}
+.cg-rich .cg-stat strong{display:block;font:600 1.68rem/1.2 'Cormorant Garamond',Georgia,serif;margin:10px 0 5px}
+.cg-rich .cg-stat p{font-size:.78rem;color:#625b56;line-height:1.55;margin:0}
+.cg-rich .cg-module{margin-top:43px}
+.cg-rich .cg-module-header{display:flex;align-items:end;justify-content:space-between;gap:30px;border-top:2px solid var(--cg-accent);padding-top:17px;margin-bottom:21px}
+.cg-rich .cg-module-header h3{font:600 clamp(2.2rem,3.25vw,3.4rem)/1.08 'Cormorant Garamond',Georgia,serif;margin:0}
+.cg-rich .cg-module-header p{font-size:.76rem;line-height:1.6;color:#726760;margin:0;max-width:280px}
+.cg-rich .cg-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cg-rich .cg-card{padding:23px 25px;background:#efe9ddba;min-width:0;border-top:1px solid var(--cg-line)}
+.cg-rich .cg-card .cg-n{color:var(--cg-accent);font-size:.69rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.cg-rich .cg-card h4{font:600 1.85rem/1.08 'Cormorant Garamond',Georgia,serif;margin:12px 0}
+.cg-rich .cg-card p,.cg-rich .cg-card li{font-size:.88rem;line-height:1.72;margin:0 0 10px;color:#423d39}
+.cg-rich .cg-card p:last-child{margin-bottom:0}
+.cg-rich .cg-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.cg-rich .cg-tag{border:1px solid var(--cg-line);border-radius:50px;padding:5px 12px;background:#fffdfa;color:#473e3a;font-size:.77rem}
+.cg-rich .cg-resource{font-size:.78rem;font-weight:700;display:inline-block;margin-top:10px;color:var(--cg-accent);border-bottom:1px solid currentColor;padding-bottom:2px}
+.cg-rich .cg-scholarships{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.cg-rich .cg-scholarships article{min-width:0;background:#fffcf6;border:1px solid var(--cg-line);padding:23px 22px;display:flex;flex-direction:column}
+.cg-rich .cg-scholarships h4{font:600 1.85rem/1.1 'Cormorant Garamond',Georgia,serif;margin:11px 0 15px}
+.cg-rich .cg-scholarships dl{margin:0}
+.cg-rich .cg-scholarships dt{font-weight:750;color:var(--cg-accent);font-size:.69rem;text-transform:uppercase;letter-spacing:.07em;margin:15px 0 3px}
+.cg-rich .cg-scholarships dd{font-size:.81rem;line-height:1.62;color:#4c4540;margin:0}
+.cg-rich .cg-scholarships a{color:var(--cg-accent);font-size:.8rem;font-weight:700;display:block;margin-top:auto;padding-top:18px}
+.cg-rich .cg-budget{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--cg-line);border-bottom:1px solid var(--cg-line);margin-top:22px}
+.cg-rich .cg-budget div{padding:18px 13px 20px;border-right:1px solid var(--cg-line)}
+.cg-rich .cg-budget div:first-child{padding-left:0}
+.cg-rich .cg-budget div:last-child{border-right:0}
+.cg-rich .cg-budget strong{display:block;font-size:.89rem;margin-bottom:8px}
+.cg-rich .cg-budget span{display:block;color:#625952;font-size:.78rem;line-height:1.65}
+.cg-rich .cg-reference-note{margin-top:24px;padding:17px 21px;background:#eee7df;color:#554640;border-left:3px solid var(--cg-accent);font-size:.8rem;line-height:1.7}
+.cg-rich .cg-related{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.cg-rich .cg-related a{padding:11px 17px;background:var(--cg-accent);color:#fff;font-size:.79rem;font-weight:700}
+.cg-rich .cg-related a:nth-child(even){background:transparent;border:1px solid var(--cg-accent);color:var(--cg-accent)}
+.cg-page .cg-page-hero{padding-top:70px;padding-bottom:45px;border-bottom:1px solid var(--cg-line)}
+.cg-page h1{font-size:clamp(4rem,8vw,7.4rem);margin:17px 0 24px;max-width:1020px}
+.cg-page .cg-page-hero p{max-width:790px;font-size:1.1rem;line-height:1.78}
+.cg-page .cg-page-section{padding-top:65px;padding-bottom:63px}
+.cg-page h2{font-size:clamp(3rem,5vw,5rem);margin:12px 0 27px}
+.cg-page .cg-table{width:100%;border-collapse:collapse}
+.cg-page .cg-table th{color:var(--cg-accent);text-align:left;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:13px;border-top:2px solid var(--cg-accent)}
+.cg-page .cg-table td{padding:19px 13px;border-bottom:1px solid var(--cg-line);vertical-align:top;font-size:.86rem;line-height:1.65}
+.cg-page .cg-table td:first-child{font:600 1.6rem/1.2 'Cormorant Garamond',Georgia,serif;min-width:145px}
+.cg-page .cg-hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.cg-page .cg-hub-card{padding:28px;background:#efe9dd;border-top:3px solid var(--cg-accent)}
+.cg-page .cg-hub-card span{font-size:.72rem;letter-spacing:.1em;font-weight:700;color:var(--cg-accent)}
+.cg-page .cg-hub-card h3{font:600 2.25rem/1.08 'Cormorant Garamond',Georgia,serif;margin:15px 0}
+.cg-page .cg-hub-card p,.cg-page .cg-hub-card li{line-height:1.7;font-size:.89rem}
+.cg-page .cg-hub-card a{color:var(--cg-accent);font-size:.84rem;font-weight:750;border-bottom:1px solid currentColor}
+.cg-page .cg-notice{background:#f1e8d9;border-left:3px solid var(--cg-accent);padding:18px 22px;font-size:.82rem;line-height:1.7;margin:25px 0}
+.cg-page .cg-steps{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.cg-page .cg-step{padding:25px;background:#fffcf6;border-top:3px solid var(--cg-accent);min-height:250px}
+.cg-page .cg-step small{font-size:.7rem;color:var(--cg-accent);font-weight:700;letter-spacing:.1em}
+.cg-page .cg-step h3{font:600 2.2rem/1.08 'Cormorant Garamond',Georgia,serif;margin:15px 0}
+.cg-page .cg-step p{font-size:.89rem;line-height:1.7}
+.cg-page .cg-countries{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.cg-page .cg-countries a{display:block;background:#eee6dc;padding:18px;color:var(--cg-accent);font:600 1.7rem 'Cormorant Garamond',Georgia,serif}
+@media(max-width:850px){
+ .cg-rich .cg-head-row{grid-template-columns:1fr}
+ .cg-rich .cg-dossier,.cg-rich .cg-scholarships{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .cg-rich .cg-budget{grid-template-columns:repeat(2,1fr)}
+ .cg-rich .cg-budget div:nth-child(2){border-right:0}
+ .cg-rich .cg-budget div:nth-child(-n+2){border-bottom:1px solid var(--cg-line)}
+ .cg-page .cg-countries{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+ .cg-rich{padding-top:35px;padding-bottom:45px}
+ .cg-rich h2{font-size:3.1rem}
+ .cg-rich .cg-dossier,.cg-rich .cg-columns,.cg-rich .cg-scholarships,.cg-page .cg-hub-grid,.cg-page .cg-steps{grid-template-columns:1fr}
+ .cg-rich .cg-module-header{flex-direction:column;align-items:flex-start;gap:8px}
+ .cg-rich .cg-card,.cg-rich .cg-scholarships article{padding:20px}
+ .cg-rich .cg-stat{padding:17px}
+ .cg-page .cg-page-hero{padding-top:43px}
+ .cg-page h1{font-size:3.8rem}
+ .cg-page .cg-page-section{padding-top:45px;padding-bottom:40px}
+ .cg-page .cg-table{display:block;overflow-x:auto}
+ .cg-page .cg-table th,.cg-page .cg-table td{min-width:155px}
+ .cg-page .cg-countries{grid-template-columns:repeat(2,1fr)}
+}
