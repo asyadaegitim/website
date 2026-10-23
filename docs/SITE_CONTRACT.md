@@ -4,7 +4,7 @@ Status: development foundation, 23 October 2026. **Do not deploy this branch to 
 
 ## Authority and identity
 - Production website: https://asyadaegitim.com/
-- Protected design baseline: production visual design as it existed when development began. GitHub `main` is a 17 October static export, **not** the original ChatGPT Sites generator or authoritative data source; its visual/content parity with the live Worker must be verified.
+- Visual baseline: production visual design at the start is a comparison reference, **not** a rule forbidding layout redesign. GitHub `main` is a 17 October static export, **not** the original ChatGPT Sites generator or authoritative data source; its visual/content parity with the live Worker must be verified.
 - Official primary slogan, exact spelling and punctuation: **Üniversite için başka bir dünya var.**
 - Primary CTA: **Ücretsiz ön görüşme için randevu alın.**
 - Country order everywhere: **Çin → Hong Kong → Güney Kore → Japonya → Singapur**.
@@ -12,9 +12,9 @@ Status: development foundation, 23 October 2026. **Do not deploy this branch to 
 - Relationship: **Asya’da Eğitim** is the parent brand, **Çin Eğitim** is the specialist brand.
 
 ## Design non-regression
-- Preserve the strongest existing campus-focused layout, photography, tasteful interactions, spacing and navigation; do not simplify into generic cards or add bloated sections.
-- Keep the homepage selective; detailed bursaries, tuition, living costs and application rules belong on dedicated pages.
-- Reuse a common design system but allow distinctive editorial layouts for each destination.
+- **Only the approved logo/wordmark is immutable.** Typography, colors, proportions, layout, content order, interactions and navigation can all be redesigned if that produces a stronger result. The catalogue is the aspirational visual and editorial quality benchmark; existing site layouts are not sacred.
+- Deliver **catalogue-level informational completeness** across the whole site: the homepage is a selective gateway, while country/university/bursary/application pages contain substantive sourced detail. Avoid an empty visual-only concept.
+- Build a shared editorial grammar inspired by catalogue spreads, but give each destination distinct tonal and visual compositions; the site must not become a repetitive set of generic cards.
 - Do not shrink body typography merely to fit text. Make mobile layouts genuinely readable and keyboard accessible.
 - For substantive visual changes, inspect *before and after* on desktop and mobile, document differences and require human approval. Automated HTML checks alone cannot establish visual parity.
 
