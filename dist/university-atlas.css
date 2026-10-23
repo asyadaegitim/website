@@ -322,3 +322,13 @@
  .school-row.has-brand strong{font-size:1.22rem}
 }
 @media(prefers-reduced-motion:reduce){.uxd-feature-photo{transition:none}}
+
+
+/* Mobile min-content guard for long English institution names and photography. */
+.uxp-mast-grid>*,.uxp-mast-copy,.uxp-mast h1,.uxp-story,.uxp-story-grid,.uxp-scene{min-width:0;max-width:100%}
+.uxp-mast h1{overflow-wrap:anywhere}
+@media(max-width:760px) {
+ .uxp-mast-grid,.uxp--photo .uxp-mast-grid,.uxp--city .uxp-mast-grid,.uxp--tech .uxp-mast-grid{grid-template-columns:minmax(0,1fr)}
+ .uxp-mast-copy{width:100%}
+ .uxp-photo--authentic{width:100%;max-width:100%;min-width:0}
+}
