@@ -9,6 +9,30 @@ document.querySelectorAll('footer a[href]').forEach(link => {
   }
 });
 const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
+/* Preview: make catalogue guides discoverable on every existing route. */
+if(nav && !nav.querySelector('.nav-guides')) {
+  const countries=['cin','hong-kong','guney-kore','japonya','singapur'];
+  const items=new Map([...nav.querySelectorAll('.nav-item')].map(item=>[item.querySelector('[data-country]')?.dataset.country,item]).filter(([k])=>k));
+  const universityLink=nav.querySelector('a[href="/okullar/"]:not(.dropdown a)')?.closest('.nav-item');
+  for(const slug of countries) {
+    const item=items.get(slug);
+    if(item && universityLink) nav.insertBefore(item,universityLink);
+  }
+  const guide=document.createElement('div');
+  guide.className='nav-item nav-guides';
+  guide.innerHTML='<a class="nav-trigger" href="/burslar-ve-maliyetler/">Burslar</a>';
+  nav.append(guide);
+  for(const item of items.values()) {
+    const submenu=item.querySelector('.dropdown');
+    if(submenu && !submenu.querySelector('.catalog-links')) {
+      const region=document.createElement('div');
+      region.className='catalog-links';
+      region.innerHTML='<div class="eyebrow">Rehberler</div><a href="/burslar-ve-maliyetler/">Burslar ve Maliyetler</a><a href="/basvuru-rehberi/">Başvuru Rehberi</a><a href="/ulkeler/karsilastirma/">Ülkeleri Karşılaştır</a>';
+      submenu.append(region);
+    }
+  }
+}
+
 menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Menüyü kapat':'Menüyü aç')});
 document.querySelectorAll('.nav-trigger[data-country]').forEach(trigger=>{trigger.addEventListener('click',event=>{if(matchMedia('(max-width:980px)').matches){event.preventDefault();const item=trigger.closest('.nav-item'),open=item.classList.toggle('open');trigger.setAttribute('aria-expanded',String(open))}})});
 const search=document.querySelector('#school-search'),country=document.querySelector('#country-filter'),theme=document.querySelector('#theme-filter');
