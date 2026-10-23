@@ -192,3 +192,6 @@
 .uxd-featured .uxd-footer a{color:#85302e;font-weight:750;font-size:.83rem;border-bottom:1px solid currentColor}
 @media(max-width:800px){.uxd-entry{grid-template-columns:55px 1fr 28px;gap:13px}.uxd-entry .uxd-details{grid-column:2;grid-row:2}.uxd-entry .uxd-arrow{grid-column:3;grid-row:1 / 3}.uxd-featured .uxd-featured-row{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:500px){.uxd h1{font-size:3.35rem}.uxd-list{padding-block:44px}.uxd-entry{padding-block:18px}.uxd-entry .uxd-school{font-size:1.9rem}.uxd-featured .uxd-featured-row{grid-template-columns:1fr}.uxd-featured .uxd-feature-link{min-height:107px}}
+
+/* Keep the second action legible on SNU's dark masthead. */
+.uxp--research .uxp-secondary {color:#f8d2b9!important;border-color:#f8d2b988}
