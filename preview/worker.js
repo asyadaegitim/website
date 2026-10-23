@@ -24,11 +24,11 @@ async function handle(request) {
   try { path = decodeURIComponent(url.pathname); }
   catch { return new Response("Invalid path", {status: 400}); }
   // Forbid traversal, backslashes, and cross-origin redirects.
-  if (path.includes("\\\\") || path.split("/").includes("..") || path.startsWith("//")) {
+  if (path.includes("\\") || path.split("/").includes("..") || path.startsWith("//")) {
     return new Response("Invalid path", {status: 400});
   }
-  if (path.endsWith("/") || !/\\.[a-z0-9]+$/i.test(path)) {
-    path = path.replace(/\\/?$/, "/index.html");
+  if (path.endsWith("/") || !/\.[a-z0-9]+$/i.test(path)) {
+    path = path.replace(/\/?$/, "/index.html");
   }
   const source = BRANCH_RAW + path;
   try {
