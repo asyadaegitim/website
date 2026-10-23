@@ -1,3 +1,13 @@
+// Preview and production footers always navigate to the canonical public site.
+document.querySelectorAll('footer a[href]').forEach(link => {
+  const raw = link.getAttribute('href');
+  if (raw && raw.startsWith('/') && !raw.startsWith('//')) {
+    link.href = new URL(raw, 'https://asyadaegitim.com').href;
+  } else if (raw && /^https:\/\/asyadaegitim-preview\.[^/]+\.workers\.dev(?=\/|$)/i.test(raw)) {
+    const old = new URL(raw);
+    link.href = 'https://asyadaegitim.com' + old.pathname + old.search + old.hash;
+  }
+});
 const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
 menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Menüyü kapat':'Menüyü aç')});
 document.querySelectorAll('.nav-trigger[data-country]').forEach(trigger=>{trigger.addEventListener('click',event=>{if(matchMedia('(max-width:980px)').matches){event.preventDefault();const item=trigger.closest('.nav-item'),open=item.classList.toggle('open');trigger.setAttribute('aria-expanded',String(open))}})});
