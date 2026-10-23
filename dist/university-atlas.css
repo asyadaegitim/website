@@ -195,3 +195,77 @@
 
 /* Keep the second action legible on SNU's dark masthead. */
 .uxp--research .uxp-secondary {color:#f8d2b9!important;border-color:#f8d2b988}
+
+
+/* Evidence-backed photographic layer — actual campus, students, libraries & residences. */
+.uxp-photo--authentic{isolation:isolate;min-height:450px}
+.uxp-photo--authentic>img{z-index:-1;object-position:center;filter:saturate(.96)}
+.uxp-photo--authentic::after{z-index:-1}
+.uxp-photo--authentic small{letter-spacing:.09em;text-shadow:0 1px 9px #0009}
+.uxp-institution-badge{position:absolute;top:23px;right:23px;z-index:3;display:flex;align-items:center;justify-content:center;
+ background:#fffcf2f0;backdrop-filter:blur(7px);min-width:95px;max-width:42%;width:148px;height:84px;border-radius:3px;padding:11px 16px;box-shadow:0 7px 25px #0002}
+.uxp-institution-badge>img{position:relative;inset:auto;width:100%;height:100%;object-fit:contain;filter:none}
+.uxp-institution-name{position:absolute;top:22px;right:22px;padding:9px 12px;z-index:2;background:#fffcf2ef;
+ color:var(--ux-accent);font-size:.8rem;font-weight:800;letter-spacing:.03em}
+.uxp--research .uxp-photo--authentic{background:#27322e}
+.uxp--city .uxp-photo--authentic>img{object-position:center 45%}
+.uxp--tech .uxp-photo--authentic>img{object-position:center}
+.uxp-story{padding:61px 0 65px;border-top:1px solid var(--ux-line);border-bottom:1px solid var(--ux-line)}
+.uxp-story-heading{display:grid;grid-template-columns:minmax(0,1.16fr) minmax(0,.55fr);align-items:end;gap:40px;margin-bottom:25px}
+.uxp-story-heading h2{font-size:clamp(2.9rem,4.75vw,5.1rem);margin:14px 0 0;max-width:670px}
+.uxp-story-heading p{font-size:.94rem;line-height:1.75;color:#5a534c;margin:0 0 6px}
+.uxp-story-grid{display:grid;grid-template-columns:1.22fr .78fr;align-items:stretch;gap:12px;min-height:340px}
+.uxp-scene{min-width:0;margin:0;position:relative;overflow:hidden;background:#dedbd4;isolation:isolate;min-height:300px}
+.uxp-scene>img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;transition:transform .75s cubic-bezier(.2,.65,.25,1);z-index:-2}
+.uxp-scene:hover>img{transform:scale(1.035)}
+.uxp-scene::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 43%,#171412bc)}
+.uxp-scene figcaption{position:absolute;bottom:20px;left:22px;right:17px;display:flex;flex-direction:column;gap:5px;color:white;text-shadow:0 2px 10px #0008}
+.uxp-scene figcaption span{font-size:.65rem;letter-spacing:.12em;font-weight:800;text-transform:uppercase}
+.uxp-scene figcaption strong{font-size:1rem;line-height:1.4;font-weight:700}
+.uxp-story-credit{display:inline-block;margin-top:17px;border-bottom:1px solid currentColor;color:var(--ux-accent)!important;font-size:.75rem;font-weight:750}
+.uxp-story--panorama .uxp-story-grid{grid-template-columns:1.42fr .58fr;min-height:360px}
+.uxp-story--panorama .uxp-scene:first-child img{object-position:center 56%}
+.uxp-story--offset .uxp-story-grid{grid-template-columns:.72fr 1.28fr;min-height:360px}
+.uxp-story--offset .uxp-scene:first-child{margin-top:42px}
+.uxp-story--offset .uxp-scene:last-child{margin-bottom:42px}
+.uxp-story--editorial{background:linear-gradient(90deg,#f0e9dd5c,transparent 55%);padding-inline:22px}
+.uxp-story--editorial .uxp-story-grid{grid-template-columns:1fr 1fr;gap:24px;min-height:345px}
+.uxp-story--editorial .uxp-scene:nth-child(2){transform:translateY(-16px)}
+.uxp-story--split .uxp-story-grid{grid-template-columns:.85fr 1.15fr}
+.uxp-story--split .uxp-scene:last-child{min-height:380px}
+.uxp-story--frames .uxp-story-grid{grid-template-columns:1.3fr .7fr;gap:21px}
+.uxp-story--frames .uxp-scene:first-child{border:10px solid #f6f0e6;border-bottom-width:22px;box-shadow:0 8px 30px #00000017}
+.uxp-story--triptych .uxp-story-grid{grid-template-columns:1.25fr .86fr .86fr;min-height:350px;gap:10px}
+.uxp-story--triptych .uxp-scene:nth-child(2){margin-top:34px}
+.uxp-story--triptych .uxp-scene:nth-child(3){margin-bottom:34px}
+.uxp-story--triptych .uxp-scene figcaption strong{font-size:.86rem}
+@media(max-width:760px){
+ .uxp-photo--authentic{min-height:285px}
+ .uxp-institution-badge{top:15px;right:15px;width:114px;height:70px;padding:9px}
+ .uxp-story{padding:43px 0}
+ .uxp-story-heading{grid-template-columns:1fr;gap:12px}
+ .uxp-story-heading h2{font-size:clamp(2.7rem,9vw,4.3rem)}
+ .uxp-story-heading p{font-size:.85rem}
+ .uxp-story-grid,.uxp-story--panorama .uxp-story-grid,.uxp-story--offset .uxp-story-grid,
+ .uxp-story--editorial .uxp-story-grid,.uxp-story--split .uxp-story-grid,.uxp-story--frames .uxp-story-grid,
+ .uxp-story--triptych .uxp-story-grid{grid-template-columns:1fr 1fr;gap:8px;min-height:0}
+ .uxp-story--triptych .uxp-scene:first-child{grid-column:span 2;min-height:260px}
+ .uxp-story--triptych .uxp-scene{min-height:210px}
+ .uxp-story--offset .uxp-scene:first-child,.uxp-story--offset .uxp-scene:last-child,
+ .uxp-story--editorial .uxp-scene:nth-child(2),.uxp-story--triptych .uxp-scene:nth-child(2),
+ .uxp-story--triptych .uxp-scene:nth-child(3){transform:none;margin:0}
+ .uxp-story--editorial{padding-inline:0}
+ .uxp-story--frames .uxp-scene:first-child{border-width:5px 5px 12px}
+ .uxp-story-grid .uxp-scene{min-height:255px}
+ .uxp-story--split .uxp-scene:last-child{min-height:255px}
+}
+@media(max-width:490px){
+ .uxp-story-grid,.uxp-story--panorama .uxp-story-grid,.uxp-story--offset .uxp-story-grid,
+ .uxp-story--editorial .uxp-story-grid,.uxp-story--split .uxp-story-grid,.uxp-story--frames .uxp-story-grid{grid-template-columns:1fr}
+ .uxp-story-grid .uxp-scene{min-height:230px}
+ .uxp-story-grid .uxp-scene:first-child{min-height:260px}
+ .uxp-story--triptych .uxp-story-grid{grid-template-columns:1fr 1fr}
+ .uxp-scene figcaption{left:16px;bottom:15px}
+ .uxp-scene figcaption strong{font-size:.9rem}
+}
+@media(prefers-reduced-motion:reduce){.uxp-scene>img{transition:none}}
