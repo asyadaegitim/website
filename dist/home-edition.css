@@ -131,10 +131,11 @@ body.edition-page {
 
 /* VI. Application journey */
 .edition-journey { padding-block: 98px 102px; }
-.edition-steps { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); border-top: 2px solid var(--edition-maroon); }
-.edition-steps > div { min-height: 225px; padding: 21px 18px 20px 0; border-right: 1px solid var(--edition-line); }
+.edition-steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-top: 2px solid var(--edition-maroon); }
+.edition-steps > div { min-height: 205px; padding: 21px 18px 20px 0; border-right: 1px solid var(--edition-line); }
 .edition-steps > div + div { padding-left: 18px; }
-.edition-steps > div:last-child { border-right: none; }
+.edition-steps > div:nth-child(3n) { border-right: none; }
+.edition-steps > div:nth-child(n+4) { border-top: 1px solid var(--edition-line); }
 .edition-steps b { display: block; font: italic 500 2rem/1 var(--edition-serif); color: var(--edition-maroon); }
 .edition-steps h3 { font: 600 2rem/1.07 var(--edition-serif); margin: 17px 0 14px; }
 .edition-steps p { color: var(--edition-muted); font-size: .8125rem; line-height: 1.7; margin: 0; }
@@ -217,6 +218,7 @@ body.edition-page {
   .edition-journey { padding-block: 68px; }
   .edition-steps { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .edition-steps > div,.edition-steps > div + div { padding: 20px 12px 28px 0; min-height: 192px; }
+  .edition-steps > div:nth-child(3n) { border-right: 1px solid var(--edition-line); }
   .edition-steps > div:nth-child(even) { border-right: 0; padding-left: 14px; }
   .edition-steps > div:nth-child(n+3) { border-top: 1px solid var(--edition-line); }
   .edition-steps h3 { font-size: 1.9rem; }
