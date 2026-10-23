@@ -32,7 +32,7 @@ async function handle(request) {
   }
   const source = BRANCH_RAW + path;
   try {
-    const upstream = await fetch(source, {redirect: "follow", cf: {cacheTtl: 30, cacheEverything: true}});
+    const upstream = await fetch(source + "?preview_rev=" + Math.floor(Date.now() / 15000), {redirect: "follow", cf: {cacheTtl: 0, cacheEverything: false}});
     const ext = path.split(".").pop().toLowerCase();
     const headers = new Headers({
       "Content-Type": CONTENT_TYPES[ext] || upstream.headers.get("Content-Type") || "application/octet-stream",
