@@ -67,8 +67,8 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .home-hero { padding: 44px 0 22px; }
 .home-intro > .eyebrow { display: flex; align-items: center; gap: 12px; }
 .home-intro > .eyebrow::before { content: ''; display: block; width: 28px; height: 3px; background: var(--red); flex: none; }
-.home-intro-row { display: grid; grid-template-columns: 1.25fr .8fr; gap: 56px; align-items: end; padding: 22px 0 32px; }
-.home-hero h1 { font-size: clamp(3.2rem, 5.8vw, 5.4rem); margin: 0; }
+.home-intro-row { display: grid; grid-template-columns: 1.28fr .9fr; gap: 48px; align-items: end; padding: 22px 0 32px; }
+.home-hero h1 { font-size: clamp(3.2rem, 4.75vw, 4.75rem); letter-spacing: -.038em; line-height: 1.04; margin: 0; }
 .hero-accent { color: var(--red); }
 .home-intro-row > div:last-child { padding-bottom: 7px; }
 .home-hero p { margin: 0 0 24px; max-width: 430px; font-size: 1.0625rem; color: var(--muted); }
@@ -311,7 +311,7 @@ a.field-card:hover { border-color: var(--red); }
   .home-intro > .eyebrow { font-size: .75rem; letter-spacing: .07em; gap: 8px; }
   .home-intro > .eyebrow::before { width: 20px; }
   .home-intro-row { padding: 20px 0 30px; gap: 22px; }
-  .home-hero h1 { font-size: clamp(2.7rem, 10vw, 4.3rem); }
+  .home-hero h1 { font-size: clamp(2.65rem, 9.7vw, 3.75rem); letter-spacing: -.035em; }
   .home-hero p { font-size: 1rem; margin-bottom: 20px; }
   .hero-actions .button { flex: 1 1 auto; padding-inline: 13px; }
   .hero-accordion { height: 320px; min-height: 0; overflow-x: auto; scroll-snap-type: x mandatory; }
