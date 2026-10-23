@@ -6,6 +6,7 @@ if (footerLinks && !footerLinks.querySelector('[data-guide-link]')) {
   for (const [name, href] of [
     ['Neden Asya?', '/neden-asya/'],
     ['Burslar ve Maliyetler', '/burslar-ve-maliyetler/'],
+    ['Üniversite Bursları', '/universite-burslari/'],
     ['Başvuru Rehberi', '/basvuru-rehberi/'],
     ['Ülke Karşılaştırması', '/ulkeler/karsilastirma/'],
     ['Hakkımızda', '/hakkimizda/']
@@ -29,14 +30,14 @@ if(nav && !nav.querySelector('.nav-guides')) {
   }
   const guide=document.createElement('div');
   guide.className='nav-item nav-guides';
-  guide.innerHTML='<a class="nav-trigger" href="/burslar-ve-maliyetler/">Burslar</a>';
+  guide.innerHTML='<a class="nav-trigger" href="/universite-burslari/">Üniversite Bursları</a>';
   nav.append(guide);
   for(const item of items.values()) {
     const submenu=item.querySelector('.dropdown');
     if(submenu && !submenu.querySelector('.catalog-links')) {
       const region=document.createElement('div');
       region.className='catalog-links';
-      region.innerHTML='<div class="eyebrow">Rehberler</div><a href="/burslar-ve-maliyetler/">Burslar ve Maliyetler</a><a href="/basvuru-rehberi/">Başvuru Rehberi</a><a href="/ulkeler/karsilastirma/">Ülkeleri Karşılaştır</a>';
+      region.innerHTML='<div class="eyebrow">Rehberler</div><a href="/universite-burslari/">Üniversite Bursları</a><a href="/burslar-ve-maliyetler/">Burslar ve Maliyetler</a><a href="/basvuru-rehberi/">Başvuru Rehberi</a><a href="/ulkeler/karsilastirma/">Ülkeleri Karşılaştır</a>';
       submenu.append(region);
     }
   }
