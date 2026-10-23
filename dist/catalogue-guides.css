@@ -88,3 +88,10 @@
  .cg-page .cg-table th,.cg-page .cg-table td{min-width:155px}
  .cg-page .cg-countries{grid-template-columns:repeat(2,1fr)}
 }
+
+/* Final editorial proportions for long-form catalogue hubs */
+.cg-page .cg-page-hero{padding-top:55px;padding-bottom:45px;}
+.cg-page .cg-page-hero h1{font-size:clamp(3.35rem,5.7vw,6.05rem);line-height:1.02;max-width:1130px;margin-bottom:24px;}
+.cg-page .cg-page-hero p{margin-top:0}
+.cg-page .cg-page-hero .cg-notice{max-width:930px}
+@media(max-width:600px){.cg-page .cg-page-hero{padding-top:36px;padding-bottom:32px}.cg-page .cg-page-hero h1{font-size:clamp(2.95rem,10.5vw,4rem)}}
