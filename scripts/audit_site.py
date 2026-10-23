@@ -7,6 +7,7 @@ Run: python3 scripts/audit_site.py
 from __future__ import annotations
 
 import sys
+import json
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -42,6 +43,8 @@ REQUIRED = [
     "universiteler/tohoku-university/index.html",
     "universiteler/national-university-of-singapore/index.html",
     "universiteler/nanyang-technological-university/index.html",
+    "assets/campus-life/ATTRIBUTION.json",
+    "gorsel-kaynaklar/index.html",
 ]
 
 
@@ -93,6 +96,29 @@ def main() -> int:
     for name in REQUIRED:
         if not (ROOT / name).is_file():
             errors.append(f"Required: {name}")
+    # Authentic university imagery must ship with explicit creator/licence/source.
+    manifest_file = ROOT / "assets/campus-life/ATTRIBUTION.json"
+    if not manifest_file.is_file():
+        errors.append("Missing university photo attribution manifest")
+    else:
+        try:
+            photo_records = json.loads(manifest_file.read_text(encoding="utf-8")).get("items", [])
+            if len(photo_records) < 21:
+                errors.append(f"Expected 21 licensed visual records; found {len(photo_records)}")
+            for img in photo_records:
+                for field in ("path", "university", "license", "author", "source"):
+                    if not img.get(field):
+                        errors.append(f"Incomplete attribution field {field} for {img.get('path')}")
+                if not str(img.get("source", "")).startswith("https://commons.wikimedia.org/wiki/"):
+                    errors.append(f"Unexpected image source: {img.get('path')}")
+                try:
+                    target = local_target(ROOT / "index.html", img.get("path", ""))
+                    if target is None or not target.is_file():
+                        errors.append(f"Missing attributed university visual: {img.get('path')}")
+                except ValueError:
+                    errors.append(f"Unsafe attributed visual path: {img.get('path')}")
+        except (OSError, ValueError, TypeError) as e:
+            errors.append(f"Invalid visual attribution manifest: {e}")
     pages = sorted(ROOT.rglob("*.html"))
     for page in pages:
         parser = References()
