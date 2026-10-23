@@ -46,3 +46,16 @@ Branch: `develop/site-foundation-20261023` — **PREVIEW ONLY**; production `asy
 - New pages have 3 institution-specific scholarship entries each, official links, and 1–3 photo/typographic masthead alternatives.
 - At least selected 320px, 390px, and 1280px browser previews visually reviewed for overflow and image load.
 - GitHub Actions site-audit updated to require 55 HTML routes.
+
+
+## University imagery pass — 24 October 2026
+- **19 new real photographic assets** across the six university identity groups, plus **2 additional verified university identity assets** (Seoul National University public-domain logotype and a licensed photo of the Tohoku University emblem); **21 new credited items** in all.
+- Photo provenance stored in `dist/assets/campus-life/ATTRIBUTION.json`, with per-item author, Commons original file URL, image licence and accurate subject description. Public credit page: `/gorsel-kaynaklar/`. Originals resized to WebP; crops/layout only in CSS.
+- All six deep profiles now have a real campus photographic masthead + *non-identical* in-page narrative gallery (lake/library, residence/college, classroom, student/study, campus commons), matched by institution.
+- All five country pages have 3-image photo essays after the university discovery cards, with institution-aware captions and links to the deeper university profile.
+- Bursary directory includes 6 distinct institution campus photographs with correctly matched logos where available.
+- University atlas now has official/previously sourced institutional logo artwork on **18 of its 28 school rows**; remaining logos were intentionally not fabricated or replaced with unrelated images. Six featured schools use authentic linked campus photos.
+- A photo labelled `Students Walk.jpg` represents the **NTU Students Walk pedestrian route**, not a photo of walking students. Caption and alt text explicitly corrected. For real students in a classroom, see the NUS lecture photograph credited to OfficialKSY.
+- Additional dynamic HTML asset tests validate all image paths and presence of 21 attribution manifest records, author/licence/source fields; mobile width 390px checked and the min-content grid overflow of long English university names fixed.
+- Student lifestyle imagery remains an **incomplete coverage area** for some institutions: there are no rights-cleared student-portrait photographs for all schools. Do not fill this gap with AI-generated students, generic stock people, another university's campus, or inaccurate captions.
+- Future additions: source new true-life student, lab, residence and campus photo sets with explicit use rights, while preserving identity-linked descriptions and balanced editorial variety.
