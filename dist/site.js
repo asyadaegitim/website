@@ -1,3 +1,13 @@
+// Keep footer navigation on the canonical site, including when served from preview workers.dev hosts.
+document.querySelectorAll('footer a[href]').forEach(link => {
+  const raw = link.getAttribute('href');
+  if (raw && raw.startsWith('/') && !raw.startsWith('//')) {
+    link.href = new URL(raw, 'https://asyadaegitim.com').href;
+  } else if (raw && /^https:\/\/asyadaegitim-preview\.[^/]+\.workers\.dev(?=\/|$)/i.test(raw)) {
+    const preview = new URL(raw);
+    link.href = 'https://asyadaegitim.com' + preview.pathname + preview.search + preview.hash;
+  }
+});
 // Keep all China Education links on the official domain.
 document.querySelectorAll('a[href="https://cinegitim-kesfet.adnanakfirat.chatgpt.site/"]').forEach(link => { link.href = 'https://cinegitim.com/'; });
 const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
