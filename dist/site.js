@@ -30,7 +30,7 @@ if(nav && !nav.querySelector('.nav-guides')) {
   }
   const guide=document.createElement('div');
   guide.className='nav-item nav-guides';
-  guide.innerHTML='<a class="nav-trigger" href="/universite-burslari/">Üniversite Bursları</a>';
+  guide.innerHTML='<a class="nav-trigger" href="/universite-burslari/">Burslar</a>';
   nav.append(guide);
   for(const item of items.values()) {
     const submenu=item.querySelector('.dropdown');
