@@ -74,13 +74,16 @@
     pointer = { id:e.pointerId, x:e.clientX, scroll:viewport.scrollLeft, moved:false };
     suppressClick = false;
     stop(true);
-    viewport.setPointerCapture(e.pointerId);
+    // Capture only after movement so ordinary photo-link clicks remain native.
   });
   viewport.addEventListener('pointermove', e => {
     if (!pointer || pointer.id !== e.pointerId) return;
     const dx = e.clientX - pointer.x;
     if (Math.abs(dx) > 6) {
-      pointer.moved = true;
+      if (!pointer.moved) {
+        pointer.moved = true;
+        viewport.setPointerCapture(e.pointerId);
+      }
       suppressClick = true;
       viewport.classList.add('dragging');
       viewport.scrollLeft = pointer.scroll - dx;
