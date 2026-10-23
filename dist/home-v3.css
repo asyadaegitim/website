@@ -1,0 +1,184 @@
+/* Asya'da Eğitim · Hero V3 — destination-led, immersive, tactile.
+   Scope limited to the homepage; catalog/photo mosaic below is preserved.
+   Original approved logo remains untouched. */
+
+.edition-page { --ae3-paper:#f5f1e9; --ae3-ink:#242322; --ae3-terracotta:#ae3e34; --ae3-wash:#e5dfd2; --ae3-muted:#665f59; }
+.edition-v3 { padding-top:20px; }
+.edition-v3 .ae3-meta { display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 1px 12px;
+  font-size:.64rem;font-weight:700;letter-spacing:.095em;color:#785b53;border-bottom:1px solid #c9bfb0; }
+.ae3-meta span:last-child { font-size:.61rem;letter-spacing:.08em; }
+.ae3-meta i { font-style:normal;opacity:.55;margin:0 8px; }
+
+.ae3-stage { position:relative; isolation:isolate; min-height:604px;
+  background: radial-gradient(ellipse at 72% 24%,#ebe8df 0%,#f5f1e9 67%);
+}
+.ae3-image-field { position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  linear-gradient(113deg,#f5f1e9 8%,#f5f1e900 55%), radial-gradient(ellipse at 46% 48%,#ede4d9bb,#f5f1e900 70%); }
+.ae3-copy { position:relative;z-index:4;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  width:min(70%,830px);min-height:598px;padding:42px 0 65px;pointer-events:none; }
+.ae3-copy > * { pointer-events:auto; }
+.ae3-kicker { display:inline-flex;align-items:center;gap:10px;color:#99483b;font-size:.77rem;font-weight:700;
+  letter-spacing:.04em; }
+.ae3-kicker span { display:block;width:25px;height:2px;background:#a64036; }
+.ae3-copy h1 {margin:26px 0 28px;max-width:none;letter-spacing:-.042em;line-height:.99;
+  font:500 clamp(3.1rem,5.25vw,6.1rem)/.98 'Cormorant Garamond',Georgia,serif;color:#292522; }
+.ae3-headline-line { display:block;white-space:nowrap; }
+.ae3-headline-em { color:#912d2a;font-style:italic;font-weight:500;letter-spacing:-.043em; }
+.ae3-copy p { margin:0;max-width:445px;font-size:.98rem;line-height:1.75;color:#4c4642;text-shadow:0 1px 16px #f5f1e9; }
+.ae3-actions { display:flex;flex-wrap:wrap;align-items:center;gap:26px;margin-top:30px; }
+.ae3-actions a { display:inline-flex;justify-content:space-between;align-items:center;gap:24px;
+  min-height:45px;font-size:.83rem;font-weight:700;white-space:nowrap; }
+.ae3-primary { background:#8d2a28;color:white!important;padding:11px 17px;box-shadow:0 7px 28px #8b3b3421; }
+.ae3-primary:hover { background:#6d1c1f; }
+.ae3-secondary { color:#86312b!important;border-bottom:1px solid #ac867e;padding:10px 0; }
+.ae3-secondary:hover { color:#4f1816!important; }
+.ae3-actions a span { font-size:1.18rem;line-height:1; }
+
+.ae3-carousel { position:absolute;left:29%;right:18.5%;top:19px;bottom:40px;z-index:1;
+  min-width:0;display:flex;flex-direction:column;user-select:none; }
+.ae3-viewport { position:relative;flex:1;min-height:0;overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;
+  scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y; }
+.ae3-viewport::-webkit-scrollbar {display:none}
+.ae3-viewport.dragging {cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto;}
+.ae3-track {display:flex;align-items:stretch;gap:12px;height:100%;width:100%;}
+.ae3-slide { position:relative;flex:0 0 88%;height:100%;min-width:0;scroll-snap-align:start;overflow:hidden;
+  filter:saturate(.8) contrast(.96); }
+.ae3-slide-link {display:block;position:relative;width:100%;height:100%;color:#fff!important;overflow:hidden;isolation:isolate;}
+.ae3-slide-link:after {content:"";position:absolute;inset:0;background:linear-gradient(180deg,#251c1b08 40%,#171112b5 100%);pointer-events:none;z-index:0;}
+.ae3-slide img {width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .8s ease;}
+.ae3-slide-link:hover img {transform:scale(1.025)}
+.ae3-photo-caption {position:absolute;left:24px;bottom:26px;right:22px;z-index:1;display:flex;flex-direction:column;gap:3px;
+  text-shadow:0 2px 12px #0008;pointer-events:none;}
+.ae3-photo-location {font-size:.65rem;letter-spacing:.11em;font-weight:700;text-transform:uppercase;}
+.ae3-photo-caption strong {font:500 clamp(2.45rem,3.75vw,4.35rem)/1 'Cormorant Garamond',Georgia,serif;}
+.ae3-photo-caption > span:last-child {font-size:.73rem;font-weight:600;letter-spacing:.02em;}
+.ae3-veil {position:absolute;pointer-events:none;inset:-1px -2px 28px -1px;z-index:2;
+  background:linear-gradient(90deg,#f5f1e9 0%,#f5f1e9f7 6%,#f5f1e9e8 22%,#f5f1e9c4 37%,#f5f1e971 54%,#f5f1e900 80%);}
+.ae3-controlbar {position:relative;z-index:3;display:flex;align-items:center;gap:15px;justify-content:flex-end;
+  padding:12px 8px 0 10px;color:#7a473e;}
+.ae3-slide-nav {display:flex;align-items:center;gap:9px;white-space:nowrap;}
+.ae3-arrow {border:1px solid #c9bdb0;background:#f5f1e9da;width:32px;height:32px;display:grid;place-items:center;
+  border-radius:50%;color:#782b29;font-size:1.04rem;transition:background .2s;}
+.ae3-arrow:hover {background:white;border-color:#a94d43;}
+.ae3-counter {font-size:.7rem;letter-spacing:.075em;font-weight:700;}
+.ae3-progress {display:flex;align-items:center;gap:4px;}
+.ae3-dot {border:0;background:transparent;color:#7b6e62;border-top:2px solid #d4c9bd;min-width:38px;
+  padding:6px 4px 1px;display:flex;flex-direction:column;gap:1px;align-items:center;line-height:1.2;}
+.ae3-dot.is-active {border-color:#973e36;color:#87312d;}
+.ae3-dot-index {font-size:.6rem;font-weight:700;letter-spacing:.08em;}
+.ae3-dot-name {font-size:.55rem;white-space:nowrap;}
+
+.ae3-news {position:absolute;top:43px;bottom:42px;right:0;width:21.8%;z-index:5;display:flex;flex-direction:column;
+  background:linear-gradient(158deg,#fbf8f0ed,#f3ecdfeb);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);
+  border:1px solid #e7ddd1;box-shadow:0 15px 55px #75645416;padding:21px 18px 13px;}
+.ae3-news-top {display:flex;justify-content:space-between;align-items:center;gap:8px;color:#8f4037;
+  font-weight:700;font-size:.6rem;letter-spacing:.075em;padding-bottom:18px;}
+.ae3-news-top > span:first-child {display:flex;gap:7px;align-items:center;}
+.ae3-live-dot {width:7px;height:7px;border-radius:50%;background:#b54a3d;}
+.ae3-news-feature {display:flex;flex-direction:column;justify-content:flex-end;gap:10px;
+  background:linear-gradient(138deg,#ad493d,#742e2b);color:#fff!important;padding:18px 15px;min-height:179px;
+  transition:transform .2s,background .2s;}
+.ae3-news-feature:hover {transform:translateY(-2px)}
+.ae3-news-type {font-size:.59rem;font-weight:700;letter-spacing:.135em;color:inherit;opacity:.85;}
+.ae3-news-feature strong {font:500 clamp(1.8rem,2.05vw,2.55rem)/1.02 'Cormorant Garamond',Georgia,serif;}
+.ae3-news-cta {border-top:1px solid #ffffff7c;padding-top:8px;display:flex;justify-content:space-between;align-items:center;
+  font-size:.73rem;font-weight:700;}
+.ae3-news-item {display:flex;flex-direction:column;gap:7px;padding:17px 0 16px;border-bottom:1px solid #cfc3b5;}
+.ae3-news-item:last-child {border-bottom:0;}
+.ae3-news-item .ae3-news-type {color:#9b473b;}
+.ae3-news-item strong {font-size:.91rem;line-height:1.35;color:#312a27;font-weight:700;}
+.ae3-news-caption {font-size:.68rem;line-height:1.5;color:#6d5a50;}
+.ae3-news-item:hover strong {color:#9b4038;}
+.ae3-stage-tail {display:flex;justify-content:space-between;align-items:center;gap:18px;padding:12px 0 17px;
+  border-bottom:1px solid #d0c5b9;color:#897b6f;font-size:.64rem;letter-spacing:.07em;font-weight:700;}
+.ae3-stage-tail span:last-child {color:#854236;letter-spacing:0;font-weight:600;}
+
+.edition-v3 + .edition-countries {padding-top:68px;padding-bottom:86px;}
+.ae3-five-grid {margin-top:0}
+.ae3-five-grid .edition-destination {min-height:350px;}
+.ae3-five-grid .edition-dest-jp,.ae3-five-grid .edition-dest-sg {min-height:265px;}
+.ae3-five-grid .edition-destination {filter:saturate(.93)}
+.ae3-five-grid .edition-destination:hover {filter:saturate(1.1)}
+.edition-v3 ~ .edition-philosophy {padding-block:73px 78px;}
+.edition-v3 ~ .edition-universities {padding-block:78px 85px;}
+
+@media (min-width:1700px) {
+  .ae3-stage {min-height:660px}
+  .ae3-copy {min-height:640px}
+}
+@media (max-width:1180px) {
+  .ae3-stage {min-height:540px}
+  .ae3-copy {min-height:535px;width:66%;padding-bottom:45px;}
+  .ae3-copy h1 {font-size:clamp(2.9rem,4.85vw,5.2rem)}
+  .ae3-carousel {left:28%;right:19%;top:17px;bottom:35px}
+  .ae3-news {width:23%;top:38px;bottom:36px;padding:17px 13px;}
+  .ae3-news-feature {min-height:148px;padding:14px 12px;}
+  .ae3-news-feature strong {font-size:1.9rem}
+  .ae3-progress {display:none}
+}
+@media (max-width:980px) {
+  .edition-v3 .ae3-meta > span:last-child {display:none}
+  .ae3-stage {display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,.58fr);gap:20px;min-height:0;}
+  .ae3-copy {width:100%;min-height:0;grid-column:1/-1;padding:46px 0 13px;}
+  .ae3-copy h1 {font-size:clamp(3.2rem,6vw,5rem);margin:24px 0 23px;}
+  .ae3-copy p {max-width:570px;}
+  .ae3-carousel {position:relative;left:auto;right:auto;top:auto;bottom:auto;grid-column:1;grid-row:2;height:345px;}
+  .ae3-veil {background:linear-gradient(90deg,#f5f1e9cf 0%,transparent 28%);inset:-1px -2px 32px -1px}
+  .ae3-news {position:relative;right:auto;top:auto;bottom:auto;width:auto;grid-column:2;grid-row:2;
+    padding:14px 12px 6px;box-shadow:none;min-width:0;}
+  .ae3-news-top {padding-bottom:10px}
+  .ae3-news-feature {min-height:118px;}
+  .ae3-news-feature strong {font-size:1.7rem;}
+  .ae3-news-item {padding:10px 0;}
+  .ae3-news-item strong {font-size:.82rem;}
+  .ae3-stage-tail {margin-top:16px;}
+}
+@media (max-width:680px) {
+  .ae3-stage {display:flex;flex-direction:column;gap:0;}
+  .ae3-copy {order:0;padding:43px 0 20px;}
+  .ae3-copy h1 {font-size:clamp(2.08rem,9.7vw,4.3rem);letter-spacing:-.05em;line-height:1.02;
+    margin:20px 0 23px;}
+  .ae3-headline-em {letter-spacing:-.06em;}
+  .ae3-copy p {font-size:.91rem;line-height:1.65;max-width:450px;}
+  .ae3-actions {gap:14px;margin-top:24px}
+  .ae3-actions a {gap:14px;}
+  .ae3-secondary {font-size:.8rem;}
+  .ae3-carousel {order:1;height:340px;margin:7px -18px 0;}
+  .ae3-viewport {height:285px;flex:none}
+  .ae3-slide {flex-basis:88%;}
+  .ae3-veil {display:none;}
+  .ae3-slide .ae3-photo-caption {left:16px;bottom:16px;}
+  .ae3-slide .ae3-photo-caption strong {font-size:2.75rem;}
+  .ae3-controlbar {padding:9px 18px 0;justify-content:space-between}
+  .ae3-progress {display:flex}
+  .ae3-dot {min-width:24px;padding-inline:1px}
+  .ae3-dot-name {display:none}
+  .ae3-news {order:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 15px;
+    margin-top:16px;width:auto;padding:12px 0 4px;background:transparent;border:0;box-shadow:none;backdrop-filter:none;}
+  .ae3-news-top {grid-column:1/-1;border-bottom:1px solid #cfc3b5;padding-bottom:9px;margin-bottom:9px;}
+  .ae3-news-feature {grid-column:1;grid-row:2 / 4;min-height:164px;padding:13px 12px;}
+  .ae3-news-feature strong {font-size:1.8rem}
+  .ae3-news-item {grid-column:2;padding:7px 0 9px;}
+  .ae3-news-item strong {font-size:.79rem;}
+  .ae3-news-caption {font-size:.63rem;}
+  .ae3-news-item:last-child {border-bottom:0;}
+  .ae3-stage-tail {margin-top:16px;font-size:.61rem;}
+  .ae3-stage-tail span:last-child {display:none;}
+  .edition-v3 + .edition-countries {padding-top:52px;padding-bottom:62px}
+  .ae3-five-grid .edition-destination,.ae3-five-grid .edition-dest-jp,.ae3-five-grid .edition-dest-sg {min-height:330px}
+  .ae3-five-grid .edition-destinations {gap:9px}
+  .edition-v3 ~ .edition-philosophy {padding-block:53px 57px}
+  .edition-v3 ~ .edition-universities {padding-block:59px 64px}
+}
+@media (max-width:365px) {
+  .ae3-copy h1 {font-size:clamp(1.9rem,9.3vw,2.5rem)}
+  .ae3-actions {gap:9px}
+  .ae3-actions a {font-size:.76rem}
+  .ae3-news {gap:9px}
+  .ae3-news-feature strong {font-size:1.6rem}
+}
+@media(prefers-reduced-motion:reduce) {
+  .ae3-viewport {scroll-behavior:auto}
+  .ae3-slide img,.ae3-news-feature,.ae3-dot {transition:none}
+}
