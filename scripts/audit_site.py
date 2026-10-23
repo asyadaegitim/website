@@ -54,7 +54,7 @@ def local_target(page: Path, value: str) -> Path | None:
     if url.scheme or url.netloc or not url.path:
         return None
     path = unquote(url.path)
-    if "\\x00" in path or "\\\\" in path:
+    if "\x00" in path or "\\" in path:
         raise ValueError("Unsafe local path")
     relative = path.removeprefix("/")
     if path.startswith("/"):
@@ -92,7 +92,7 @@ def main() -> int:
         errors.append(f"Expected at least 48 HTML pages, found {len(pages)}")
     print(f"Audited {len(pages)} HTML pages under dist/")
     if errors:
-        print("\\n".join(f"FAIL: {e}" for e in errors[:60]))
+        print("\n".join(f"FAIL: {e}" for e in errors[:60]))
         print(f"Total errors: {len(errors)}")
         return 1
     print("PASS: required files and local HTML links/assets exist")
