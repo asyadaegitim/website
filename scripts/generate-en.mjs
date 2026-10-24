@@ -60,6 +60,8 @@ function strip(html){
 function localized(p){return "/en"+p;}
 function english(html,p){
   let s=html.replace('<html lang="tr">','<html lang="en">');
+  if(p==="/")s=s.replace('<h1 class="serif">Geleceğini<br><span class="hero-accent">Asya’da</span> keşfet.</h1>','<h1 class="serif">Discover your future<br><span class="hero-accent">in Asia.</span></h1>');
+  if(p==="/okullar/")s=s.replace('<h1 class="serif">Üniversiteleri<br>keşfet.</h1>','<h1 class="serif">Discover<br>universities.</h1>');
   s=s.replace(/(\bhref=")\/(?!\/)/g,'$1/en/');
   s=s.replace(/(\bhref=")https:\/\/asyadaegitim\.com\/(?!en\/)/g,'$1https://asyadaegitim.com/en/');
   s=s.replace(/>([^<>]+)</g,(all,value)=>">"+inline(value)+"<");
