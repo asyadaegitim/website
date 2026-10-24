@@ -120,7 +120,6 @@
   "Henüz karar vermedim": "I'm undecided",
   "Hedefiniz": "Your goals",
   "Görüşme isteğini e-postayla gönder": "Send Pre-Consultation Request",
-  "Gönder düğmesi e-posta uygulamanızda hazır bir ileti oluşturur.": "Your details are sent securely through FormSubmit to our pre-consultation inbox.",
   "Görsel kaynaklar.": "Image credits.",
   "Kampüs fotoğraflarının kaynakları ve lisansları. Görseller bu sitede yerleşime uygun kırpılarak gösterilir.": "Sources and licences for campus photographs. Images are cropped to fit the website layout.",
   "Seçkideki 11 üniversitenin logosu kullanıcı tarafından gönderilen IEFT görselinden alınmıştır. Tamamlanan 16 logonun kaynakları aşağıdadır. Asya’da Eğitim logosu kullanıcı tarafından sağlanan SVG dosyasından alınmıştır; yalnızca dış zemin şeffaflaştırılmıştır. Bayrak ikonları": "The logos of 11 featured universities were provided in an IEFT image. Sources for the remaining 16 logos are listed below. The Asya’da Eğitim logo was supplied as an SVG, with only the background made transparent. Flag icons are from the",
@@ -318,6 +317,5 @@
   "İletişim bilgileri": "Contact information",
   "Görüşme formu": "Pre-consultation form",
   "Üniversite için başka bir dünya var | Asya’da Eğitim": "There is another world for university education. | Asya’da Eğitim",
-  "Ücretsiz Ön Görüşme Talebini Gönder": "Send Pre-Consultation Request",
-  "Bilgileriniz, ön görüşme talebinizi iletmek üzere FormSubmit üzerinden gönderilir.": "Your details are sent securely through FormSubmit to our pre-consultation inbox."
+  "Ücretsiz Ön Görüşme Talebini Gönder": "Send Pre-Consultation Request"
 }
