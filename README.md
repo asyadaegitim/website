@@ -52,3 +52,9 @@ Cloudflare GitHub uygulamasına yalnızca bu depoya erişim izni vermek yeterlid
 ## Türkçe / English
 
 Her Türkçe sayfanın `dist/en/` altında İngilizce karşılığı bulunur. Üst menüde TR/EN dil seçimi, iki dilin karşılıklı `hreflang` / canonical bağlantıları ve `dist/sitemap.xml` yer alır. İngilizce metinler `locales/en.json` dosyasında yönetilir. Türkçe kaynak sayfalar güncellendiğinde `node scripts/generate-en.mjs` çalıştırılarak eşlenik HTML ve site haritası yenilenmelidir. Derleme servisi, ücretli çeviri API'si veya üçüncü taraf i18n paketi gerekmez.
+
+## Ön görüşme formu (TR/EN)
+
+Her iki `/on-gorusme/` sayfasındaki form, JavaScript ile FormSubmit AJAX uç noktasına POST yapar. JavaScript kapalıysa formun `action` özelliği normal POST gönderimi sağlar; e-posta uygulaması açılmaz. Bildirim hedefi `info@asyadaegitim.com` adresidir. `_honey` gizli alanı ve FormSubmit spam koruması kullanılır. Form gönderilirken düğme kilitlenir; başarı/hata durumu sayfada gösterilir.
+
+**İlk etkinleştirme:** FormSubmit, ilk gönderimin ardından `info@asyadaegitim.com` adresine doğrulama e-postası yollar. Alıcı bağlantıyı onaylamadan yeni başvurular e-posta kutusuna düşmeyebilir. Bu, alan adının MX kayıtlarına müdahale etmeden çalışan ve hesap açmayı gerektirmeyen bir çözümdür. Farklı sağlayıcıya geçiş yapılırsa hem iki HTML sayfasındaki `action` hem `dist/site.js` içindeki AJAX adresi değiştirilmelidir.
