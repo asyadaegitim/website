@@ -61,6 +61,8 @@ function localized(p){return "/en"+p;}
 function english(html,p){
   let s=html.replace('<html lang="tr">','<html lang="en">');
   if(p==="/")s=s.replace('<h1 class="serif">Üniversite için<br><span class="hero-accent">başka bir dünya</span><br>var.</h1>','<h1 class="serif">There is another<br><span class="hero-accent">world</span> for<br><span class="hero-accent">university education.</span></h1>');
+  // FormSubmit uses each field name as the email table label; localize it, too.
+  if(p==="/on-gorusme/")s=s.replace('name="Program türü"','name="Program type"').replace('name="Hedef başlangıç"','name="Planned start"');
   if(p==="/okullar/")s=s.replace('<h1 class="serif">Üniversiteleri<br>keşfet.</h1>','<h1 class="serif">Discover<br>universities.</h1>');
   s=s.replace(/<a\b[^>]*>/g, tag => tag.replace(/(\bhref=")\/(?!\/)/g, '$1/en/').replace(/(\bhref=")https:\/\/asyadaegitim\.com\/(?!en\/)/g, '$1https://asyadaegitim.com/en/'));
   s=s.replace(/>([^<>]+)</g,(all,value)=>">"+inline(value)+"<");
