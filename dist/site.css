@@ -377,3 +377,12 @@ a.field-card:hover { border-color: var(--red); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Language selection — visible on desktop and mobile, without changing brand typography. */
+.lang-switch{display:inline-flex;flex:none;align-items:center;gap:7px;font-size:.75rem;font-weight:600;letter-spacing:.07em;white-space:nowrap;color:var(--muted)}
+.lang-switch a{padding:8px 2px;text-decoration:none;border-bottom:2px solid transparent}
+.lang-switch a[aria-current="page"]{color:var(--red);border-bottom-color:var(--red)}
+.lang-switch a:hover{color:var(--red)}
+.lang-switch span{color:var(--line)}
+@media(max-width:1200px){.header-inner{gap:12px}.nav{gap:8px}}
+@media(max-width:480px){.brand{width:154px;height:56px}.header-inner{gap:9px}.lang-switch{gap:4px;font-size:.7rem}}

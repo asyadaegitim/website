@@ -48,3 +48,7 @@ Workers & Pages → Create application → **Continue with GitHub** akışında 
 Cloudflare GitHub uygulamasına yalnızca bu depoya erişim izni vermek yeterlidir. Her `main` güncellemesi için otomatik dağıtım açık olmalıdır. İlk olarak `*.workers.dev` bağlantısında ana sayfa, ülke/üniversite sayfaları ve statik dosyalar doğrulanmalıdır; ardından `asyadaegitim.com` alan adı Worker'a bağlanabilir.
 
 **Önemli:** Bu GitHub deposundaki statik kopyanın Sites'ın özgün kaynak koduyla eşit olduğu varsayılmamalıdır. Cloudflare yapılandırma dosyası GitHub'a eklendi diye Cloudflare'de henüz bir uygulama oluşmuş ya da alan adı yönlendirilmiş olmaz. Mevcut ChatGPT Sites yayını ayrıca çalışmaya devam eder.
+
+## Türkçe / English
+
+Her Türkçe sayfanın `dist/en/` altında İngilizce karşılığı bulunur. Üst menüde TR/EN dil seçimi, iki dilin karşılıklı `hreflang` / canonical bağlantıları ve `dist/sitemap.xml` yer alır. İngilizce metinler `locales/en.json` dosyasında yönetilir. Türkçe kaynak sayfalar güncellendiğinde `node scripts/generate-en.mjs` çalıştırılarak eşlenik HTML ve site haritası yenilenmelidir. Derleme servisi, ücretli çeviri API'si veya üçüncü taraf i18n paketi gerekmez.
