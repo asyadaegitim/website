@@ -390,3 +390,13 @@ a.field-card:hover { border-color: var(--red); }
 /* Official bilingual campaign slogan; keep the longer English headline balanced. */
 html[lang="en"] .home-hero h1 { font-size: clamp(2.1rem, 4.5vw, 4.5rem); }
 @media (min-width:1201px) and (max-width:1400px) { .header-inner { gap:12px; } .nav { gap:8px; } }
+
+/* Consultation success confirmation; larger than supporting microcopy. */
+.contact-form #form-status[data-state="success"] {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--ink);
+  border-left: 3px solid var(--red);
+  padding: 8px 0 8px 16px;
+}
