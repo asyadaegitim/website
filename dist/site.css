@@ -386,3 +386,7 @@ a.field-card:hover { border-color: var(--red); }
 .lang-switch span{color:var(--line)}
 @media(max-width:1200px){.header-inner{gap:12px}.nav{gap:8px}}
 @media(max-width:480px){.brand{width:154px;height:56px}.header-inner{gap:9px}.lang-switch{gap:4px;font-size:.7rem}}
+
+/* Official bilingual campaign slogan; keep the longer English headline balanced. */
+html[lang="en"] .home-hero h1 { font-size: clamp(2.1rem, 4.5vw, 4.5rem); }
+@media (min-width:1201px) and (max-width:1400px) { .header-inner { gap:12px; } .nav { gap:8px; } }

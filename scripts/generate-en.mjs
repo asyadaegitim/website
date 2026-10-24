@@ -60,7 +60,7 @@ function strip(html){
 function localized(p){return "/en"+p;}
 function english(html,p){
   let s=html.replace('<html lang="tr">','<html lang="en">');
-  if(p==="/")s=s.replace('<h1 class="serif">Geleceğini<br><span class="hero-accent">Asya’da</span> keşfet.</h1>','<h1 class="serif">Discover your future<br><span class="hero-accent">in Asia.</span></h1>');
+  if(p==="/")s=s.replace('<h1 class="serif">Üniversite için<br><span class="hero-accent">başka bir dünya</span><br>var.</h1>','<h1 class="serif">There is another<br><span class="hero-accent">world for university</span><br>education.</h1>');
   if(p==="/okullar/")s=s.replace('<h1 class="serif">Üniversiteleri<br>keşfet.</h1>','<h1 class="serif">Discover<br>universities.</h1>');
   s=s.replace(/<a\b[^>]*>/g, tag => tag.replace(/(\bhref=")\/(?!\/)/g, '$1/en/').replace(/(\bhref=")https:\/\/asyadaegitim\.com\/(?!en\/)/g, '$1https://asyadaegitim.com/en/'));
   s=s.replace(/>([^<>]+)</g,(all,value)=>">"+inline(value)+"<");
@@ -73,7 +73,7 @@ function english(html,p){
   }else if(p.startsWith("/ulkeler/")){
     const slug=p.split("/")[2],names={"cin":"China","japonya":"Japan","guney-kore":"South Korea","singapur":"Singapore","hong-kong":"Hong Kong"};
     desc="Explore university study, academic programs and student life in "+(names[slug]||"Asia")+".";
-  }else if(p==="/on-gorusme/")desc="Book a free consultation with Asya’da Eğitim about university options in Asia.";
+  }else if(p==="/on-gorusme/")desc="Book a free pre-consultation with Asya’da Eğitim about university options in Asia.";
   else if(p==="/programlar/")desc="Explore fields of study, including engineering, business, science and design at universities across Asia.";
   else if(p==="/okullar/")desc="Browse universities in China, Japan, South Korea, Singapore and Hong Kong.";
   s=s.replace(/(<meta name="description" content=")[^"]*(")/i,(_,a,z)=>a+desc+z);
