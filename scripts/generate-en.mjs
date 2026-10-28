@@ -94,7 +94,7 @@ function decorate(html,p,locale){
 function paths(dir,rel=""){
   let all=[];
   for(const e of readdirSync(dir,{withFileTypes:true})){
-    if(e.name==="en")continue;
+    if(e.name==="en"||e.name==="gorsel-kaynaklar")continue;
     if(e.isDirectory())all.push(...paths(join(dir,e.name),rel+e.name+"/"));
     else if(e.name==="index.html")all.push({file:join(dir,e.name),pathname:"/"+rel});
   }
