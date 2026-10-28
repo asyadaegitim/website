@@ -414,3 +414,46 @@ html[lang="en"] .home-hero h1 { font-size: clamp(2.1rem, 4.5vw, 4.5rem); }
 @media (max-width: 430px) {
   html[lang="en"] .home-hero h1 { font-size: clamp(1.8rem, 8.1vw, 2.1rem); }
 }
+
+
+/* Editorial bilingual office footer: logo, contact, offices and concise navigation. */
+.footer{padding:54px 0 20px;color:var(--muted)}
+.footer-main{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,1.78fr) minmax(0,.72fr);gap:clamp(28px,4.1vw,70px);align-items:start}
+.footer-brand-block{min-width:0}
+.footer-logo-link{display:inline-block}
+.footer-logo{width:205px;height:auto}
+.footer-eyebrow{display:block;margin:0 0 20px;font-size:.7rem;font-weight:700;line-height:1.4;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.footer-contact{margin:26px 0 10px}
+.footer-contact .footer-eyebrow{margin-bottom:7px}
+.footer-email{display:inline-block;font-size:.92rem;font-weight:600;letter-spacing:-.012em;color:var(--ink);overflow-wrap:anywhere}
+.footer-social{margin:9px 0 0 -10px;gap:2px}
+.footer-social a{width:38px;height:38px}
+.footer-office-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,.8fr);column-gap:clamp(20px,3vw,45px)}
+.footer-office{min-width:0}
+.footer-office strong{display:block;margin:0 0 8px;font-size:1rem;line-height:1.4;font-weight:600;color:var(--ink)}
+.footer-office address,.footer-office span{display:block;font-size:.855rem;line-height:1.7;font-style:normal}
+.footer-office-secondary{display:grid;align-content:start;gap:22px}
+.footer-office-secondary .footer-office span{color:var(--muted)}
+.footer-nav-links{display:grid;gap:11px;justify-items:start}
+.footer-nav-links a{font-size:.88rem;line-height:1.55;color:var(--ink)}
+.footer-bottom{margin-top:44px;padding-top:17px;font-size:.75rem;letter-spacing:.01em}
+.footer-bottom a{color:var(--muted)}
+@media(max-width:1050px){
+.footer-main{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:38px}
+.footer-navigation{grid-column:1/-1}
+.footer-navigation .footer-eyebrow{margin-bottom:12px}
+.footer-nav-links{grid-template-columns:repeat(4,max-content);gap:24px}
+}
+@media(max-width:680px){
+.footer{padding:38px 0 18px}
+.footer-main{grid-template-columns:minmax(0,1fr);gap:34px}
+.footer-logo{width:190px}
+.footer-contact{margin-top:17px}
+.footer-offices .footer-eyebrow{margin-bottom:16px}
+.footer-office-grid{gap:22px}
+.footer-office address{font-size:.84rem}
+.footer-navigation{grid-column:auto}
+.footer-nav-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}
+.footer-bottom{margin-top:32px;align-items:flex-start;gap:12px}
+}
+@media(max-width:390px){.footer-office-grid{grid-template-columns:1fr}.footer-office-secondary{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
