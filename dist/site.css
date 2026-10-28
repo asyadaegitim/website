@@ -457,3 +457,8 @@ html[lang="en"] .home-hero h1 { font-size: clamp(2.1rem, 4.5vw, 4.5rem); }
 .footer-bottom{margin-top:32px;align-items:flex-start;gap:12px}
 }
 @media(max-width:390px){.footer-office-grid{grid-template-columns:1fr}.footer-office-secondary{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+
+/* Separate Ankara headquarters from international contact offices. */
+.footer-office-relay{min-width:0}
+.footer-office-ankara .footer-eyebrow,.footer-office-relay .footer-eyebrow{margin-bottom:18px}
+.footer-bottom{justify-content:flex-start}
