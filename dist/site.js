@@ -49,7 +49,20 @@ consultationForm?.addEventListener('submit',async event=>{
   const original=button.textContent;
   const fields=Object.fromEntries(new FormData(consultationForm).entries());
   fields._subject=english?'Asya’da Eğitim — Free Pre-Consultation Request':'Asya’da Eğitim — Ücretsiz Ön Görüşme Talebi';
-  fields._url=location.href;
+  // Never forward arbitrary query parameters (which may contain personal information).
+  const sourceUrl=new URL(location.href);
+  fields._url=sourceUrl.origin+sourceUrl.pathname;
+  fields['Site language']=english?'en':'tr';
+  const allowedCampaignFields={
+    utm_source:'Campaign source',
+    utm_medium:'Campaign medium',
+    utm_campaign:'Campaign name',
+    utm_content:'Campaign content'
+  };
+  for(const [key,label] of Object.entries(allowedCampaignFields)){
+    const value=sourceUrl.searchParams.get(key);
+    if(value&&value.length<=100&&/^[A-Za-z0-9 _.-]+$/.test(value))fields[label]=value;
+  }
   button.disabled=true;
   button.textContent=english?'Sending…':'Gönderiliyor…';
   status.hidden=true;
