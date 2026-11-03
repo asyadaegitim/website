@@ -56,7 +56,8 @@ function inline(s){
 }
 function strip(html){
   return html.replace(/<!-- i18n-head -->[\s\S]*?<!-- \/i18n-head -->/g,"")
-   .replace(/<!-- i18n-switch -->[\s\S]*?<!-- \/i18n-switch -->/g,"");
+   .replace(/<!-- i18n-switch -->[\s\S]*?<!-- \/i18n-switch -->/g,"")
+   .replace(/<!-- consultation-disclosure -->[\s\S]*?<!-- \/consultation-disclosure -->/g,"");
 }
 function localized(p){return "/en"+p;}
 function english(html,p){
@@ -126,6 +127,15 @@ function decorate(html,p,locale){
     +'</div><!-- /i18n-switch -->';
   s=s.replace("</head>",head+"</head>");
   s=s.replace('<button class="menu-toggle"',switcher+'<button class="menu-toggle"');
+  if(p==="/on-gorusme/"){
+    const note=locale==="tr"
+      ?"Bu formdaki bilgiler, ön görüşme talebinize yanıt vermek üzere FormSubmit hizmeti aracılığıyla info@asyadaegitim.com adresine iletilir. Pazarlama izni vermiş sayılmazsınız."
+      :"The information you enter is sent to info@asyadaegitim.com through FormSubmit so we can respond to your consultation request. Submitting this form does not give marketing consent.";
+    s=s.replace(/<form class="contact-form" id="consultation-form"(?: aria-describedby="consultation-data-note")?/,
+      '<form class="contact-form" id="consultation-form" aria-describedby="consultation-data-note"');
+    const marker='<!-- consultation-disclosure --><p id="consultation-data-note" class="form-data-note">'+note+'</p><!-- /consultation-disclosure -->';
+    s=s.replace('<button class="button" type="submit">',marker+'<button class="button" type="submit">');
+  }
   return s;
 }
 function paths(dir,rel=""){
