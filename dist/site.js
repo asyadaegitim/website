@@ -4,7 +4,7 @@ const LANG_FIELDS={'Bilgisayar ve teknoloji':'computing-technology',Bilim:'scien
 const reverseMap=map=>Object.fromEntries(Object.entries(map).map(([a,b])=>[b,a]));
 const LANG_BACK_COUNTRIES=reverseMap(LANG_COUNTRIES),LANG_BACK_FIELDS=reverseMap(LANG_FIELDS);
 document.querySelectorAll('.lang-switch a').forEach(a=>a.addEventListener('click',()=>{
- const u=new URL(a.href),source=new URLSearchParams(location.search),targetEnglish=u.hostname==='educationinasia.com';
+ const u=new URL(a.href),source=new URLSearchParams(location.search),targetEnglish=a.lang==='en'||u.hostname==='educationinasia.com';
  const country=source.get('ulke')||source.get('country'),field=source.get('alan')||source.get('field');
  const mapped=new URLSearchParams();
  if(country){
