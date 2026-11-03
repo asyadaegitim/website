@@ -112,7 +112,7 @@ async function run(req,env){
  if(u.pathname==='/assets/education-in-asia-logo.svg')
    return new Response(req.method==='HEAD'?null:BRAND_SVG,{headers:{'content-type':'image/svg+xml; charset=utf-8','cache-control':'public, max-age=3600','x-content-type-options':'nosniff'}});
  if(u.pathname==='/robots.txt')
-   return new Response('User-agent: *\nAllow: /\nSitemap: '+PRIMARY+'/sitemap.xml\n',{headers:{'content-type':'text/plain; charset=utf-8'}});
+   return new Response(u.hostname===new URL(PRIMARY).hostname?'User-agent: *\nAllow: /\nSitemap: '+PRIMARY+'/sitemap.xml\n':'User-agent: *\nDisallow: /\n',{headers:{'content-type':'text/plain; charset=utf-8'}});
  if(u.pathname==='/sitemap.xml'){
    const r=await env.ASSETS.fetch(new Request(u.origin+'/en-sitemap.xml'));
    if(!r.ok)return new Response('English sitemap unavailable',{status:502});
@@ -141,4 +141,13 @@ async function run(req,env){
  const h=new Headers(response.headers);h.delete('set-cookie');
  return new Response(response.body,{status:response.status,statusText:response.statusText,headers:h});
 }
-export default {fetch(request,env){return run(request,env);}};
+export default {
+ async fetch(request,env){
+  const response=await run(request,env);
+  const host=new URL(request.url).hostname;
+  if(host==='educationinasia.com'||host==='www.educationinasia.com')return response;
+  const headers=new Headers(response.headers);
+  headers.set('x-robots-tag','noindex, nofollow');
+  return new Response(response.body,{status:response.status,statusText:response.statusText,headers});
+ }
+};
