@@ -58,10 +58,17 @@ function rewriteLink(raw,turkish=false){
  rewriteQuery(u.searchParams);
  return PRIMARY+path+u.search+u.hash;
 }
-class Anchor{element(e){
- const raw=e.getAttribute('href'),tr=e.getAttribute('lang')==='tr'||e.getAttribute('hreflang')==='tr';
- const result=rewriteLink(raw,tr);if(result!==raw)e.setAttribute('href',result);
-}}
+class Anchor{
+ constructor(origin){this.origin=origin}
+ element(e){
+  const raw=e.getAttribute('href'),tr=e.getAttribute('lang')==='tr'||e.getAttribute('hreflang')==='tr';
+  let result=rewriteLink(raw,tr);
+  if(!tr&&this.origin!==PRIMARY&&result.startsWith(PRIMARY+'/')){
+    result=this.origin+result.slice(PRIMARY.length);
+  }
+  if(result!==raw)e.setAttribute('href',result);
+ }
+}
 class BrandLogo{element(e){e.setAttribute('src','/assets/education-in-asia-logo.svg');e.setAttribute('alt','Education in Asia');e.setAttribute('width','1813');e.setAttribute('height','588')}}
 class BrandLink{element(e){e.setAttribute('aria-label','Education in Asia home')}}
 class HTMLLink{element(e){
@@ -72,12 +79,12 @@ class URLMeta{element(e){const old=e.getAttribute('content'),v=rewriteLink(old);
 class EnglishText{text(t){const v=t.text.replace(/Asya’da Eğitim/g,'Education in Asia').replace(/Asya'da Eğitim/g,'Education in Asia');if(v!==t.text)t.replace(v)}}
 class FormURL{element(e){e.setAttribute('value',PRIMARY+'/free-consultation/')}}
 class ScriptVersion{element(e){e.setAttribute('src','/site.js?english-routes=20261103-v2')}}
-function rewriteHTML(res){
+function rewriteHTML(res,origin=PRIMARY){
  const h=new Headers(res.headers);
  h.delete('content-encoding');h.delete('content-length');h.delete('set-cookie');
  h.set('x-educationinasia-site','english-slugs-v2');
  h.set('cache-control','public, max-age=60');
- return new HTMLRewriter().on('a[href]',new Anchor()).on('header a.brand',new BrandLink())
+ return new HTMLRewriter().on('a[href]',new Anchor(origin)).on('header a.brand',new BrandLink())
  .on('header img.brand-logo',new BrandLogo()).on('link[rel="canonical"]',new HTMLLink())
  .on('link[rel="alternate"]',new HTMLLink()).on('meta[property="og:url"]',new URLMeta())
  .on('meta[name="twitter:url"]',new URLMeta()).on('.home-intro .eyebrow.red',new EnglishText())
@@ -130,7 +137,7 @@ async function run(req,env){
    const patched=patchSiteJS(await response.text());
    return new Response(req.method==='HEAD'?null:patched,{status:200,headers:{'content-type':'application/javascript; charset=utf-8','cache-control':'public, max-age=900','x-educationinasia-js':'english-query-v2'}});
  }
- if((response.headers.get('content-type')||'').includes('text/html'))return rewriteHTML(response);
+ if((response.headers.get('content-type')||'').includes('text/html'))return rewriteHTML(response,u.origin);
  const h=new Headers(response.headers);h.delete('set-cookie');
  return new Response(response.body,{status:response.status,statusText:response.statusText,headers:h});
 }
