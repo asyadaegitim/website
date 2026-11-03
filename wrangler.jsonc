@@ -18,6 +18,6 @@
     "command": "node scripts/generate-en.mjs"
   },
   "vars": {
-    "EN_REDIRECTS_ENABLED": "false"
+    "EN_REDIRECTS_ENABLED": "true"
   }
 }
