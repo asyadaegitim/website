@@ -107,7 +107,7 @@ async function run(req,env){
  if(u.pathname==='/robots.txt')
    return new Response('User-agent: *\nAllow: /\nSitemap: '+PRIMARY+'/sitemap.xml\n',{headers:{'content-type':'text/plain; charset=utf-8'}});
  if(u.pathname==='/sitemap.xml'){
-   const r=await env.ASSETS.fetch(new Request(PRIMARY+'/en-sitemap.xml'));
+   const r=await env.ASSETS.fetch(new Request(u.origin+'/en-sitemap.xml'));
    if(!r.ok)return new Response('English sitemap unavailable',{status:502});
    return new Response(req.method==='HEAD'?null:r.body,{headers:{'content-type':'application/xml; charset=utf-8','cache-control':'public, max-age=3600'}});
  }
@@ -118,7 +118,7 @@ async function run(req,env){
  const canonicalPath=staticAsset?null:trToEnPath(sourcePath);
  if(!staticAsset&&canonicalPath!==u.pathname)
    return Response.redirect(PRIMARY+canonicalPath+u.search,301);
- const target=new URL((staticAsset?u.pathname:'/en'+sourcePath)+u.search,PRIMARY);
+ const target=new URL((staticAsset?u.pathname:'/en'+sourcePath)+u.search,u.origin);
  if(!staticAsset){
    if(target.searchParams.has('country')){const v=target.searchParams.get('country');target.searchParams.delete('country');target.searchParams.set('ulke',BACK_COUNTRIES[v]||v);}
    if(target.searchParams.has('field')){const v=target.searchParams.get('field');target.searchParams.delete('field');target.searchParams.set('alan',BACK_FIELDS[v]||v);}
