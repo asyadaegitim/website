@@ -15,7 +15,7 @@
   "previews": {},
   "main": "./workers/website/worker.js",
   "build": {
-    "command": "node scripts/generate-en.mjs"
+    "command": "npm run build"
   },
   "vars": {
     "EN_REDIRECTS_ENABLED": "true"
