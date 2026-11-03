@@ -1,5 +1,25 @@
 const english=document.documentElement.lang==='en';
-document.querySelectorAll('.lang-switch a').forEach(a=>a.addEventListener('click',()=>{const u=new URL(a.href);u.search=location.search;u.hash=location.hash;a.href=u.href;}));
+const LANG_COUNTRIES={cin:'china',japonya:'japan','guney-kore':'south-korea',singapur:'singapore','hong-kong':'hong-kong'};
+const LANG_FIELDS={'Bilgisayar ve teknoloji':'computing-technology',Bilim:'science','Dil ve kültür':'language-culture',Ekonomi:'economics','Mühendislik':'engineering',Sağlık:'health','Sosyal bilimler':'social-sciences',Tasarım:'design',Teknoloji:'technology',Yönetim:'management',İşletme:'business'};
+const reverseMap=map=>Object.fromEntries(Object.entries(map).map(([a,b])=>[b,a]));
+const LANG_BACK_COUNTRIES=reverseMap(LANG_COUNTRIES),LANG_BACK_FIELDS=reverseMap(LANG_FIELDS);
+document.querySelectorAll('.lang-switch a').forEach(a=>a.addEventListener('click',()=>{
+ const u=new URL(a.href),source=new URLSearchParams(location.search),targetEnglish=a.lang==='en'||u.hostname==='educationinasia.com';
+ const country=source.get('ulke')||source.get('country'),field=source.get('alan')||source.get('field');
+ const mapped=new URLSearchParams();
+ if(country){
+   const value=targetEnglish?(LANG_COUNTRIES[country]||(Object.hasOwn(LANG_BACK_COUNTRIES,country)?country:null)):(LANG_BACK_COUNTRIES[country]||(Object.hasOwn(LANG_COUNTRIES,country)?country:null));
+   if(value)mapped.set(targetEnglish?'country':'ulke',value);
+ }
+ if(field){
+   const value=targetEnglish?(LANG_FIELDS[field]||(Object.hasOwn(LANG_BACK_FIELDS,field)?field:null)):(LANG_BACK_FIELDS[field]||(Object.hasOwn(LANG_FIELDS,field)?field:null));
+   if(value)mapped.set(targetEnglish?'field':'alan',value);
+ }
+ for(const key of ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid']){
+  const value=source.get(key);if(value&&value.length<=150&&/^[\w\- .]+$/.test(value))mapped.set(key,value);
+ }
+ u.search=mapped.toString();u.hash='';a.href=u.href;
+}));
 // Keep footer navigation on the canonical site, including when served from preview workers.dev hosts.
 document.querySelectorAll('footer a[href]').forEach(link => {
   const raw = link.getAttribute('href');
