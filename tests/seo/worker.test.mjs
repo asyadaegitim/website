@@ -41,7 +41,7 @@ test('English host serves correct sitemap, rejects false universities and redire
  assert.equal(www.status,301);assert.equal(www.headers.get('location'),'https://educationinasia.com/');
 });
 test('Turkish /en legacy redirects only when route is known and maps filters',async()=>{
- const env=assets();
+ const env=assets();env.EN_REDIRECTS_ENABLED='true';
  const ok=await trWorker.fetch(new Request('https://asyadaegitim.com/en/ulkeler/cin/dil-programlari/?ulke=cin&alan=M%C3%BChendislik'),env);
  assert.equal(ok.status,301);
  assert.equal(ok.headers.get('location'),'https://educationinasia.com/destinations/china/language-programs/?country=china&field=engineering');
@@ -49,4 +49,10 @@ test('Turkish /en legacy redirects only when route is known and maps filters',as
  assert.equal(missing.status,404);
  const normal=await trWorker.fetch(new Request('https://asyadaegitim.com/site.css'),env);
  assert.equal(normal.status,404);
+});
+
+test('Turkish legacy URLs remain accessible while redirect gate is disabled',async()=>{
+ const env=assets();const r=await trWorker.fetch(new Request('https://asyadaegitim.com/en/ulkeler/cin/'),env);
+ assert.equal(r.status,200);
+ assert.ok(env.seen.some(u=>u.pathname==='/en/ulkeler/cin/'));
 });
