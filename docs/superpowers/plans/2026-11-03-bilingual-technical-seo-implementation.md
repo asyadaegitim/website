@@ -34,10 +34,10 @@
 
 ## File Map and Interfaces
 
-- Create scripts/seo/routes.mjs — pure trToEnPath(path), enToTrPath(path), translateQuery(params,direction), listRoutePairs(distRoot); canonical host constants. Never infer unknown route validity from a substring.
+- Create workers/shared/routes.mjs — runtime-agnostic, pure trToEnPath(path), enToTrPath(path), translateQuery(params,direction) and canonical host/country/field tables, importable by both Workers. Create scripts/seo/routes.mjs — Node filesystem inventory wrapper exposing listRoutePairs(distRoot) using the shared module. Never infer unknown route validity from a substring.
 - Modify scripts/generate-en.mjs — use routes.mjs as the source of canonical metadata and both sitemap outputs; continue generating dist/en/... as English local assets.
 - Modify dist/index.html and other dist/**/index.html by the generator — generated head metadata and language switcher targets. Never hand-edit every generated page.
-- Modify dist/site.js — language switch and query mapping without copying incompatible query names; keep current search/filter and form behavior.
+- Modify dist/site.js — language switch and query mapping without copying incompatible query names; the generator embeds a bounded, machine-generated route-table section sourced from workers/shared/routes.mjs (no hand-maintained browser table); keep current search/filter and form behavior.
 - Generate dist/sitemap.xml (only TR canonical loc) and dist/en-sitemap.xml (only EN canonical loc); retain dist/robots.txt pointing at TR canonical sitemap.
 - Modify workers/educationinasia-en/worker.js — consume env.ASSETS instead of fetching Turkish public website; serve EN sitemap from bundled dist/en-sitemap.xml; retain URL rewriting, brand SVG, /site.js adjustments as needed.
 - Create wrangler.english.jsonc and wrangler.english.stage.jsonc — separate prod/stage configs, matching asset binding and expected Worker names.
@@ -47,13 +47,13 @@
 
 ## Task 1 — Baseline and pure route contract
 
-**Files:** Create scripts/seo/routes.mjs; tests/seo/routes.test.mjs; tests/seo/fixtures/route-cases.json.
+**Files:** Create workers/shared/routes.mjs; scripts/seo/routes.mjs; tests/seo/routes.test.mjs; tests/seo/fixtures/route-cases.json.
 
-**Interfaces:** trToEnPath(trPath:string):string|null; enToTrPath(enPath:string):string|null; translateQuery(params:URLSearchParams,direction:'tr-en'|'en-tr'):URLSearchParams; listRoutePairs(distRoot:string):Array<{trPath:string,enPath:string}>.
+**Interfaces:** workers/shared/routes.mjs exports trToEnPath(trPath:string):string|null, enToTrPath(enPath:string):string|null and translateQuery(params:URLSearchParams,direction:'tr-en'|'en-tr'):URLSearchParams; scripts/seo/routes.mjs exports listRoutePairs(distRoot:string):Array<{trPath:string,enPath:string}>. Runtime code never imports Node filesystem APIs.
 
 - [ ] **Step 1: Write failing Node tests** from current 47 source routes. Assert '/' ↔ '/', '/okullar/' ↔ '/universities/', '/on-gorusme/' ↔ '/free-consultation/', '/programlar/' ↔ '/programs/', '/ulkeler/cin/dil-programlari/' ↔ '/destinations/china/language-programs/', '/ulkeler/guney-kore/' ↔ '/destinations/south-korea/', and university slugs ↔ '/universities/<slug>/'. Check exactly one EN counterpart for every existing TR index; reject two TR routes mapping to one EN route and unknown paths. Query cases include ulke=cin→country=china and alan→field; known UTM names may be retained but never arbitrary or malformed parameters.
 - [ ] **Step 2: Run** node --test tests/seo/routes.test.mjs; expect failure because the new interface does not exist.
-- [ ] **Step 3: Implement** only the exact functions above using existing source folder enumeration and the conversion tables already in workers/educationinasia-en/worker.js; do not maintain two divergent translation tables.
+- [ ] **Step 3: Implement** the pure core mapping in workers/shared/routes.mjs, then the Node-only HTML inventory in scripts/seo/routes.mjs. Move existing country/field tables out of workers/educationinasia-en/worker.js so the EN and future TR Workers import the same pure core.
 - [ ] **Step 4: Run** node --test tests/seo/routes.test.mjs; expect all tests green, including unknown routes and duplicate detection.
 - [ ] **Step 5: Commit** source, fixtures and tests as feat(seo): define canonical route contract.
 
@@ -77,7 +77,7 @@
 
 - [ ] **Step 1: Write failing navigation tests:** TR homepage EN button → educationinasia.com/; TR /ulkeler/cin/ EN → /destinations/china/; EN university detail TR → corresponding /universiteler/<slug>/. Convert the country and field filters in both directions; remove invalid country/field values rather than blindly copying. Validate that internal EN links, footer navigation and consultation CTAs stay on EN domain; outbound cinegitim.com unaffected; menu, search and FormSubmit submit flow unchanged.
 - [ ] **Step 2: Run** node --test tests/seo/navigation.test.mjs; expect failure for current location.search pass-through and old absolute links.
-- [ ] **Step 3: Implement** a shared small query mapper in dist/site.js; align the EN Worker's site.js patch with the new source without fragile contradictory search-replace. Update the generator's language switch elements where needed.
+- [ ] **Step 3: Implement** dist/site.js using a bounded route-data block generated by scripts/generate-en.mjs from workers/shared/routes.mjs (no independent hand-maintained table); align the EN Worker's site.js patch with the new source without contradictory search-replace. Update the generator's language switch elements where needed.
 - [ ] **Step 4: Run** node --test tests/seo/navigation.test.mjs plus generation tests; then perform Chrome manual mobile and keyboard inspection in staging.
 - [ ] **Step 5: Commit** navigation changes and tests as fix(i18n): preserve language and filters across domains.
 
@@ -89,7 +89,7 @@
 
 - [ ] **Step 1: Write failing tests** for GET/HEAD of /, /destinations/china/, /universities/ and /free-consultation/ (200), bogus university (404), /sitemap.xml (EN-only loc), /robots.txt (EN sitemap), /assets/education-in-asia-logo.svg (unchanged approved canonical artwork), /site.js, and no Turkish public-domain runtime fetch. Verify www host redirect and old English /ulkeler/cin/ redirect with correct location.
 - [ ] **Step 2: Run** node --test tests/seo/worker.test.mjs; expect worker currently depends on cross-domain fetch.
-- [ ] **Step 3: Move** the classic worker entrypoint to a module-compatible fetch handler if required for env.ASSETS; change only the asset acquisition layer and sitemap source, retaining HTMLRewriter and brand behavior. Use assets.directory='./dist', binding='ASSETS', and run_worker_first=true for EN because rewriting applies to EN HTML and route handling. Stage config name educationinasia-en-stage, production config name educationinasia-en; never deploy prod during implementation.
+- [ ] **Step 3: Move** the classic worker entrypoint to a module-compatible fetch handler for env.ASSETS; import the route core from workers/shared/routes.mjs, change only the asset acquisition layer and sitemap source, retaining HTMLRewriter and brand behavior. Use assets.directory='./dist', binding='ASSETS', and run_worker_first=true for EN because rewriting applies to EN HTML and route handling. Stage config name educationinasia-en-stage, production config name educationinasia-en; never deploy prod during implementation.
 - [ ] **Step 4: Run** node --test tests/seo/worker.test.mjs; npx wrangler dev --config wrangler.english.stage.jsonc with a local smoke test. Confirm no public Turkish fetches from EN runtime in DevTools network and a functional EN form.
 - [ ] **Step 5: Commit** the self-contained English Worker + configs/tests as fix(en): package English assets with Worker.
 
@@ -101,7 +101,7 @@
 
 - [ ] **Step 1: Write failing redirect tests** for old /en/ root, country + nested program, university detail, /en/okullar/?ulke=cin, /en/programlar/?alan=..., and an invalid /en/bogus/; www vs apex and encoded slugs must not produce an open redirect. Verify native TR routes and non-EN assets do not execute Worker-first code. Confirm unknown route 404.
 - [ ] **Step 2: Run** node --test tests/seo/routes.test.mjs tests/seo/worker.test.mjs; expect legacy paths not to redirect.
-- [ ] **Step 3: Implement** only the narrow route handling. In wrangler.jsonc retain assets.directory='./dist', html_handling='auto-trailing-slash', not_found_handling='none', add main and binding, set run_worker_first ['/en','/en/*'] (Cloudflare docs confirm route pattern arrays). Gate actual activation: this PR must NOT reach Turkish production until Task 4 EN production self-contained deployment is verified.
+- [ ] **Step 3: Implement** only the narrow route handling, importing workers/shared/routes.mjs. In wrangler.jsonc retain assets.directory='./dist', html_handling='auto-trailing-slash', not_found_handling='none', add main and binding, set run_worker_first ['/en','/en/*'] (Cloudflare docs confirm route pattern arrays). Gate actual activation: this PR must NOT reach Turkish production until Task 4 EN production self-contained deployment is verified.
 - [ ] **Step 4: Run** the tests; use npx wrangler dev --config wrangler.jsonc for representative route checks without touching production.
 - [ ] **Step 5: Commit** redirects + tests as fix(seo): retire public old English paths safely.
 
