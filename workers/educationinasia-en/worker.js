@@ -39,7 +39,7 @@ function redirectLegacy(u){
  if(!tr)return new Response('Not found',{status:404});
  const q=translateQuery(u.searchParams,'tr-en');
  const tail=q.toString()?'?'+q.toString():'';
- return Response.redirect(PRIMARY+path+tail,301);
+ return Response.redirect(PRIMARY+trToEnPath(tr)+tail,301);
 }
 function rewriteLink(raw,turkish=false){
  if(!raw||raw.startsWith('#')||/^(?:mailto:|tel:|javascript:|data:)/i.test(raw))return raw;
