@@ -25,33 +25,42 @@ Ardından http://localhost:8000 adresini açın. Statik sunucunun yayın kökü 
 
 Bu GitHub deposuna yapılan değişiklikler mevcut ChatGPT Sites yayınına otomatik yansımaz.
 
-## Cloudflare Workers üzerinden yayın (BRIQ modeli)
+## Güncel iki dilli Cloudflare mimarisi (3 Kasım 2026)
 
-BRIQ'ı örnek alan yayın hattı:
+Bu depo **iki ayrı üretim Worker'ının** ve İngilizce ön izleme Worker'ının kaynak kodunu barındırır:
 
-`GitHub main → Cloudflare Workers Builds → Wrangler → Cloudflare Workers Static Assets → alan adı`
+| Dil | Alan adı | Worker | Yapılandırma |
+| --- | --- | --- | --- |
+| Türkçe | `https://asyadaegitim.com/` | `website` | `wrangler.jsonc` |
+| English | `https://educationinasia.com/` | `educationinasia-en` | `wrangler.english.jsonc` |
+| English staging | Worker'ın ayrı ön izleme adresi | `educationinasia-en-stage` | `wrangler.english.stage.jsonc` |
 
-Bu site BRIQ'ın aksine Next.js/Vinext veya R2 gerektirmez; 48 sayfanın HTML çıktısı ve CSS/JS/görselleri `dist/` altında hazırdır. Kök dizindeki `wrangler.jsonc` yapılandırması yalnızca statik varlıkları yayınlar. Worker kodu yoktur.
+* `dist/` Türkçe statik sayfaların kaynaklarını, `dist/en/` ise İngilizce sayfaların **yalnızca iç statik varlıklarını** tutar. İngilizcenin kamusal kanonik URL'leri `educationinasia.com/destinations/china/`, `educationinasia.com/universities/`, `educationinasia.com/free-consultation/` gibi İngilizce yollardır. `asyadaegitim.com/en/` kanonik değildir.
+* `workers/shared/routes.mjs` 47 sayfanın iki dilli URL sözleşmesi ve filtre çevirisidir. Kaynaklar değişirse bu sözleşme ve testler birlikte güncellenmelidir.
+* `workers/educationinasia-en/worker.js`, `ASSETS` binding üzerinden aynı dağıtımda bulunan İngilizce sayfaları sunar; çalışırken Türkçe kamu sitesine HTTP isteği göndermemelidir. İngilizce logonun kanonik SVG'si bu dosyada korunur.
+* `scripts/generate-en.mjs` iki dilin canonical/hreflang, sosyal paylaşım meta verileri ve ayrı `dist/sitemap.xml`, `dist/en-sitemap.xml` dosyalarını oluşturur. Her Wrangler yapılandırmasında `build.command` bu betiği **otomatik** çalıştırır. Bu nedenle kaynak depoda eski statik HTML bulunsa da dağıtılan sürüm üretim sırasında yenilenir.
+* `dist/robots.txt` yalnız Türkçe sitemap'i işaret eder; İngilizce Worker kendi `robots.txt` ve `sitemap.xml` çıktısını aynı dağıtımdaki İngilizce sitemap kaynağından sunar.
 
-Workers & Pages → Create application → **Continue with GitHub** akışında `asyadaegitim/website` reposunu seçin ve aşağıdaki ayarları kullanın:
+### Test ve ön izleme
 
-| Ayar | Değer |
-| --- | --- |
-| Uygulama / Worker adı | `asyadaegitim` |
-| GitHub | `asyadaegitim/website` |
-| Production branch | `main` |
-| Root directory | `/` |
-| Build command | Boş (derleme gerekmiyor) |
-| Deploy command | `npx --yes wrangler@4.92.0 deploy` |
-| Preview build | Başlangıçta kapalı olabilir |
+Node.js 20+ ile ek bağımlılık kurmadan:
 
-Cloudflare GitHub uygulamasına yalnızca bu depoya erişim izni vermek yeterlidir. Her `main` güncellemesi için otomatik dağıtım açık olmalıdır. İlk olarak `*.workers.dev` bağlantısında ana sayfa, ülke/üniversite sayfaları ve statik dosyalar doğrulanmalıdır; ardından `asyadaegitim.com` alan adı Worker'a bağlanabilir.
+```sh
+npm test
+npx wrangler dev --config wrangler.english.stage.jsonc
+npx wrangler dev --config wrangler.jsonc
+```
 
-**Önemli:** Bu GitHub deposundaki statik kopyanın Sites'ın özgün kaynak koduyla eşit olduğu varsayılmamalıdır. Cloudflare yapılandırma dosyası GitHub'a eklendi diye Cloudflare'de henüz bir uygulama oluşmuş ya da alan adı yönlendirilmiş olmaz. Mevcut ChatGPT Sites yayını ayrıca çalışmaya devam eder.
+`npm test`, öncelikle `node scripts/generate-en.mjs` çalıştırıp daha sonra `node --test tests/seo/*.test.mjs` ile 47 karşılıklı sayfayı, filtreleri ve Worker davranışlarını doğrular. Dosyalar ve test verileri gerçek müşteri bilgisi içermez.
 
-## Türkçe / English
+### Kritik yayın sırası ve geri dönüş
 
-Her Türkçe sayfanın `dist/en/` altında İngilizce karşılığı bulunur. Üst menüde TR/EN dil seçimi, iki dilin karşılıklı `hreflang` / canonical bağlantıları ve `dist/sitemap.xml` yer alır. İngilizce metinler `locales/en.json` dosyasında yönetilir. Türkçe kaynak sayfalar güncellendiğinde `node scripts/generate-en.mjs` çalıştırılarak eşlenik HTML ve site haritası yenilenmelidir. Derleme servisi, ücretli çeviri API'si veya üçüncü taraf i18n paketi gerekmez.
+1. **Önce İngilizce:** Yeni İngilizce Worker sürümü ayrı ön izleme üzerinde kontrol edilir; onaydan sonra İngilizce üretime alınır. `educationinasia.com` sayfalarının Türkçe alan adının `/en/` yollarına artık erişmeden çalıştığı doğrulanır. Korunan İngilizce SVG logo ve ön görüşme formu ayrıca kontrol edilir.
+2. **Sonra Türkçe:** Türkçe sitemap ve canonical düzeltmeleri `website` Worker'ına alınır. `wrangler.jsonc` içindeki `EN_REDIRECTS_ENABLED=false` olduğu için eski `/en/` sayfaları erişilebilir kalır.
+3. **En son eski URL yönlendirmesi:** Her iki host testleri geçtikten sonra **ayrı onay/PR** ile `EN_REDIRECTS_ENABLED=true` yapılır ve eski `/en/` URL'lerinin doğru İngilizce sayfalara 301 döndüğü doğrulanır.
+4. Başarısızlıkta Cloudflare'de önceki `website` ve/veya `educationinasia-en` Worker sürümüne dönülür; ardından iki hostta sitemap, ana sayfa, ülke, üniversite, form ve 404 yeniden kontrol edilir. `sozlesme.asyadaegitim.com` ve `studio.asyadaegitim.com` bu yayın hattının dışındadır.
+
+Uygulama tasarımı ve adım planı: `docs/superpowers/specs/2026-11-03-bilingual-site-foundation-design.md` ve `docs/superpowers/plans/2026-11-03-bilingual-technical-seo-implementation.md` (plan dalında).
 
 ## Ön görüşme formu (TR/EN)
 
