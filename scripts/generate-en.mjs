@@ -4,6 +4,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
+import {TR_HOST, EN_HOST, ROUTE_PAIRS, trToEnPath} from "../workers/shared/routes.mjs";
 const root = new URL("../dist/", import.meta.url).pathname;
 const t = JSON.parse(readFileSync(new URL("../locales/en.json", import.meta.url), "utf8"));
 const replacements = {
@@ -41,7 +42,7 @@ function translate(s){
   if(s.endsWith(" / kampüs"))return translate(s.slice(0,-9))+" / campus";
   if(s.endsWith(" bayrağı"))return "Flag of "+translate(s.slice(0,-8));
   if(s.endsWith(" üniversite kampüsü görseli"))return "University campus in "+translate(s.slice(0,-27));
-  if(s.endsWith(" | Asya’da Eğitim"))return title(s.slice(0,-" | Asya’da Eğitim".length))+" | Asya’da Eğitim";
+  if(s.endsWith(" | Asya’da Eğitim"))return title(s.slice(0,-" | Asya’da Eğitim".length))+" | Education in Asia";
   if(s.includes(" · "))return s.split(" · ").map(translate).join(" · ");
   if(s.includes(" / ") && s.length<100)return s.split(" / ").map(translate).join(" / ");
   return title(s);
@@ -67,15 +68,15 @@ function english(html,p){
   s=s.replace(/<a\b[^>]*>/g, tag => tag.replace(/(\bhref=")\/(?!\/)/g, '$1/en/').replace(/(\bhref=")https:\/\/asyadaegitim\.com\/(?!en\/)/g, '$1https://asyadaegitim.com/en/'));
   s=s.replace(/>([^<>]+)</g,(all,value)=>">"+inline(value)+"<");
   s=s.replace(/(\b(?:alt|title|aria-label|placeholder)=")([^"]*)(")/g,(_,a,v,z)=>a+inline(v)+z);
-  let desc="Explore universities, academic programs and education opportunities across Asia with Asya’da Eğitim.";
-  if(p==="/")desc="Explore study opportunities in China, Japan, South Korea, Singapore and Hong Kong with Asya’da Eğitim.";
+  let desc="Explore universities, academic programs and education opportunities across Asia with Education in Asia.";
+  if(p==="/")desc="Explore study opportunities in China, Japan, South Korea, Singapore and Hong Kong with Education in Asia.";
   else if(p.startsWith("/universiteler/")){
     const name=s.match(/<h1[^>]*>([^<]+)<\/h1>/)?.[1]?.replace(/\.$/,"") || "this university";
     desc="Explore "+name+": academic fields, campuses and international admissions guidance.";
   }else if(p.startsWith("/ulkeler/")){
     const slug=p.split("/")[2],names={"cin":"China","japonya":"Japan","guney-kore":"South Korea","singapur":"Singapore","hong-kong":"Hong Kong"};
     desc="Explore university study, academic programs and student life in "+(names[slug]||"Asia")+".";
-  }else if(p==="/on-gorusme/")desc="Book a free pre-consultation with Asya’da Eğitim about university options in Asia.";
+  }else if(p==="/on-gorusme/")desc="Book a free pre-consultation with Education in Asia about university options in Asia.";
   else if(p==="/programlar/")desc="Explore fields of study, including engineering, business, science and design at universities across Asia.";
   else if(p==="/okullar/")desc="Browse universities in China, Japan, South Korea, Singapore and Hong Kong.";
   s=s.replace(/(<meta name="description" content=")[^"]*(")/i,(_,a,z)=>a+desc+z);
@@ -83,10 +84,41 @@ function english(html,p){
 }
 function decorate(html,p,locale){
   let s=strip(html);
-  const tr="https://asyadaegitim.com"+p,en="https://asyadaegitim.com"+localized(p);
+  const enPath=trToEnPath(p);
+  if(!enPath)throw new Error("No canonical English route for "+p);
+  const tr=TR_HOST+p,en=EN_HOST+enPath;
   const canonical=locale==="en"?en:tr;
-  const head='<!-- i18n-head --><link rel="canonical" href="'+canonical+'"><link rel="alternate" hreflang="tr" href="'+tr+'"><link rel="alternate" hreflang="en" href="'+en+'"><link rel="alternate" hreflang="x-default" href="'+tr+'"><!-- /i18n-head -->';
-  const switcher='<!-- i18n-switch --><div class="lang-switch" role="group" aria-label="'+(locale==="en"?"Language":"Dil")+'"><a lang="tr" hreflang="tr" href="'+p+'"'+(locale==="tr"?' aria-current="page"':'')+'>TR</a><span aria-hidden="true">/</span><a lang="en" hreflang="en" href="'+localized(p)+'"'+(locale==="en"?' aria-current="page"':'')+'>EN</a></div><!-- /i18n-switch -->';
+  const brand=locale==="en"?"Education in Asia":"Asya’da Eğitim";
+  if(locale==="en"){
+    s=s.replace(/<title>([\s\S]*?)<\/title>/i,(_,v)=>"<title>"+v.replace(/Asya’da Eğitim/g,brand)+"</title>");
+    s=s.replace(/(<meta name="description" content=")([^"]*)(")/i,(_,a,v,z)=>a+v.replace(/Asya’da Eğitim/g,brand)+z);
+  }
+  const title=(s.match(/<title>([\s\S]*?)<\/title>/i)?.[1]||brand).replace(/<[^>]*>/g,"");
+  const desc=(s.match(/<meta name="description" content="([^"]*)"/i)?.[1]||"");
+  const attr=x=>x.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+  const ogImage=(locale==="en"?EN_HOST:TR_HOST)+"/assets/universities/tsinghua.jpg";
+  const head='<!-- i18n-head --><link rel="canonical" href="'+canonical+'">'
+  +'<link rel="alternate" hreflang="tr" href="'+tr+'">'
+  +'<link rel="alternate" hreflang="en" href="'+en+'">'
+  +'<meta property="og:type" content="website">'
+  +'<meta property="og:site_name" content="'+attr(brand)+'">'
+  +'<meta property="og:title" content="'+attr(title)+'">'
+  +'<meta property="og:description" content="'+attr(desc)+'">'
+  +'<meta property="og:url" content="'+canonical+'">'
+  +'<meta property="og:image" content="'+ogImage+'">'
+  +'<meta name="twitter:card" content="summary_large_image">'
+  +'<meta name="twitter:title" content="'+attr(title)+'">'
+  +'<meta name="twitter:description" content="'+attr(desc)+'">'
+  +(p==='/'?'<script type="application/ld+json">'+JSON.stringify({
+    "@context":"https://schema.org","@type":"Organization",
+    name:brand,url:locale==="en"?EN_HOST+"/":TR_HOST+"/",
+    logo:locale==="en"?EN_HOST+"/assets/education-in-asia-logo.svg":TR_HOST+"/assets/asya-logo.svg"
+  })+'</script>':'')+'<!-- /i18n-head -->';
+  const switcher='<!-- i18n-switch --><div class="lang-switch" role="group" aria-label="'+(locale==="en"?"Language":"Dil")+'">'
+    +'<a lang="tr" hreflang="tr" href="'+tr+'"'+(locale==="tr"?' aria-current="page"':'')+'>TR</a>'
+    +'<span aria-hidden="true">/</span>'
+    +'<a lang="en" hreflang="en" href="'+en+'"'+(locale==="en"?' aria-current="page"':'')+'>EN</a>'
+    +'</div><!-- /i18n-switch -->';
   s=s.replace("</head>",head+"</head>");
   s=s.replace('<button class="menu-toggle"',switcher+'<button class="menu-toggle"');
   return s;
@@ -101,6 +133,10 @@ function paths(dir,rel=""){
   return all;
 }
 const pages=paths(root);
+const actual=new Set(pages.map(x=>x.pathname));
+if(actual.size!==ROUTE_PAIRS.length||ROUTE_PAIRS.some(x=>!actual.has(x.trPath))){
+  throw new Error("TR page inventory differs from canonical route contract; update routes.mjs first");
+}
 for(const {file,pathname} of pages){
   const source=strip(readFileSync(file,"utf8"));
   writeFileSync(file,decorate(source,pathname,"tr"));
@@ -108,11 +144,16 @@ for(const {file,pathname} of pages){
   mkdirSync(dirname(enFile),{recursive:true});
   writeFileSync(enFile,decorate(english(source,pathname),pathname,"en"));
 }
-const routes=pages.map(x=>x.pathname).sort();
-const urls=routes.flatMap(p=>[p,localized(p)]).map(p=>{
-  const tr=p.startsWith("/en/")?p.slice(3):p,en=localized(tr);
-  return '<url><loc>https://asyadaegitim.com'+p+'</loc><xhtml:link rel="alternate" hreflang="tr" href="https://asyadaegitim.com'+tr+'"/><xhtml:link rel="alternate" hreflang="en" href="https://asyadaegitim.com'+en+'"/></url>';
-});
-writeFileSync(join(root,"sitemap.xml"),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'+urls.join("\n")+'</urlset>\n');
+function sitemap(locale){
+ const tr=locale==="tr";
+ const host=tr?TR_HOST:EN_HOST;
+ const urls=ROUTE_PAIRS.map(({trPath,enPath})=>{
+  const url=host+(tr?trPath:enPath);
+  return '<url><loc>'+url+'</loc><xhtml:link rel="alternate" hreflang="tr" href="'+TR_HOST+trPath+'"/><xhtml:link rel="alternate" hreflang="en" href="'+EN_HOST+enPath+'"/></url>';
+ });
+ return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'+urls.join("\n")+'</urlset>\n';
+}
+writeFileSync(join(root,"sitemap.xml"),sitemap("tr"));
+writeFileSync(join(root,"en-sitemap.xml"),sitemap("en"));
 writeFileSync(join(root,"robots.txt"),"User-agent: *\nAllow: /\nSitemap: https://asyadaegitim.com/sitemap.xml\n");
-console.log("Generated "+pages.length+" English pages and language alternates.");
+console.log("Generated "+pages.length+" canonical page pairs, TR/EN metadata and independent sitemaps.");
