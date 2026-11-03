@@ -43,3 +43,12 @@ test('home pages have truthful Organization JSON-LD',()=>{
   assert.ok(schema.url.startsWith('https://'));
  }
 });
+
+test('share previews use the appropriate destination rather than another country',()=>{
+ const china=read('ulkeler/cin/index.html');
+ const japan=read('en/ulkeler/japonya/index.html');
+ const university=read('universiteler/nanjing-university/index.html');
+ assert.match(china,/property="og:image" content="https:\/\/asyadaegitim\.com\/assets\/universities\/tsinghua\.jpg"/);
+ assert.match(japan,/property="og:image" content="https:\/\/educationinasia\.com\/assets\/universities\/tohoku\.jpg"/);
+ assert.match(university,/property="og:image" content="https:\/\/asyadaegitim\.com\/assets\/ieft-university-logos\.jpeg"/);
+});
