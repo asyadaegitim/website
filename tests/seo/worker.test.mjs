@@ -88,3 +88,17 @@ test('English staging navigation links stay on the preview host',async()=>{
   assert.equal(probe.result,host+'/destinations/china/');
  }finally{delete globalThis.__navigationProbe}
 });
+
+test('English staging denies indexing while production keeps normal indexing rules',async()=>{
+ const env=assets();
+ const stageHost='https://educationinasia-en-stage.example.workers.dev';
+ const stage=await enWorker.fetch(new Request(stageHost+'/destinations/china/'),env);
+ assert.equal(stage.status,200);
+ assert.equal(stage.headers.get('x-robots-tag'),'noindex, nofollow');
+ const robots=await enWorker.fetch(new Request(stageHost+'/robots.txt'),env);
+ assert.equal(robots.status,200);
+ assert.match(await robots.text(),/User-agent: \*\nDisallow: \//);
+ const production=await enWorker.fetch(new Request('https://educationinasia.com/destinations/china/'),env);
+ assert.equal(production.status,200);
+ assert.equal(production.headers.get('x-robots-tag'),null);
+});
