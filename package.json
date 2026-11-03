@@ -1,0 +1,12 @@
+{
+  "name": "asyadaegitim-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/generate-en.mjs",
+    "test": "node scripts/generate-en.mjs && node --test tests/seo/*.test.mjs",
+    "test:routes": "node --test tests/seo/routes.test.mjs",
+    "preview:tr": "npx wrangler dev --config wrangler.jsonc",
+    "preview:en": "npx wrangler dev --config wrangler.english.stage.jsonc"
+  }
+}
