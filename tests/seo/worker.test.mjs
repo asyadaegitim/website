@@ -4,8 +4,16 @@ import enWorker from '../../workers/educationinasia-en/worker.js';
 import trWorker from '../../workers/website/worker.js';
 
 globalThis.HTMLRewriter=class {
- on(){return this}
- transform(response){return response}
+ on(selector,handler){if(selector==='a[href]')this.anchor=handler;return this}
+ transform(response){
+  const probe=globalThis.__navigationProbe;
+  if(probe&&this.anchor){
+   const attrs=new Map([['href',probe.href]]);
+   this.anchor.element({getAttribute:name=>attrs.get(name),setAttribute:(name,value)=>attrs.set(name,value)});
+   probe.result=attrs.get('href');
+  }
+  return response;
+ }
 };
 function assets(){
  const seen=[];
@@ -68,4 +76,15 @@ test('English staging assets resolve through their own preview host',async()=>{
  const r=await enWorker.fetch(new Request('https://educationinasia-en-stage.example.workers.dev/destinations/china/'),env);
  assert.equal(r.status,200);
  assert.ok(env.seen.some(u=>u.hostname==='educationinasia-en-stage.example.workers.dev'&&u.pathname==='/en/ulkeler/cin/'));
+});
+
+test('English staging navigation links stay on the preview host',async()=>{
+ const env=assets(),host='https://educationinasia-en-stage.example.workers.dev';
+ const probe={href:'/ulkeler/cin/'};
+ globalThis.__navigationProbe=probe;
+ try{
+  const r=await enWorker.fetch(new Request(host+'/destinations/china/'),env);
+  assert.equal(r.status,200);
+  assert.equal(probe.result,host+'/destinations/china/');
+ }finally{delete globalThis.__navigationProbe}
 });
