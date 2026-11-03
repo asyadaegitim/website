@@ -5,7 +5,16 @@
   "assets": {
     "directory": "./dist",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "none"
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/en",
+      "/en/*"
+    ]
   },
-  "previews": {}
+  "previews": {},
+  "main": "./workers/website/worker.js",
+  "build": {
+    "command": "node scripts/generate-en.mjs"
+  }
 }
