@@ -61,3 +61,13 @@ test('mobile interactive styles have accessible language and footer tap areas',(
  assert.match(css,/\.footer-nav-links a\s*\{[^}]*min-height:\s*44px/s);
  assert.match(css,/\.breadcrumb a\s*\{[^}]*min-height:\s*28px/s);
 });
+
+test('English consultation placeholders are localized while Turkish examples remain unchanged',()=>{
+ const en=read('en/on-gorusme/index.html');
+ const tr=read('on-gorusme/index.html');
+ assert.match(en,/<input name="name" required autocomplete="name" placeholder="Your full name">/);
+ assert.match(en,/<input name="email" type="email" required autocomplete="email" placeholder="name@example.com">/);
+ assert.doesNotMatch(en,/placeholder="(?:Ad Soyad|ornek@eposta\.com)"/);
+ assert.match(tr,/placeholder="Ad Soyad"/);
+ assert.match(tr,/placeholder="ornek@eposta\.com"/);
+});
