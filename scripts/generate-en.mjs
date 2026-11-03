@@ -56,14 +56,15 @@ function inline(s){
 }
 function strip(html){
   return html.replace(/<!-- i18n-head -->[\s\S]*?<!-- \/i18n-head -->/g,"")
-   .replace(/<!-- i18n-switch -->[\s\S]*?<!-- \/i18n-switch -->/g,"");
+   .replace(/<!-- i18n-switch -->[\s\S]*?<!-- \/i18n-switch -->/g,"")
+   .replace(/<!-- consultation-disclosure -->[\s\S]*?<!-- \/consultation-disclosure -->/g,"");
 }
 function localized(p){return "/en"+p;}
 function english(html,p){
   let s=html.replace('<html lang="tr">','<html lang="en">');
   if(p==="/")s=s.replace('<h1 class="serif"><span class="hero-slogan-line">Üniversite için</span><span class="hero-slogan-line"><span class="hero-accent">başka bir dünya</span> var.</span></h1>','<h1 class="serif"><span class="hero-slogan-line">There is another <span class="hero-accent">world</span></span><span class="hero-slogan-line">for <span class="hero-accent">university education.</span></span></h1>');
   // FormSubmit uses each field name as the email table label; localize it, too.
-  if(p==="/on-gorusme/")s=s.replace('name="Program türü"','name="Program type"').replace('name="Hedef başlangıç"','name="Planned start"');
+  if(p==="/on-gorusme/")s=s.replace('name="Program türü"','name="Program type"').replace('name="Hedef başlangıç"','name="Planned start"').replace('placeholder="Ad Soyad"','placeholder="Your full name"').replace('placeholder="ornek@eposta.com"','placeholder="name@example.com"');
   if(p==="/okullar/")s=s.replace('<h1 class="serif">Üniversiteleri<br>keşfet.</h1>','<h1 class="serif">Discover<br>universities.</h1>');
   s=s.replace(/<a\b[^>]*>/g, tag => tag.replace(/(\bhref=")\/(?!\/)/g, '$1/en/').replace(/(\bhref=")https:\/\/asyadaegitim\.com\/(?!en\/)/g, '$1https://asyadaegitim.com/en/'));
   s=s.replace(/>([^<>]+)</g,(all,value)=>">"+inline(value)+"<");
@@ -126,6 +127,15 @@ function decorate(html,p,locale){
     +'</div><!-- /i18n-switch -->';
   s=s.replace("</head>",head+"</head>");
   s=s.replace('<button class="menu-toggle"',switcher+'<button class="menu-toggle"');
+  if(p==="/on-gorusme/"){
+    const note=locale==="tr"
+      ?"Bu formdaki bilgiler, ön görüşme talebinize yanıt vermek üzere FormSubmit hizmeti aracılığıyla info@asyadaegitim.com adresine iletilir. Pazarlama izni vermiş sayılmazsınız."
+      :"The information you enter is sent to info@asyadaegitim.com through FormSubmit so we can respond to your consultation request. Submitting this form does not give marketing consent.";
+    s=s.replace(/<form class="contact-form" id="consultation-form"(?: aria-describedby="consultation-data-note")?/,
+      '<form class="contact-form" id="consultation-form" aria-describedby="consultation-data-note"');
+    const marker='<!-- consultation-disclosure --><p id="consultation-data-note" class="form-data-note">'+note+'</p><!-- /consultation-disclosure -->';
+    s=s.replace('<button class="button" type="submit">',marker+'<button class="button" type="submit">');
+  }
   return s;
 }
 function paths(dir,rel=""){
