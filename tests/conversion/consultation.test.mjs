@@ -21,9 +21,13 @@ test('consultation gives direct contact alternatives without removing the workin
  }
  const tr=read('on-gorusme/index.html'),en=read('en/on-gorusme/index.html');
  assert.match(tr,/>WhatsApp’tan yaz<\/a>/);
- assert.match(tr,/>Telefonla ara<\/a>/);
+ assert.match(tr,/>Telefonla ara<\/span>/);
  assert.match(en,/>Chat on WhatsApp<\/a>/);
- assert.match(en,/>Call us<\/a>/);
+ assert.match(en,/>Call us<\/span>/);
+ assert.match(tr,/<span class="contact-channel-detail">0544 418 15 08<\/span>/);
+ assert.match(en,/<span class="contact-channel-detail">\+90 544 418 15 08<\/span>/);
+ assert.match(tr,/<span class="contact-channel-detail">info@asyadaegitim\.com<\/span>/);
+ assert.match(en,/<span class="contact-channel-detail">info@asyadaegitim\.com<\/span>/);
 });
 
 test('both homepages offer WhatsApp beside the existing consultation action',()=>{

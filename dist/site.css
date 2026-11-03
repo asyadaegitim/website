@@ -475,8 +475,8 @@ html[lang="en"] .home-hero h1 { font-size: clamp(2.1rem, 4.5vw, 4.5rem); }
 /* Consultation conversions: explicit choices, no automatic third-party requests. */
 .home-whatsapp-link{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;color:var(--red);font-size:.9rem;font-weight:600;text-decoration:underline;text-underline-offset:4px}
 .home-whatsapp-link:hover,.home-whatsapp-link:focus-visible{color:var(--red-dark)}
-.contact-channels{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;margin-top:22px}
+.contact-channels{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:22px}
 .contact-channels .contact-whatsapp{flex:0 0 auto;background:var(--red);border-color:var(--red);color:#fff}
 .contact-channels .contact-whatsapp:hover,.contact-channels .contact-whatsapp:focus-visible{background:var(--red-dark);border-color:var(--red-dark);color:#fff}
-.contact-channel-link{display:inline-flex;align-items:center;min-height:44px;color:var(--red);font-size:.875rem;font-weight:600;text-decoration:underline;text-underline-offset:4px}
-@media(max-width:390px){.contact-channels{gap:6px 14px}.contact-channels .contact-whatsapp{width:100%}}
+.contact-channel-link{display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;min-height:44px;color:var(--red);font-size:.875rem;font-weight:600;text-decoration:underline;text-underline-offset:4px}.contact-channel-detail{font-weight:400;color:var(--muted);text-decoration:none}
+@media(max-width:390px){.contact-channels{align-items:stretch}.contact-channels .contact-whatsapp{width:100%}}
