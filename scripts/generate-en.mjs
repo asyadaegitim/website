@@ -96,7 +96,12 @@ function decorate(html,p,locale){
   const title=(s.match(/<title>([\s\S]*?)<\/title>/i)?.[1]||brand).replace(/<[^>]*>/g,"");
   const desc=(s.match(/<meta name="description" content="([^"]*)"/i)?.[1]||"");
   const attr=x=>x.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
-  const ogImage=(locale==="en"?EN_HOST:TR_HOST)+"/assets/universities/tsinghua.jpg";
+  const countryImages={cin:"tsinghua.jpg",japonya:"tohoku.jpg","guney-kore":"kyungbok.jpg",singapur:"nus.jpg","hong-kong":"polyu.jpg"};
+  const universityImages={"tsinghua-university":"tsinghua.jpg","tohoku-university":"tohoku.jpg","kyungbok-university":"kyungbok.jpg","national-university-of-singapore":"nus.jpg","the-hong-kong-polytechnic-university":"polyu.jpg"};
+  const parts=p.split("/").filter(Boolean);
+  const imageName=parts[0]==="ulkeler"&&countryImages[parts[1]]?countryImages[parts[1]]:parts[0]==="universiteler"&&universityImages[parts[1]]?universityImages[parts[1]]:null;
+  const imagePath=imageName?"/assets/universities/"+imageName:"/assets/ieft-university-logos.jpeg";
+  const ogImage=(locale==="en"?EN_HOST:TR_HOST)+imagePath;
   const head='<!-- i18n-head --><link rel="canonical" href="'+canonical+'">'
   +'<link rel="alternate" hreflang="tr" href="'+tr+'">'
   +'<link rel="alternate" hreflang="en" href="'+en+'">'
