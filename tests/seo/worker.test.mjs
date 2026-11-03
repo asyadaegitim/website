@@ -56,3 +56,16 @@ test('Turkish legacy URLs remain accessible while redirect gate is disabled',asy
  assert.equal(r.status,200);
  assert.ok(env.seen.some(u=>u.pathname==='/en/ulkeler/cin/'));
 });
+
+test('legacy paths without trailing slash redirect in a single hop',async()=>{
+ const env=assets();
+ const r=await enWorker.fetch(new Request('https://educationinasia.com/ulkeler/cin?ulke=cin'),env);
+ assert.equal(r.status,301);
+ assert.equal(r.headers.get('location'),'https://educationinasia.com/destinations/china/?country=china');
+});
+test('English staging assets resolve through their own preview host',async()=>{
+ const env=assets();
+ const r=await enWorker.fetch(new Request('https://educationinasia-en-stage.example.workers.dev/destinations/china/'),env);
+ assert.equal(r.status,200);
+ assert.ok(env.seen.some(u=>u.hostname==='educationinasia-en-stage.example.workers.dev'&&u.pathname==='/en/ulkeler/cin/'));
+});
