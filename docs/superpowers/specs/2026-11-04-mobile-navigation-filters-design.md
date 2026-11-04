@@ -18,7 +18,7 @@ Ziyaretçi ülke sayfası ile ülkenin alt menüsünü ayrı kontrollerle açabi
 
 ## Tasarım kararı — Paket 1: Menü
 - Ülke adına/başlığına tıklamak her zaman ilgili ülke sayfasına gider.
-- 980 px ve altında, ülkenin yanındaki en az 44×44 px genişlik/yükseklikteki düğme alt menüyü açar/kapatır; `aria-expanded`, `aria-controls` ve seçilen dilde açıklayıcı `aria-label` sağlar.
+- 1140 px ve altında, ülkenin yanındaki en az 44×44 px genişlik/yükseklikteki düğme alt menüyü açar/kapatır; `aria-expanded`, `aria-controls` ve seçilen dilde açıklayıcı `aria-label` sağlar.
 - Aynı anda yalnız bir ülke alt menüsü açık olur; menü kapatılınca alt paneller de kapanır. Escape ile menü kapatılır ve odak menü düğmesine geri verilir; dışarı tıklama menüyü kapatır. Masaüstü hover navigasyonu korunur.
 - Tüm 47 TR + 47 EN statik sayfa aynı paylaşılan JS/CSS'i kullanır; tasarım ve logo değişmez.
 
