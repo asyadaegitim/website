@@ -271,7 +271,7 @@ a.field-card:hover { border-color: var(--red); }
   .school-row { grid-template-columns: 35px 1.2fr .7fr; }
   .school-row .themes { display: none; }
 }
-@media (max-width: 980px) {
+@media (max-width: 1140px) {
   .header { height: 78px; }
   .brand { width: 200px; height: 68px; }
   .menu-toggle { display: block; }
@@ -492,7 +492,7 @@ html[lang="en"] .home-hero h1 { font-size: clamp(2.1rem, 4.5vw, 4.5rem); }
 .filter-chip:hover,.filter-chip:focus-visible{background:#bd21200b;border-color:var(--red)}
 .search-clear,.filters-reset{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:6px 4px;background:none;border:0;color:var(--red);font-size:.8125rem;font-weight:600;text-decoration:underline;text-underline-offset:4px}
 .search-clear[hidden],.filters-reset[hidden]{display:none}
-@media (max-width: 980px){
+@media (max-width: 1140px){
  .nav-item{position:relative}
  .nav-trigger{padding-right:54px}
  .nav-trigger small{display:none}
