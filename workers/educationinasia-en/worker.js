@@ -80,7 +80,7 @@ class URLMeta{element(e){const old=e.getAttribute('content'),v=rewriteLink(old);
 class EnglishText{text(t){const v=t.text.replace(/Asya’da Eğitim/g,'Education in Asia').replace(/Asya'da Eğitim/g,'Education in Asia');if(v!==t.text)t.replace(v)}}
 class EnglishEmailLink{element(e){const old=e.getAttribute('href')||'';if(/^mailto:info@asyadaegitim\.com/i.test(old)){let newer=old.replace(/^mailto:info@asyadaegitim\.com/i,'mailto:info@educationinasia.com');if(e.getAttribute('class')?.includes('contact-channel-link'))newer=newer.replace(/([?&]subject=)[^&]*/i,'$1'+encodeURIComponent('Education in Asia — Free Consultation'));e.setAttribute('href',newer);}}}
 class EnglishEmailText{text(t){const newer=t.text.replaceAll('info@asyadaegitim.com','info@educationinasia.com');if(newer!==t.text)t.replace(newer);}}
-class EnglishConsultationForm{element(e){if(e.getAttribute('action')==='https://formsubmit.co/info@asyadaegitim.com')e.setAttribute('action','https://formsubmit.co/info@educationinasia.com');}}
+class EnglishConsultationDisclosure{text(t){const v=t.text.replace('sent to info@asyadaegitim.com through FormSubmit','sent to our team through FormSubmit');if(v!==t.text)t.replace(v);}}
 class FormURL{element(e){e.setAttribute('value',PRIMARY+'/free-consultation/')}}
 class ScriptVersion{element(e){e.setAttribute('src','/site.js?english-routes=20261104-email-v1')}}
 function rewriteHTML(res,origin=PRIMARY){
@@ -95,7 +95,7 @@ function rewriteHTML(res,origin=PRIMARY){
  .on('title',new EnglishText()).on('input[name="_url"]',new FormURL())
  .on('a[href^="mailto:info@asyadaegitim.com"]',new EnglishEmailLink())
  .on('a.footer-email',new EnglishEmailText()).on('.contact-channel-detail',new EnglishEmailText())
- .on('#consultation-data-note',new EnglishEmailText()).on('form#consultation-form',new EnglishConsultationForm())
+ .on('#consultation-data-note',new EnglishConsultationDisclosure())
  .on('script[src="/site.js"]',new ScriptVersion())
  .transform(new Response(res.body,{status:res.status,statusText:res.statusText,headers:h}));
 }
@@ -109,7 +109,6 @@ function patchSiteJS(text){
  text=text.replace("history.replaceState(null,'',url)};[search,country,theme]","t?url.searchParams.set('field',EN_FIELD_FROM_NATIVE[t]||t):url.searchParams.delete('field');history.replaceState(null,'',url)};[search,country,theme]");
  text=text.replace("new URLSearchParams(location.search).get('ulke')","(EN_COUNTRY_TO_NATIVE[new URLSearchParams(location.search).get('country')]||new URLSearchParams(location.search).get('ulke'))");
  text=text.replace("url.searchParams.set('ulke',pc.value)","url.searchParams.set('country',EN_COUNTRY_FROM_NATIVE[pc.value]||pc.value)").replace("url.searchParams.delete('ulke')","url.searchParams.delete('country')");
- text=text.replaceAll('https://formsubmit.co/ajax/info@asyadaegitim.com','https://formsubmit.co/ajax/info@educationinasia.com');
  text=text.replace('email info@asyadaegitim.com directly.','email info@educationinasia.com directly.');
  text=text.replace("Asya’da Eğitim — Free Pre-Consultation Request","Education in Asia — Free Pre-Consultation Request");
  return pre+text;
