@@ -31,7 +31,7 @@ export class Element {
  querySelector(s){if(s==='span:not(.flag)')return this.titleSpan??null;return null}
 }
 
-export function runSite({lang='tr',url='https://asyadaegitim.com/okullar/',navMode=true,filtersMode=false}={}){
+export function runSite({lang='tr',url='https://asyadaegitim.com/okullar/',navMode=true,filtersMode=false,scriptOverride=script}={}){
  const globals={},documentEvents={},nodes={};
  const document={
   documentElement:{lang},
@@ -83,6 +83,6 @@ export function runSite({lang='tr',url='https://asyadaegitim.com/okullar/',navMo
  const context={document,location,history,URL,URLSearchParams,matchMedia:()=>({matches:true,addEventListener(){}}),
   addEventListener:(k,fn)=>(listeners[k]??=[]).push(fn),
   getComputedStyle:()=>({columnGap:'0'}),console};
- vm.runInNewContext(script,context);
+ vm.runInNewContext(scriptOverride,context);
  return {document,nodes,location,history,pushed,emitWindow(k,e={}){for(const fn of listeners[k]||[])fn(e)}};
 }
