@@ -11,7 +11,7 @@ export class Element {
   this._classes=new Set(className.split(/\s+/).filter(Boolean));
   this.classList={
    contains:x=>this._classes.has(x),add:x=>this._classes.add(x),remove:x=>this._classes.delete(x),
-   toggle:x=>{const now=!this._classes.has(x);now?this._classes.add(x):this._classes.delete(x);return now}
+   toggle:(x,force)=>{const now=force===undefined?!this._classes.has(x):Boolean(force);now?this._classes.add(x):this._classes.delete(x);return now}
   };
  }
  get className(){return [...this._classes].join(' ')}
