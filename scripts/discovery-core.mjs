@@ -244,7 +244,7 @@ export function enrichDiscoveryPage(source,trPath,locale,catalog){
  if(section){
   const marked='<!-- discovery-section:start -->'+section+'<!-- discovery-section:end -->';
   if(/^\/ulkeler\/[^/]+\/$/.test(trPath)){
-   const m=/<main>[\s\S]*?<\/section>/.exec(html);
+   const m=/<main\b[^>]*>[\s\S]*?<\/section>/.exec(html);
    if(!m)fail('Country hero section missing '+trPath);
    const position=m.index+m[0].length;
    html=html.slice(0,position)+marked+html.slice(position);
