@@ -9,6 +9,7 @@ const html=(trPath,locale='tr')=>readFileSync(file(trPath,locale),'utf8');
 const unescape=s=>s.replaceAll('&amp;','&');
 const anchors=s=>[...s.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)].map(m=>unescape(m[1]));
 const routePaths=new Set(ROUTE_PAIRS.flatMap(x=>[x.trPath,x.enPath]));
+const isUniversityProfile=(link,locale)=>{const root=locale==='tr'?'/universiteler/':'/universities/';const path=new URL(link,'https://example.com').pathname;return path.startsWith(root)&&path!==root;};
 const validPath=(href,locale)=>{
  const u=new URL(href,'https://'+(locale==='tr'?'asyadaegitim.com':'educationinasia.com'));
  return routePaths.has(u.pathname)&&!u.hash;
@@ -47,7 +48,7 @@ test('country overview pages expose concise, real local university routes and fi
    assert.ok(hrefs.length>=4&&hrefs.length<=5,'country quick links must be compact');
    const more=locale==='tr'?'/okullar/?ulke='+tr:'/universities/?country='+en;
    assert.ok(hrefs.includes(more),locale+' '+tr+' missing full filtered catalog');
-   const unis=hrefs.filter(s=>s.includes('/universiteler/')||s.includes('/universities/'));
+   const unis=hrefs.filter(s=>isUniversityProfile(s,locale));
    assert.ok(unis.length>=2&&unis.length<=3,locale+' '+tr+' expected 2–3 universities');
    for(const link of unis){
     const slug=link.split('/').filter(Boolean).at(-1);
@@ -66,7 +67,7 @@ test('all 27 university profiles show same-country alternatives without linking 
    assert.ok(box,locale+' '+slug+' missing related content');
    const hrefs=anchors(box[0]),self=(locale==='tr'?'/universiteler/':'/universities/')+slug+'/';
    assert.equal(hrefs.includes(self),false,locale+' '+slug+' contains self recommendation');
-   const same=hrefs.filter(h=>h.startsWith(locale==='tr'?'/universiteler/':'/universities/'));
+   const same=hrefs.filter(h=>isUniversityProfile(h,locale));
    assert.ok(same.length>=2&&same.length<=3,locale+' '+slug+' insufficient same-country neighbors');
    assert.ok(hrefs.some(h=>h.includes(locale==='tr'?'/ulkeler/':'/destinations/')),'country guide missing');
    assert.ok(hrefs.some(h=>h.includes(locale==='tr'?'/dil-programlari/':'/language-programs/')),'language options missing');
@@ -81,7 +82,7 @@ test('program discovery lists existing university profiles and six filtered univ
   const source=html('/programlar/',locale),box=source.match(/<section class="section shell discovery-programs"[\s\S]*?<\/section>/);
   assert.ok(box,locale+' lacks program-to-university explorer');
   const links=anchors(box[0]);
-  const school=links.filter(x=>x.startsWith(locale==='tr'?'/universiteler/':'/universities/'));
+  const school=links.filter(x=>isUniversityProfile(x,locale));
   assert.ok(school.length>=12,'too few university recommendations');
   for(const link of school){
    assert.ok(UNIVERSITIES.includes(link.split('/').filter(Boolean).at(-1)),'unknown university '+link);
@@ -102,7 +103,7 @@ test('catalog references use only categories appearing in existing school rows, 
    const s=html('/universiteler/'+slug+'/',locale);
    const block=s.match(/<section class="section shell discovery-university"[\s\S]*?<\/section>/)?.[0]||'';
    const country=catalog.get(slug).country;
-   const peers=anchors(block).filter(a=>a.startsWith(locale==='tr'?'/universiteler/':'/universities/'));
+   const peers=anchors(block).filter(a=>isUniversityProfile(a,locale));
    for(const peer of peers)assert.equal(catalog.get(peer.split('/').filter(Boolean).at(-1))?.country,country);
   }
  }
