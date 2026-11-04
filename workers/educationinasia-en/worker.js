@@ -81,6 +81,8 @@ class EnglishText{text(t){const v=t.text.replace(/Asya’da Eğitim/g,'Education
 class EnglishEmailLink{element(e){const old=e.getAttribute('href')||'';if(/^mailto:info@asyadaegitim\.com/i.test(old)){let newer=old.replace(/^mailto:info@asyadaegitim\.com/i,'mailto:info@educationinasia.com');if(e.getAttribute('class')?.includes('contact-channel-link'))newer=newer.replace(/([?&]subject=)[^&]*/i,'$1'+encodeURIComponent('Education in Asia — Free Consultation'));e.setAttribute('href',newer);}}}
 class EnglishEmailText{text(t){const newer=t.text.replaceAll('info@asyadaegitim.com','info@educationinasia.com');if(newer!==t.text)t.replace(newer);}}
 class EnglishConsultationDisclosure{text(t){const v=t.text.replace('sent to info@asyadaegitim.com through FormSubmit','sent to our team through FormSubmit');if(v!==t.text)t.replace(v);}}
+class EnglishBrandAria{element(e){const a=e.getAttribute('aria-label');if(!a)return;const v=a.replace(/Asya[’']da Eğitim/g,'Education in Asia');if(v!==a)e.setAttribute('aria-label',v)}}
+class EnglishFormSubject{element(e){e.setAttribute('value','Education in Asia — Free Pre-Consultation Request')}}
 class FormURL{element(e){e.setAttribute('value',PRIMARY+'/free-consultation/')}}
 class ScriptVersion{element(e){e.setAttribute('src','/site.js?english-routes=20261104-email-v1')}}
 function rewriteHTML(res,origin=PRIMARY){
@@ -91,8 +93,9 @@ function rewriteHTML(res,origin=PRIMARY){
  return new HTMLRewriter().on('a[href]',new Anchor(origin)).on('header a.brand',new BrandLink())
  .on('header img.brand-logo',new BrandLogo()).on('footer img.footer-logo',new BrandLogo()).on('footer a.footer-logo-link',new BrandLink()).on('link[rel="canonical"]',new HTMLLink())
  .on('link[rel="alternate"]',new HTMLLink()).on('meta[property="og:url"]',new URLMeta())
- .on('meta[name="twitter:url"]',new URLMeta()).on('.home-intro .eyebrow.red',new EnglishText())
+ .on('meta[name="twitter:url"]',new URLMeta()).on('.eyebrow.red',new EnglishText()).on('footer span',new EnglishText())
  .on('title',new EnglishText()).on('input[name="_url"]',new FormURL())
+ .on('a[aria-label]',new EnglishBrandAria()).on('input[name="_subject"]',new EnglishFormSubject())
  .on('a[href^="mailto:info@asyadaegitim.com"]',new EnglishEmailLink())
  .on('a.footer-email',new EnglishEmailText()).on('.contact-channel-detail',new EnglishEmailText())
  .on('#consultation-data-note',new EnglishConsultationDisclosure())
