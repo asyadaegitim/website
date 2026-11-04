@@ -69,3 +69,18 @@ test('existing EN field and country language switch mapping remains intact',()=>
  assert.match(js,/LANG_COUNTRIES=\{cin:'china'/);
  assert.match(js,/LANG_FIELDS=\{[^}]*'Mühendislik':'engineering'/);
 });
+
+test('English Worker patched site.js preserves canonical filter values and Back navigation',async()=>{
+ const {default:enWorker}=await import('../../workers/educationinasia-en/worker.js');
+ const js=readFileSync(new URL('../../dist/site.js',import.meta.url),'utf8');
+ const env={ASSETS:{fetch:async()=>new Response(js,{headers:{'content-type':'application/javascript'}})}};
+ const response=await enWorker.fetch(new Request('https://educationinasia.com/site.js'),env);
+ assert.equal(response.status,200);
+ const patched=await response.text();
+ const app=runSite({navMode:false,filtersMode:true,lang:'en',url:'https://educationinasia.com/universities/?country=china&field=engineering',scriptOverride:patched});
+ assert.equal(app.nodes['#country-filter'].value,'cin');
+ assert.equal(app.nodes['#theme-filter'].value,'Mühendislik');
+ const theme=app.nodes['#theme-filter'];theme.value='Bilim';theme.emit('change');
+ assert.match(app.location.search,/field=science/);
+ assert.doesNotMatch(app.location.search,/alan=/);
+});
