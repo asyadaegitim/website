@@ -165,12 +165,12 @@ if(pc&&programDiscoveryCards.length){
    });
    const all=card.querySelector('a.discovery-all-field');
    if(!all)continue;
-   if(!all.dataset.baseHref)all.dataset.baseHref=all.getAttribute('href');
+   if(!all.dataset.baseHref)all.dataset.baseHref=all.href;
    const url=new URL(all.dataset.baseHref,location.href);
    url.searchParams.delete('ulke');
    url.searchParams.delete('country');
    if(selected)url.searchParams.set(english?'country':'ulke',english?LANG_COUNTRIES[selected]:selected);
-   all.href=url.pathname+url.search;
+   all.href=url.origin+url.pathname+url.search;
   }
  };
  pc.addEventListener('change',syncRelatedPrograms);
