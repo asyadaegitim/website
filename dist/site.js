@@ -141,6 +141,7 @@ if(search&&country&&theme){
   if(q)chip('search',english?'Search: '+search.value:'Arama: '+search.value,()=>{search.value='';render()});
   searchClear.hidden=!search.value;
   reset.hidden=!(c||t||search.value.trim());
+  toolbar.hidden=!(c||t||search.value.trim());
  };
  const commit=()=>{writeFilters();render()};
  for(const control of [country,theme]){control.addEventListener('change',commit)}
