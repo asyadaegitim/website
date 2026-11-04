@@ -21,6 +21,7 @@ export function enrichAccessibilityHTML(source,locale){
  if(typeof source!=='string')throw new Error('Expected HTML source');
  const copy=COPY[locale];
  let html=source.replace(/<a class="skip-link" href="#main-content">[\s\S]*?<\/a>\s*/g,'');
+ html=html.replace(/<main id="main-content" tabindex="-1">/g,'<main>');
  const main=[...html.matchAll(/<main\b[^>]*>/g)];
  if(main.length!==1)throw new Error('Expected exactly one main landmark, got '+main.length);
  if(/\bid="main-content"/.test(html))throw new Error('Duplicate main-content identifier');
