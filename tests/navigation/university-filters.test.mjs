@@ -94,3 +94,15 @@ test('TR changing field stores canonical alan value rather than stale EN field k
  assert.doesNotMatch(app.location.search,/field=|country=/);
  assert.match(app.location.search,/ulke=cin/);
 });
+
+test('filter toolbar does not reserve blank space when no filters are active',()=>{
+ const app=runSite({navMode:false,filtersMode:true,url:'https://asyadaegitim.com/okullar/'});
+ const toolbar=app.nodes['.list-controls'].afterNode;
+ assert.ok(toolbar);
+ assert.equal(toolbar.hidden,true);
+ const search=app.nodes['#school-search'];
+ search.value='pekin';search.emit('input');
+ assert.equal(toolbar.hidden,false);
+ search.value='';search.emit('input');
+ assert.equal(toolbar.hidden,true);
+});
