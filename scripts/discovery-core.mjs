@@ -185,12 +185,10 @@ function representativeSchools(catalog,field){
  if(matched.length<3)fail('Insufficient verified subject matches '+field);
  const countries=new Set(),picked=[];
  for(const school of matched){
-  if(!countries.has(school.country)){picked.push(school);countries.add(school.country);}
-  if(picked.length===3)break;
- }
- for(const school of matched){
-  if(picked.length===3)break;
-  if(!picked.includes(school))picked.push(school);
+  if(!countries.has(school.country)){
+   picked.push(school);
+   countries.add(school.country);
+  }
  }
  return picked;
 }
@@ -199,10 +197,15 @@ function programDiscovery(locale,catalog){
  const c=COPY[locale];
  const cards=PROGRAM_SUBJECTS.map(field=>{
   const schools=representativeSchools(catalog,field);
+  const countries=schools.map(s=>s.country).join(',');
   const filter=new URLSearchParams(locale==='en'?{field:FIELDS[field]}:{alan:field}).toString();
-  return '<article class="discovery-program-card"><h3>'+escapeHTML(fieldLabel(field,locale))+'</h3>'
-    +'<div class="discovery-program-schools">'+schools.map(s=>linkHTML(universityPath(s.slug),s.name,locale)).join('')+'</div>'
-    +'<a class="text-link" href="'+href(cataloguePath,locale)+'?'+filter+'">'+c.allField+'</a></article>';
+  return '<article class="discovery-program-card" data-field="'+escapeHTML(field)+'" data-countries="'+countries+'">'
+    +'<h3>'+escapeHTML(fieldLabel(field,locale))+'</h3>'
+    +'<div class="discovery-program-schools">'+schools.map((s,index)=>
+      '<a class="discovery-program-school" data-country="'+s.country+'" data-featured="'+(index<3)+'"'
+      +(index<3?'':' hidden')+' href="'+escapeHTML(href(universityPath(s.slug),locale))+'">'+escapeHTML(s.name)+'</a>'
+    ).join('')+'</div>'
+    +'<a class="text-link discovery-all-field" href="'+href(cataloguePath,locale)+'?'+filter+'">'+c.allField+'</a></article>';
  }).join('');
  return '<section class="section shell discovery-programs"><div class="discovery-heading">'
   +'<div><div class="eyebrow red">'+c.programsEyebrow+'</div><h2 class="serif">'+c.programsHead+'</h2>'
