@@ -19,7 +19,8 @@ for (const [locale, homepage] of [['tr', 'index.html'], ['en', 'en/index.html']]
       assert.match(html, new RegExp('src="/assets/universities/' + slug + '\\.jpg"'));
     }
     assert.equal((html.match(/fetchpriority="high"/g) || []).length, 1);
-    assert.equal((html.match(/fetchpriority="low"/g) || []).length, 4);
+    const heroPictures=[...html.matchAll(/<picture data-responsive-hero="1">([\\s\\S]*?)<\\/picture>/g)];
+    assert.equal(heroPictures.filter(([,markup])=>markup.includes('fetchpriority="low"')).length,4);
     assert.equal((html.match(/loading="lazy" decoding="async"/g) || []).length >= 4, true);
   });
 }
