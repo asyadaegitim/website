@@ -54,3 +54,10 @@ test('clicking outside the header closes mobile navigation without navigating',(
  app.document.dispatch('click',{target:{closest:()=>null}});
  assert.equal(menu.getAttribute('aria-expanded'),'false');
 });
+
+test('tablet width uses the compact navigation before the language selector overflows',()=>{
+ const css=readFileSync(new URL('../../dist/site.css',import.meta.url),'utf8');
+ const js=readFileSync(new URL('../../dist/site.js',import.meta.url),'utf8');
+ assert.match(css,/@media\s*\(max-width:\s*1140px\)/);
+ assert.match(js,/matchMedia\('\(max-width: 1140px\)'\)/);
+});
