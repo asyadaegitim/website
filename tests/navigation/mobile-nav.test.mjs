@@ -43,7 +43,7 @@ test('English submenu accessible names are English; closing menu collapses child
 test('mobile split control has 44px target and does not alter 980px desktop navigation',()=>{
  const css=readFileSync(new URL('../../dist/site.css',import.meta.url),'utf8');
  assert.match(css,/\.nav-expand[^{]*\{[^}]*min-width:\s*44px[^}]*min-height:\s*44px/s);
- assert.match(css,/@media\s*\(max-width:\s*980px\)[\s\S]*?\.nav-expand/s);
+ assert.match(css,/@media\s*\(max-width:\s*1140px\)[\s\S]*?\.nav-expand/s);
 });
 
 test('clicking outside the header closes mobile navigation without navigating',()=>{
