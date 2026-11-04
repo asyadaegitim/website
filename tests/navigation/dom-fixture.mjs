@@ -56,7 +56,7 @@ export function runSite({lang='tr',url='https://asyadaegitim.com/okullar/',navMo
    item.append(a,drop);
    return {item,a,drop};
   });
-  nodes['.menu-toggle']=menu;nodes['.nav']=nav;
+  nodes['.menu-toggle']=menu;nodes.menu=menu;nodes['.nav']=nav;
   nodes.triggers=triggers.map(x=>x.a);nodes.menuItems=triggers;nav.append(...triggers.map(x=>x.item));
  }
  if(filtersMode){
