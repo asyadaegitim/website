@@ -34,7 +34,7 @@ document.querySelectorAll('footer a[href]').forEach(link => {
 document.querySelectorAll('a[href="https://cinegitim-kesfet.adnanakfirat.chatgpt.site/"]').forEach(link => { link.href = 'https://cinegitim.com/'; });
 // A country name is a real page link; a separate, accessible button expands its submenu.
 const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
-const mobileNavigation=typeof matchMedia==='function'?matchMedia('(max-width: 980px)'):{matches:false},countryMenus=[];
+const mobileNavigation=typeof matchMedia==='function'?matchMedia('(max-width: 1140px)'):{matches:false},countryMenus=[];
 document.querySelectorAll('.nav-trigger[data-country]').forEach(trigger=>{
  const item=trigger.closest('.nav-item');
  const dropdown=item&&Array.from(item.children).find(child=>child.classList.contains('dropdown'));
