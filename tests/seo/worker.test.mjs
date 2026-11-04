@@ -1,4 +1,6 @@
 import {test} from 'node:test';
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
 import enWorker from '../../workers/educationinasia-en/worker.js';
 import trWorker from '../../workers/website/worker.js';
@@ -101,4 +103,33 @@ test('English staging denies indexing while production keeps normal indexing rul
  const production=await enWorker.fetch(new Request('https://educationinasia.com/destinations/china/'),env);
  assert.equal(production.status,200);
  assert.equal(production.headers.get('x-robots-tag'),null);
+});
+
+test('English production logo is the locked Brandstudio V9 vector, not a recreated image',async()=>{
+ const data=readFileSync(new URL('../../dist/assets/education-in-asia-logo.svg',import.meta.url));
+ const svg=data.toString('utf8'),sha=createHash('sha256').update(data).digest('hex');
+ assert.equal(sha,'b3a70033fc37049730a24ca54e1fe5259e32fb40c255450206dd29e40b644dde');
+ const meta=JSON.parse(svg.split('<metadata>')[1].split('</metadata>')[0]);
+ assert.equal(meta.status,'APPROVED / CANONICAL');
+ assert.equal(meta.version,'v9-approved-2026-11-04');
+ assert.equal(meta.canonicalLockupId,'H-EN-02/light');
+ assert.equal(meta.mainWeight,450);assert.equal(meta.taglineWeight,350);
+ assert.equal(meta.metrics.inScale,1.1);assert.equal(meta.metrics.asiaScale,1.1);
+ assert.equal((svg.match(/data-country-dot=/g)||[]).length,4);
+ assert.match(svg,/data-canonical-logo-sha256="8f5d46f0302c4cc7e3765d3bfce9445f842dbd92f1e0f8fbe99f9f509c77e11a"/);
+ assert.doesNotMatch(svg,/<(?:image|text)\b/);
+ const env=assets();
+ env.ASSETS.fetch=async input=>{const u=new URL(typeof input==='string'?input:input.url);env.seen.push(u);return u.pathname==='/assets/education-in-asia-logo.svg'?new Response(data,{headers:{'content-type':'image/svg+xml'}}):new Response('Not found',{status:404});};
+ const response=await enWorker.fetch(new Request('https://educationinasia.com/assets/education-in-asia-logo.svg?v=20261104'),env);
+ assert.equal(response.status,200);assert.equal(await response.text(),svg);
+ assert.equal(env.seen.length,1);
+});
+test('English header/footer both reference official V9 SVG, no legacy embedded artwork',()=>{
+ const worker=readFileSync(new URL('../../workers/educationinasia-en/worker.js',import.meta.url),'utf8');
+ assert.match(worker,/const ENGLISH_LOGO_URL='\/assets\/education-in-asia-logo\.svg\?v=20261104'/);
+ assert.match(worker,/\.on\('header img\.brand-logo',new BrandLogo\(\)\)/);
+ assert.match(worker,/\.on\('footer img\.footer-logo',new BrandLogo\(\)\)/);
+ assert.match(worker,/\.on\('footer a\.footer-logo-link',new BrandLink\(\)\)/);
+ assert.doesNotMatch(worker,/const BRAND_SVG=/);
+ assert.match(readFileSync(new URL('../../dist/assets/asya-logo.svg',import.meta.url),'utf8'),/Asya.da Eğitim/);
 });
