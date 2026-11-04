@@ -9,7 +9,7 @@ test('each of six discovery program cards has a verifiable subject and country m
   const html=read((loc==='en'?'en/':'')+'programlar/index.html');
   const m=[...html.matchAll(/<article class="discovery-program-card" data-field="([^"]+)" data-countries="([^"]+)"/g)];
   assert.equal(m.length,6,loc+' six subject groups');
-  const schoolLinks=[...html.matchAll(/<a class="discovery-program-school" data-country="([^"]+)" href="([^"]+)"/g)];
+  const schoolLinks=[...html.matchAll(/<a class="discovery-program-school" data-country="([^"]+)"[^>]*href="([^"]+)"/g)];
   assert.ok(schoolLinks.length>=18,'all suggested schools should have country identifiers');
   for(const [,c] of schoolLinks)assert.ok(['cin','japonya','guney-kore','singapur','hong-kong'].includes(c));
   assert.equal((html.match(/class="text-link discovery-all-field"/g)||[]).length,6);
