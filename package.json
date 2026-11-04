@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/generate-en.mjs && node scripts/apply-discovery.mjs && node scripts/generate-security-headers.mjs",
+    "build": "node scripts/generate-en.mjs && node scripts/apply-discovery.mjs && node scripts/apply-accessibility.mjs && node scripts/generate-security-headers.mjs",
     "test": "npm run build && node --test tests/seo/*.test.mjs tests/hardening/*.test.mjs tests/conversion/*.test.mjs tests/navigation/*.test.mjs tests/discovery/*.test.mjs tests/accessibility/*.test.mjs",
     "test:routes": "node --test tests/seo/routes.test.mjs",
     "preview:tr": "npx wrangler dev --config wrangler.jsonc",
