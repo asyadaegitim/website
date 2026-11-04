@@ -84,3 +84,13 @@ test('English Worker patched site.js preserves canonical filter values and Back 
  assert.match(app.location.search,/field=science/);
  assert.doesNotMatch(app.location.search,/alan=/);
 });
+
+test('TR changing field stores canonical alan value rather than stale EN field keys',()=>{
+ const app=runSite({navMode:false,filtersMode:true,url:'https://asyadaegitim.com/okullar/?ulke=cin&field=engineering'});
+ const theme=app.nodes['#theme-filter'];
+ assert.equal(theme.value,'Mühendislik');
+ theme.value='Bilim';theme.emit('change');
+ assert.match(app.location.search,/alan=Bilim/);
+ assert.doesNotMatch(app.location.search,/field=|country=/);
+ assert.match(app.location.search,/ulke=cin/);
+});
