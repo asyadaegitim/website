@@ -45,3 +45,12 @@ test('mobile split control has 44px target and does not alter 980px desktop navi
  assert.match(css,/\.nav-expand[^{]*\{[^}]*min-width:\s*44px[^}]*min-height:\s*44px/s);
  assert.match(css,/@media\s*\(max-width:\s*980px\)[\s\S]*?\.nav-expand/s);
 });
+
+test('clicking outside the header closes mobile navigation without navigating',()=>{
+ const app=runSite({navMode:true,filtersMode:false});
+ const menu=app.nodes.menu;
+ menu.emit('click');
+ assert.equal(menu.getAttribute('aria-expanded'),'true');
+ app.document.dispatch('click',{target:{closest:()=>null}});
+ assert.equal(menu.getAttribute('aria-expanded'),'false');
+});
