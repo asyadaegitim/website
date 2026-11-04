@@ -128,3 +128,33 @@ test('discovery markup remains inside main, preserves existing forms and SEO met
   }
  }
 });
+
+test('the build-time enrichment is idempotent and does not change the form or canonical headers',async()=>{
+ const {catalogFromHTML,enrichDiscoveryPage}=await import('../../scripts/discovery-core.mjs');
+ const catalog=catalogFromHTML(html('/okullar/'));
+ for(const [trPath,locale] of [
+  ['/ulkeler/cin/','tr'],['/ulkeler/cin/','en'],
+  ['/universiteler/tsinghua-university/','tr'],['/universiteler/tsinghua-university/','en'],
+  ['/programlar/','tr'],['/programlar/','en'],['/on-gorusme/','tr'],['/on-gorusme/','en']
+ ]){
+  const original=html(trPath,locale),again=enrichDiscoveryPage(original,trPath,locale,catalog);
+  assert.equal(again,original,'duplicate discovery markup after re-running build for '+locale+' '+trPath);
+ }
+});
+test('all static related links preserve a valid route and only listed program field URLs',()=>{
+ const englishValues=new Set(Object.values(FIELDS));
+ for(const {trPath} of ROUTE_PAIRS){
+  if(!trPath.startsWith('/universiteler/')&&trPath!=='/programlar/')continue;
+  for(const locale of ['tr','en']){
+   const source=html(trPath,locale);
+   const block=source.match(/<!-- discovery-section:start -->([\s\S]*?)<!-- discovery-section:end -->/)?.[1]||'';
+   for(const link of anchors(block)){
+    const url=new URL(link,'https://example.com'),params=url.searchParams;
+    const subject=params.get(locale==='tr'?'alan':'field');
+    if(subject!==null)assert.ok(locale==='tr'?Object.hasOwn(FIELDS,subject):englishValues.has(subject),
+      'invalid field URL on '+trPath+': '+link);
+    assert.equal(params.has(locale==='tr'?'field':'alan'),false,'mixed-language field param '+link);
+   }
+  }
+ }
+});
