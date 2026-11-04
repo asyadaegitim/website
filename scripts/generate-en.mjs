@@ -57,7 +57,9 @@ function inline(s){
 function strip(html){
   return html.replace(/<!-- i18n-head -->[\s\S]*?<!-- \/i18n-head -->/g,"")
    .replace(/<!-- i18n-switch -->[\s\S]*?<!-- \/i18n-switch -->/g,"")
-   .replace(/<!-- consultation-disclosure -->[\s\S]*?<!-- \/consultation-disclosure -->/g,"");
+   .replace(/<!-- consultation-disclosure -->[\s\S]*?<!-- \/consultation-disclosure -->/g,"")
+   .replace(/<!-- discovery-section:start -->[\s\S]*?<!-- discovery-section:end -->/g,"")
+   .replace(/<script type="application\/ld\+json" data-discovery-breadcrumb>[\s\S]*?<\/script>/g,"");
 }
 function localized(p){return "/en"+p;}
 function english(html,p){

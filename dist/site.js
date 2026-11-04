@@ -152,6 +152,30 @@ if(search&&country&&theme){
  readFilters();render();
 }
 const pc=document.querySelector('#program-country');if(pc){const p=new URLSearchParams(location.search).get('ulke');if(p&&[...pc.options].some(o=>o.value===p))pc.value=p;pc.addEventListener('change',()=>{const url=new URL(location.href);pc.value?url.searchParams.set('ulke',pc.value):url.searchParams.delete('ulke');history.replaceState(null,'',url);document.querySelectorAll('.program-card').forEach(el=>el.hidden=!!pc.value&&!el.dataset.countries.split(',').includes(pc.value))});pc.dispatchEvent(new Event('change'))}
+// Keep the static program discovery grid consistent with the existing destination selector.
+const programDiscoveryCards=[...document.querySelectorAll('.discovery-program-card')];
+if(pc&&programDiscoveryCards.length){
+ const syncRelatedPrograms=()=>{
+  const selected=pc.value;
+  for(const card of programDiscoveryCards){
+   const countries=card.dataset.countries?.split(',')||[];
+   card.hidden=!!selected&&!countries.includes(selected);
+   card.querySelectorAll('.discovery-program-school').forEach(link=>{
+    link.hidden=selected?link.dataset.country!==selected:link.dataset.featured==='false';
+   });
+   const all=card.querySelector('a.discovery-all-field');
+   if(!all)continue;
+   if(!all.dataset.baseHref)all.dataset.baseHref=all.href;
+   const url=new URL(all.dataset.baseHref,location.href);
+   url.searchParams.delete('ulke');
+   url.searchParams.delete('country');
+   if(selected)url.searchParams.set(english?'country':'ulke',english?LANG_COUNTRIES[selected]:selected);
+   all.href=url.origin+url.pathname+url.search;
+  }
+ };
+ pc.addEventListener('change',syncRelatedPrograms);
+ syncRelatedPrograms();
+}
 const track=document.querySelector('#featured-track');document.querySelectorAll('[data-slide]').forEach(button=>button.addEventListener('click',()=>{if(!track)return;const card=track.querySelector('.featured-card');track.scrollBy({left:(button.dataset.slide==='next'?1:-1)*((card?.getBoundingClientRect().width||320)+(parseFloat(getComputedStyle(track).columnGap)||0)),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}));
 
 const consultationForm=document.querySelector('#consultation-form');
