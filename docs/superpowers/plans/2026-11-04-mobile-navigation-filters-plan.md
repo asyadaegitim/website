@@ -12,7 +12,7 @@
 
 ## Global Constraints
 - Keep all 94 existing pages, canonical/hreflang, brand logos, FormSubmit, security headers, CRM and pricing untouched.
-- Mobile breakpoint is currently 980px, desktop dropdown uses hover/focus.
+- Mobile/tablet navigation breakpoint is 1140px after live 1024px overflow audit, desktop dropdown uses hover/focus.
 - EN public URL country/field values are translated from native TR option values.
 - No dependencies, cookies, analytics, API calls or new data storage.
 - Feature branch only until test and preview audit.
