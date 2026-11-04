@@ -484,6 +484,7 @@ html[lang="en"] .home-hero h1 { font-size: clamp(2.1rem, 4.5vw, 4.5rem); }
 
 /* Split country navigation and accessible catalog filters */
 .nav-expand{display:none}
+.filter-toolbar[hidden]{display:none}
 .filter-toolbar{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px 18px;margin:-4px 0 12px}
 .active-filters{display:flex;align-items:center;flex-wrap:wrap;gap:8px;min-height:36px}
 .filter-quick-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
