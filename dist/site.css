@@ -722,3 +722,37 @@ body { line-height: 1.58; }
   .footer-nav-links { gap: 5px 14px; }
   .footer-bottom { margin-top: 18px; }
 }
+
+
+/* WhatsApp CTA: recognizable brand mark with the existing Jost/DM Sans typography. */
+.home-whatsapp-link,
+.contact-channels .contact-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 10px 15px;
+  border: 1px solid #2b9460;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: .9rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  text-underline-offset: initial;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.home-whatsapp-link:hover, .home-whatsapp-link:focus-visible,
+.contact-channels .contact-whatsapp:hover, .contact-channels .contact-whatsapp:focus-visible {
+  background: #e9f5ed;
+  border-color: #208b53;
+  color: #155c39;
+  text-decoration: none;
+}
+.whatsapp-mark { display: block; width: 20px; height: 20px; flex: none; }
+@media (max-width: 390px) {
+  .home-whatsapp-link { max-width: 100%; }
+}

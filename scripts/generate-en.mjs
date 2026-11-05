@@ -105,7 +105,8 @@ function decorate(html,p,locale){
   const imageName=parts[0]==="ulkeler"&&countryImages[parts[1]]?countryImages[parts[1]]:parts[0]==="universiteler"&&universityImages[parts[1]]?universityImages[parts[1]]:null;
   const imagePath=imageName?"/assets/universities/"+imageName:"/assets/ieft-university-logos.jpeg";
   const ogImage=(locale==="en"?EN_HOST:TR_HOST)+imagePath;
-  const head='<!-- i18n-head --><link rel="canonical" href="'+canonical+'">'
+  const head='<!-- i18n-head --><link rel="icon" type="image/svg+xml" href="/assets/brand-seal-v01.svg">'
+  +'<link rel="canonical" href="'+canonical+'">'
   +'<link rel="alternate" hreflang="tr" href="'+tr+'">'
   +'<link rel="alternate" hreflang="en" href="'+en+'">'
   +'<meta property="og:type" content="website">'
