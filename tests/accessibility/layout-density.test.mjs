@@ -11,6 +11,7 @@ test('a single shared compact layer preserves brand colors and applies to both l
   assert.match(css, /--paper: #f7f3e9/);
   assert.match(css, /--red: #bd2120/);
   assert.match(density,/\.section\s*\{\s*padding:\s*40px 0/);
+  assert.match(density,/\.header-action\s*\{\s*min-height:\s*44px/);
   assert.match(density,/\.page-hero\s*\{\s*padding:\s*28px 0 24px/);
   assert.match(density,/\.footer\s*\{\s*padding:\s*30px 0 16px/);
   assert.doesNotMatch(density, /\bdisplay:\s*none\b|\bvisibility:\s*hidden\b|\bcontent-visibility:\s*hidden\b/);
