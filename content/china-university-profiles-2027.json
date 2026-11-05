@@ -1,0 +1,455 @@
+{
+  "reviewedOn": "2026-11-05",
+  "profiles": {
+    "tsinghua-university": {
+      "sources": {
+        "graduate": "https://yz.tsinghua.edu.cn/en/info/1035/1581.htm",
+        "undergraduate": "https://international.join-tsinghua.edu.cn/info/1024/1023.htm",
+        "english": "https://yz.tsinghua.edu.cn/en/Programs/Graduate_Programs_in_English.htm",
+        "funding": "https://www.tsinghua.edu.cn/en/Admissions/International_Students1/Financial_Aid.htm"
+      },
+      "tr": {
+        "hero": "Tsinghua Üniversitesi, Pekin’de mühendislik, bilim, teknoloji ve beşerî bilimleri bir araya getiren araştırma üniversitesidir. 2027 uluslararası lisans ve lisansüstü başvurularının koşulları ayrı duyuruluyor.",
+        "overview": "1911’de kurulan Tsinghua, Pekin’in Haidian bölgesindeki kampüsüyle tanınır. Uluslararası adaylar lisans ve lisansüstü programların öğretim dilini ve bölüm bazındaki şartları ayrı kontrol etmelidir.",
+        "academicTitle": "2027’de hangi programlara bakılabilir?",
+        "academicLead": "2027 uluslararası lisansüstü kabul ilanı, 54 okul ve bölümde yüksek lisans/doktora seçeneği ve İngilizce yürütülen 40 lisansüstü program bildiriyor. Diğer programlar Çince veya iki dilli olabilir.",
+        "fields": [
+          [
+            "Lisans",
+            "Uluslararası lisans başvurusunda lise diploması, akademik başarı ve programa göre Çince/İngilizce yeterlik aranır."
+          ],
+          [
+            "Lisansüstü",
+            "Mühendislik, bilim ve disiplinler arası alanlar dâhil yüksek lisans ve doktora programları bölüm kataloğunda listelenir."
+          ],
+          [
+            "Dil seçimi",
+            "İngilizce program adı tek başına tüm derslerin koşullarını belirlemez; bölümün 2027 kataloğundaki notlarını okuyun."
+          ]
+        ],
+        "academicNote": "Lisans programları ile İngilizce yüksek lisans/doktora seçenekleri farklı başvuru portalları ve koşullar kullanabilir.",
+        "academicLinks": [
+          [
+            "2027 lisansüstü kabul rehberi",
+            "graduate"
+          ],
+          [
+            "Lisans adaylığı koşulları",
+            "undergraduate"
+          ],
+          [
+            "İngilizce lisansüstü program kataloğu",
+            "english"
+          ]
+        ],
+        "campus": "Haidian bölgesindeki kampüste konaklama imkânı sınırlıdır. 2027 resmî lisansüstü rehberinde yurt başvurusunun kontenjana bağlı olduğu ve bazı öğrencilerin kampüs dışı konaklama ayarlaması gerektiği belirtiliyor.",
+        "admissionsTitle": "2027 kabul ve burs koşulları.",
+        "admissionsLead": "Lisans ve lisansüstü başvuru takvimleri aynı değildir; lisansüstü programların son tarihleri bölüme göre değişir.",
+        "steps": [
+          [
+            "Başvuru dönemi",
+            "Lisansüstünde genel başvuru penceresi Eylül 2026–Şubat 2027; kesin son tarih 2027 bölüm kataloğunda bulunur."
+          ],
+          [
+            "Gerekli belgeler",
+            "Program düzeyine uygun diploma, transkript, dil belgesi, kişisel beyan, tavsiye mektupları ve gerekiyorsa araştırma planı hazırlanır."
+          ],
+          [
+            "Maliyet",
+            "2027 lisansüstü başvuru ücreti 800 RMB; sağlık sigortası rehberde yılda 800 RMB. Öğrenim ücreti bölüme göre ayrıca ilan edilir."
+          ],
+          [
+            "Burs seçenekleri",
+            "Chinese Government Scholarship (CGS) tam bursu öğrenim, konaklama veya desteği, yaşam ödeneği ve sağlık sigortası kapsayabilir; değerlendirme ve kontenjan ayrıdır."
+          ]
+        ],
+        "note": "2027 duyuruları 5 Kasım 2026’da kontrol edildi. Tek bir tarih, ücret veya dil koşulu bütün Tsinghua programları için geçerli değildir; kabul ve burs garantisi verilmez.",
+        "fundingTitle": "Finansman ve resmî duyuru",
+        "fundingText": "Tsinghua’nın resmî finansman sayfasında devlet bursu ve öğrenim ücreti desteği açıklanıyor. 2027 burs döneminin ve başvurulan bölümün ayrıntılarını ayrıca doğrulayın.",
+        "fundingLinks": [
+          [
+            "Tsinghua burs ve finansman",
+            "funding"
+          ],
+          [
+            "2027 lisansüstü kabul koşulları",
+            "graduate"
+          ]
+        ],
+        "relatedTitle": "Çince hazırlık ve yaz okulu",
+        "relatedText": "Lisans veya lisansüstü programa başlamadan önce Çince eğitimi ve yaz dönemi seçeneklerini ayrı değerlendirmek istersen Çin program rehberlerimizi incele."
+      },
+      "en": {
+        "hero": "Tsinghua University is a research-intensive university in Beijing spanning engineering, science, technology and the humanities. International undergraduate and graduate admissions have separate requirements for 2027.",
+        "overview": "Founded in 1911, Tsinghua is known for its campus in Beijing’s Haidian district. International applicants should check teaching languages and department-specific rules separately for undergraduate and graduate study.",
+        "academicTitle": "Which programmes can you explore in 2027?",
+        "academicLead": "Tsinghua’s official 2027 graduate guide covers master’s and doctoral study across 54 schools and departments and lists 40 English-taught graduate programmes. Other programmes may be taught in Chinese or bilingually.",
+        "fields": [
+          [
+            "Undergraduate",
+            "The international undergraduate route considers secondary-school qualifications, academic performance and programme-specific Chinese or English proficiency."
+          ],
+          [
+            "Graduate",
+            "Master’s and doctoral pathways in engineering, sciences and interdisciplinary fields appear in departmental catalogues."
+          ],
+          [
+            "Teaching language",
+            "An English-language programme listing does not replace department-specific admissions remarks and language evidence."
+          ]
+        ],
+        "academicNote": "Undergraduate and English-taught graduate routes may use different portals and eligibility rules.",
+        "academicLinks": [
+          [
+            "Official 2027 graduate admissions",
+            "graduate"
+          ],
+          [
+            "Undergraduate eligibility",
+            "undergraduate"
+          ],
+          [
+            "English-taught graduate programme list",
+            "english"
+          ]
+        ],
+        "campus": "Accommodation on the Haidian campus is limited. The 2027 graduate guide notes that dormitory booking depends on availability and that some students must arrange off-campus housing.",
+        "admissionsTitle": "2027 admissions, costs and scholarships.",
+        "admissionsLead": "Undergraduate and graduate application schedules differ, while graduate deadlines vary by department.",
+        "steps": [
+          [
+            "Application period",
+            "Graduate applications generally run from September 2026 to February 2027; the exact deadline is in each department’s 2027 catalogue."
+          ],
+          [
+            "Required documents",
+            "Prepare appropriate degree certificates, transcripts, language evidence, a personal statement, recommendations and, where required, a research proposal."
+          ],
+          [
+            "Costs",
+            "The 2027 graduate guide lists an RMB 800 application fee and RMB 800/year insurance. Tuition is programme-specific."
+          ],
+          [
+            "Scholarships",
+            "A full Chinese Government Scholarship (CGS) may cover tuition, accommodation or an allowance, stipend and medical insurance, subject to award decisions."
+          ]
+        ],
+        "note": "2027 notices checked on 5 November 2026. No single deadline, fee or language requirement applies to every Tsinghua programme; neither admission nor funding is guaranteed.",
+        "fundingTitle": "Funding and official guidance",
+        "fundingText": "Tsinghua’s official financial aid page describes government scholarships and tuition support. Verify the current scholarship round and the rules for your chosen department.",
+        "fundingLinks": [
+          [
+            "Tsinghua financial aid",
+            "funding"
+          ],
+          [
+            "2027 graduate admissions",
+            "graduate"
+          ]
+        ],
+        "relatedTitle": "Chinese-language preparation and summer study",
+        "relatedText": "Explore our separate Chinese language and summer school guides if you are considering non-degree study before applying for a degree."
+      }
+    },
+    "peking-university": {
+      "sources": {
+        "graduate": "https://www.isd.pku.edu.cn/en/detail.php?id=841",
+        "scholarships": "https://www.isd.pku.edu.cn/en/scholarship.php",
+        "degree": "https://www.isd.pku.edu.cn/en/detail.php?id=841",
+        "language": "https://isd.pku.edu.cn/en/detail.php?id=836"
+      },
+      "tr": {
+        "hero": "Peking Üniversitesi (PKU), Pekin’de sosyal bilimler, beşerî bilimler, doğa bilimleri ve mühendisliği kapsayan araştırma üniversitesidir. Uluslararası adaylar için 2027 lisansüstü kabul koşulları duyuruldu.",
+        "overview": "Peking Üniversitesi’nin Yanyuan kampüsü Pekin’in Haidian bölgesindedir. Uluslararası yüksek lisans ve doktora adaylarına ilişkin 2027 kabul rehberi farklı kampüs ve birimleri kapsar; bölüm katalogları esas alınır.",
+        "academicTitle": "2027 lisansüstünde somut seçenekler.",
+        "academicLead": "PKU’nun 2027 uluslararası lisansüstü rehberi, kamu politikası, uluslararası ilişkiler, bilgisayar bilimleri, yeni medya ve Çin çalışmaları gibi İngilizce eğitim seçeneklerini listeler. Her bölümün kendi program sayfası ve koşulları bulunur.",
+        "fields": [
+          [
+            "Kamu politikası",
+            "School of Government: Master in Public Policy (MPP) ve kamu yönetimi seçenekleri."
+          ],
+          [
+            "Bilgisayar bilimi",
+            "School of Computer Science: uluslararası yüksek lisans ve doktora programları."
+          ],
+          [
+            "Çin çalışmaları",
+            "Yenching Academy: China Studies yüksek lisans programı; ayrı kabul kurallarını doğrulayın."
+          ]
+        ],
+        "academicNote": "İngilizce programların başvuru tarihleri ve dil koşulları PKU genel lisansüstü takviminden farklı olabilir. Çince programlarda HSK şartları alanlara göre belirlenir.",
+        "academicLinks": [
+          [
+            "2027 lisansüstü kabul rehberi",
+            "graduate"
+          ],
+          [
+            "PKU resmî burs listesi",
+            "scholarships"
+          ]
+        ],
+        "campus": "Yanyuan ana kampüsü Pekin’dedir; 2027 rehberi ayrıca Changping, Daxing ve Shenzhen’deki bazı lisansüstü birimlerini kapsar. Konaklama ve günlük ulaşım seçilen kampüse göre değişir.",
+        "admissionsTitle": "2027 başvuru takvimi ve maliyetler.",
+        "admissionsLead": "2027 genel lisansüstü başvuruları Pekin saatiyle 26 Ekim–25 Aralık 2026 arasında kabul edilir. İngilizce programların özel rehberlerini kontrol etmek gerekir.",
+        "steps": [
+          [
+            "Takvim",
+            "Genel başvuru dönemi 26 Ekim–25 Aralık 2026; bazı İngilizce programların son tarihleri farklıdır."
+          ],
+          [
+            "Akademik belgeler",
+            "Diploma ve transkript, kişisel beyan/araştırma planı, özgeçmiş, iki akademik tavsiye mektubu ve programın istediği dil belgeleri hazırlanır."
+          ],
+          [
+            "Dil koşulları",
+            "2027 rehberinde Çince fen alanları için HSK 6’da 200+, beşerî alanlar için 210+ puan ve yazma alt puanı en az 65 belirtilir. İngilizce programlar kendi ölçütlerini açıklar."
+          ],
+          [
+            "Ücret ve burs",
+            "Başvuru ücreti program/alan başına 800 RMB. CGS Type B, Beijing Government Scholarship ve PKU bursları için ayrı uygunluk ve değerlendirme geçerlidir."
+          ]
+        ],
+        "note": "Bilgiler 5 Kasım 2026’da kontrol edilmiştir. Öğrenim ücreti ve burs kapsamı programa göre değişir; genel rehberin son tarihi İngilizce programların tamamını kapsamayabilir.",
+        "fundingTitle": "Burs ve resmî başvuru kaynakları",
+        "fundingText": "PKU; Çin Hükümet Bursu, Pekin Belediyesi Bursu ve üniversiteye ait bursları açıklar. Her bursun tam/kısmi kapsamı, takvimi ve belge koşulu ayrıca incelenmelidir.",
+        "fundingLinks": [
+          [
+            "2027 PKU lisansüstü rehberi",
+            "graduate"
+          ],
+          [
+            "PKU burs programları",
+            "scholarships"
+          ]
+        ],
+        "relatedTitle": "Kısa dönem Çince ve yaz okulu",
+        "relatedText": "PKU’nun dört haftalık Çince kursu bir derece programı değildir. Dil hazırlığı ve yaz seçeneklerini ayrı Çin rehberlerimizden karşılaştırabilirsiniz."
+      },
+      "en": {
+        "hero": "Peking University (PKU) is a research university in Beijing spanning the social sciences, humanities, natural sciences and engineering. Its 2027 international graduate admissions guidance is now available.",
+        "overview": "PKU’s Yanyuan campus is in Beijing’s Haidian district. Its 2027 international graduate admissions guide covers several campuses and schools; departmental catalogues govern specific programmes.",
+        "academicTitle": "Specific graduate pathways for 2027.",
+        "academicLead": "PKU’s 2027 graduate admissions guidance lists English-taught options in public policy, international affairs, computer science, new media and China Studies. Every school or programme sets additional requirements.",
+        "fields": [
+          [
+            "Public policy",
+            "School of Government: Master in Public Policy (MPP) and public administration pathways."
+          ],
+          [
+            "Computer science",
+            "School of Computer Science: international master’s and doctoral programmes."
+          ],
+          [
+            "China Studies",
+            "Yenching Academy: master’s programme in China Studies with its own application requirements."
+          ]
+        ],
+        "academicNote": "Deadlines and language tests for individual English-taught programmes may differ from the general graduate admissions schedule. Chinese-taught courses have discipline-specific HSK requirements.",
+        "academicLinks": [
+          [
+            "Official 2027 graduate admissions guide",
+            "graduate"
+          ],
+          [
+            "PKU scholarships overview",
+            "scholarships"
+          ]
+        ],
+        "campus": "The main Yanyuan campus is in Beijing, while the 2027 guide also covers graduate units in Changping, Daxing and Shenzhen. Housing and commuting needs depend on the campus selected.",
+        "admissionsTitle": "2027 deadlines and application costs.",
+        "admissionsLead": "The general 2027 graduate application window runs from 26 October to 25 December 2026, Beijing time. Check individual English-taught programme guides for exceptions.",
+        "steps": [
+          [
+            "Deadlines",
+            "General graduate window: 26 October–25 December 2026; selected English-taught courses have separate deadlines."
+          ],
+          [
+            "Documents",
+            "Prepare degree certificates, transcripts, a statement or research plan, CV, two academic recommendations and programme-specific language evidence."
+          ],
+          [
+            "Language requirements",
+            "The 2027 guide lists HSK 6 scores over 200 in sciences and over 210 in humanities, plus writing of at least 65. English-taught courses set their own requirements."
+          ],
+          [
+            "Fees and aid",
+            "Application fee: RMB 800 per programme or major. CGS Type B, Beijing Government and PKU scholarships have separate eligibility and award procedures."
+          ]
+        ],
+        "note": "Verified 5 November 2026. Tuition and scholarship coverage depend on the programme; the general deadline does not override specific English-taught programme deadlines.",
+        "fundingTitle": "Scholarships and official admission sources",
+        "fundingText": "PKU lists Chinese Government, Beijing Government and university scholarship schemes. Examine each award’s coverage, deadline and documentation rather than assuming automatic funding.",
+        "fundingLinks": [
+          [
+            "2027 graduate guide",
+            "graduate"
+          ],
+          [
+            "Official PKU scholarship schemes",
+            "scholarships"
+          ]
+        ],
+        "relatedTitle": "Non-degree language courses and summer study",
+        "relatedText": "PKU’s four-week Chinese programme is not a degree. Use our separate Chinese-language and summer school guides to compare preparatory options."
+      }
+    },
+    "fudan-university": {
+      "sources": {
+        "undergraduate": "https://iso.fudan.edu.cn/isoenglish/2c/a9/c51327a797865/page.htm",
+        "graduate": "https://iso.fudan.edu.cn/isoenglish/2c/ae/c51328a797870/page.htm",
+        "management": "https://www.fdsm.fudan.edu.cn/upec/2026/0904/c2660a37229/page.htm",
+        "scholarship": "https://iso.fudan.edu.cn/isoenglish/"
+      },
+      "tr": {
+        "hero": "Fudan Üniversitesi, Şanghay’daki çok disiplinli araştırma üniversitesidir. Uluslararası öğrenciler için 2027 İngilizce ve Çince lisans/lisansüstü duyuruları 3 Kasım 2026’da yayımlandı.",
+        "overview": "Fudan’ın ana yerleşimi Şanghay’ın Yangpu bölgesindeki Handan kampüsündedir. 2027 kabul ilanları lisans ve lisansüstü düzeylerinde; İngilizce ve Çince eğitim grupları için ayrı yayımlanmıştır.",
+        "academicTitle": "2027 duyurularında hangi alanlar var?",
+        "academicLead": "Fudan’ın uluslararası öğrenci ofisi 2027 İngilizce lisans ve lisansüstü kabul duyurularını yayımladı. İşletme okulunun 2027 program açıklaması ise dil farkını somut biçimde gösteriyor.",
+        "fields": [
+          [
+            "İngilizce lisans",
+            "2027 İngilizce lisans programlarının resmî listesi ve kabul rehberi ISO portalında."
+          ],
+          [
+            "Uluslararası finans",
+            "School of Management: 2027 Master of Finance – International Finance (MIF), İngilizce."
+          ],
+          [
+            "İşletmede yapay zekâ",
+            "School of Management: 2027 Master of AI for Business (MAIB), Çince; matematik ve Python değerlendirmesi duyurulmuş."
+          ]
+        ],
+        "academicNote": "İşletme okulundaki MIF ve MAIB, üniversitenin tüm lisansüstü programlarını temsil etmez. Diğer programların dil ve başvuru koşullarını ayrı ilanlarından doğrulayın.",
+        "academicLinks": [
+          [
+            "2027 İngilizce lisans kabul ilanı",
+            "undergraduate"
+          ],
+          [
+            "2027 İngilizce lisansüstü kabul ilanı",
+            "graduate"
+          ],
+          [
+            "2027 işletme okulu programları",
+            "management"
+          ]
+        ],
+        "campus": "Handan kampüsü Şanghay’da Yangpu bölgesindedir. Konaklama, kampüs yerleşimi ve yaşam giderleri programın hangi birimde sunulduğuna ve ayrılan yurt kontenjanına göre değişir.",
+        "admissionsTitle": "2027 başvuru ve burs kaynakları.",
+        "admissionsLead": "Fudan’ın 3 Kasım 2026 tarihli lisans/lisansüstü ilanları resmî kaynaktır. Program eklerindeki kesin takvim ve ücretler birbirinin yerine kullanılamaz.",
+        "steps": [
+          [
+            "Başvuru türünü ayır",
+            "İngilizce/Çince lisans ile yüksek lisans/doktora başvuru rehberleri ve belge listeleri ayrıdır."
+          ],
+          [
+            "İşletme okulu örneği",
+            "2027 MIF/MAIB başvurularında okulun duyurduğu dönem Ekim 2026–Nisan 2027. Bu süre diğer Fudan programlarının genel son tarihi değildir."
+          ],
+          [
+            "Belgeler ve ücret",
+            "Bölümün istediği diploma, transkript ve dil kanıtı kontrol edilir. MIF/MAIB başvuru aşamasında Fudan sistemi üzerinden 800 RMB işlem ücreti duyurulmuştur."
+          ],
+          [
+            "Finansman",
+            "Chinese Government Scholarship ve Shanghai Government Scholarship türleri vardır; 2027 için uygunluk, kapsam ve tarihleri resmî burs çağrısından doğrulayın."
+          ]
+        ],
+        "note": "5 Kasım 2026’da kontrol edildi. Tüm Fudan başvuruları için ortak bir son tarih veya ortak bir öğrenim ücreti ilan edilmiş gibi sunulmuyor; burs ve kabul garantisi yoktur.",
+        "fundingTitle": "Güncel 2027 ilanları",
+        "fundingText": "Yeni ilanları Fudan Uluslararası Öğrenci Ofisi yayımlıyor. İşletme okulunun İngilizce MIF programının şartlarıyla üniversite genelindeki diğer programların şartları farklı olabilir.",
+        "fundingLinks": [
+          [
+            "2027 İngilizce lisansüstü duyurusu",
+            "graduate"
+          ],
+          [
+            "2027 lisans duyurusu",
+            "undergraduate"
+          ],
+          [
+            "Fudan resmî uluslararası öğrenci portalı",
+            "scholarship"
+          ]
+        ],
+        "relatedTitle": "Şanghay’da dil ve yaz eğitimi",
+        "relatedText": "Fudan’ın dönemlik Çince eğitimi ve International Summer Session programları, derece programlarından ayrı başvuru yollarıdır."
+      },
+      "en": {
+        "hero": "Fudan University is a multidisciplinary research university in Shanghai. Its international admissions office published 2027 English- and Chinese-taught undergraduate and postgraduate notices on 3 November 2026.",
+        "overview": "Fudan’s main Handan campus is in Shanghai’s Yangpu district. Its 2027 admission notices distinguish undergraduate from postgraduate routes and English- from Chinese-taught study.",
+        "academicTitle": "What do the 2027 notices cover?",
+        "academicLead": "Fudan’s International Students Office has published 2027 English-taught undergraduate and postgraduate admissions notices. The School of Management’s 2027 information illustrates the differences between teaching languages.",
+        "fields": [
+          [
+            "English-taught undergraduate",
+            "Official 2027 undergraduate admissions and programme information appear on Fudan’s ISO portal."
+          ],
+          [
+            "International finance",
+            "School of Management: 2027 Master of Finance – International Finance (MIF), taught in English."
+          ],
+          [
+            "AI for Business",
+            "School of Management: 2027 Master of AI for Business (MAIB), taught in Chinese; mathematics and Python assessment is listed."
+          ]
+        ],
+        "academicNote": "The MIF and MAIB examples do not represent all Fudan graduate programmes. Verify teaching language and admissions rules in the notice for each department.",
+        "academicLinks": [
+          [
+            "2027 English-taught undergraduate notice",
+            "undergraduate"
+          ],
+          [
+            "2027 English-taught postgraduate notice",
+            "graduate"
+          ],
+          [
+            "2027 School of Management programmes",
+            "management"
+          ]
+        ],
+        "campus": "The Handan campus is in Shanghai’s Yangpu district. Housing options and living costs depend on the department and dormitory availability.",
+        "admissionsTitle": "2027 admissions and scholarship sources.",
+        "admissionsLead": "Fudan’s 3 November 2026 undergraduate/postgraduate notices are the official references. Dates and fees within separate programmes cannot be assumed to apply universally.",
+        "steps": [
+          [
+            "Choose the route",
+            "English- and Chinese-taught bachelor’s, master’s and doctoral routes have different notices and document rules."
+          ],
+          [
+            "Management example",
+            "For the 2027 MIF/MAIB intake, the School of Management states an October 2026–April 2027 application window. It is not a university-wide deadline."
+          ],
+          [
+            "Documents and fees",
+            "Check the programme’s degree, transcript and language requirements. The MIF/MAIB guidance describes an RMB 800 fee when proceeding via Fudan’s application system."
+          ],
+          [
+            "Scholarships",
+            "Chinese Government and Shanghai Government scholarships exist; verify 2027 eligibility, funding coverage and exact deadlines from the current official call."
+          ]
+        ],
+        "note": "Sources checked 5 November 2026. There is no claim that Fudan has one university-wide deadline or tuition rate; admission and scholarship awards are not guaranteed.",
+        "fundingTitle": "Current 2027 announcements",
+        "fundingText": "Fudan’s International Students Office publishes admissions notices. The English-taught MIF route has its own School of Management conditions, separate from other degrees.",
+        "fundingLinks": [
+          [
+            "2027 English-taught postgraduate notice",
+            "graduate"
+          ],
+          [
+            "2027 undergraduate admissions notice",
+            "undergraduate"
+          ],
+          [
+            "Fudan International Students Office",
+            "scholarship"
+          ]
+        ],
+        "relatedTitle": "Language study and summer programmes in Shanghai",
+        "relatedText": "Fudan’s semester Chinese-language course and International Summer Session are non-degree routes with separate admissions."
+      }
+    }
+  }
+}
