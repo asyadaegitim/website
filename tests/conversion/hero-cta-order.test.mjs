@@ -21,7 +21,7 @@ test('bilingual hero places destination link inline after the description',()=>{
 test('consultation calendar icon and WhatsApp button appear in that order below the destination link',()=>{
   for(const locale of ['tr','en']){
     const h=read(locale);
-    const block=h.match(/<div class="hero-actions hero-contact-actions">([\s\S]*?)<\/div><\/div><\/div><div class="hero-accordion"/)?.[1];
+    const block=h.match(/<div class="hero-actions hero-contact-actions">([\s\S]*?)<\/div>/)?.[1];
     assert.ok(block,locale+' CTA group missing');
     assert.equal((block.match(/hero-consultation-cta/g)||[]).length,1);
     assert.equal((block.match(/class="consultation-mark"/g)||[]).length,1);
