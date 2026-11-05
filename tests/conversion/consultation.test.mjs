@@ -30,12 +30,20 @@ test('consultation gives direct contact alternatives without removing the workin
  assert.match(en,/<span class="contact-channel-detail">info@asyadaegitim\.com<\/span>/);
 });
 
-test('both homepages offer WhatsApp beside the existing consultation action',()=>{
+test('both homepages place the consultation action before the WhatsApp button',()=>{
  const tr=read('index.html'),en=read('en/index.html');
- assert.match(tr,/href="\/on-gorusme\/"[^>]*>Ücretsiz Ön Görüşme<\/a>/);
- assert.match(en,/href="\/en\/on-gorusme\/"[^>]*>Free Pre-Consultation<\/a>/);
- assert.match(tr,/class="home-whatsapp-link" href="https:\/\/wa\.me\/905444181508"/);
- assert.match(en,/class="home-whatsapp-link" href="https:\/\/wa\.me\/905444181508"/);
+ for(const [html,locale] of [[tr,'tr'],[en,'en']]){
+  const label=locale==='tr'?'Ücretsiz Ön Görüşme':'Free Pre-Consultation';
+  const href=locale==='tr'?'/on-gorusme/':'/en/on-gorusme/';
+  const consult=html.indexOf('class="button outline hero-consultation-cta" href="'+href+'"');
+  const whatsapp=html.indexOf('class="home-whatsapp-link" href="https://wa.me/905444181508"');
+  assert.ok(consult>0,locale+' consultation action must remain present');
+  assert.ok(whatsapp>consult,locale+' WhatsApp must follow consultation');
+  const block=html.slice(consult,whatsapp);
+  assert.match(block,/class="consultation-mark"/);
+  assert.ok(block.includes(label),locale+' consultation label');
+  assert.match(html,/class="hero-discover-link" href="\\/(?:en\\/)?ulkeler\\/"/);
+ }
 });
 
 function simulateForm(locale,search){
