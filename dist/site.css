@@ -756,3 +756,63 @@ body { line-height: 1.58; }
 @media (max-width: 390px) {
   .home-whatsapp-link { max-width: 100%; }
 }
+
+/* Hero CTAs: destination link belongs at the end of the description.
+   Pre-consultation and WhatsApp form a compact two-row action group. */
+.home-hero .hero-description { margin-bottom: 13px; }
+.hero-discover-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  vertical-align: baseline;
+  padding: 3px 8px;
+  margin-left: 2px;
+  min-height: 30px;
+  border: 1px solid #bd212035;
+  border-radius: var(--radius);
+  background: #bd21200a;
+  color: var(--red);
+  font: 600 .82rem/1.35 var(--sans);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.hero-discover-link:hover, .hero-discover-link:focus-visible {
+  color: var(--red-dark);
+  border-color: var(--red);
+  background: #bd212015;
+}
+.hero-discover-link span[aria-hidden] { font-size: 1rem; line-height: 1; }
+.hero-contact-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+}
+.hero-contact-actions .hero-consultation-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex: none;
+  min-height: 44px;
+  padding: 10px 15px;
+  border-color: #bd212055;
+  background: #bd21200a;
+  color: var(--red);
+  font-family: var(--sans);
+  font-size: .9rem;
+  font-weight: 600;
+}
+.hero-contact-actions .hero-consultation-cta:hover,
+.hero-contact-actions .hero-consultation-cta:focus-visible {
+  color: var(--red-dark);
+  border-color: var(--red);
+  background: #bd212015;
+}
+.consultation-mark { display: block; width: 19px; height: 19px; flex: none; }
+.hero-contact-actions .home-whatsapp-link { margin-top: 0; }
+@media (max-width: 760px) {
+  .hero-contact-actions .hero-consultation-cta { flex: none; padding-inline: 15px; }
+  .hero-discover-link { margin-left: 0; }
+}
