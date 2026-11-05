@@ -31,7 +31,7 @@ test('three university profiles have two official admissions references in both 
         ?(locale==='tr'?'Üniversitenin resmî sitesi':'Official university website')
         :(locale==='tr'?'Resmî uluslararası başvuru sayfası':'Official international admissions page');
       assert.equal(html.split('>'+label+'</a>').length-1,2,locale+' '+slug+' label');
-      assert.match(html,/<a class="button" href="\/(?:on-gorusme|free-consultation)\/">/);
+      assert.match(html,/<a class="button" href="\/(?:en\/on-gorusme|on-gorusme|free-consultation)\/">/);
     }
   }
 });
