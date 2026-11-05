@@ -838,3 +838,144 @@ body { line-height: 1.58; }
   .profile-2027 .field-card { padding: 14px; }
   .profile-2027 .profile-2027-links a { min-height: 44px; }
 }
+
+
+/* Source-backed university imagery and scroll-aware section navigation. */
+.detail-layout .toc a.is-active,
+.detail-layout .toc a[aria-current="location"] {
+  color:var(--red);
+  font-weight:700;
+  background:linear-gradient(90deg,rgba(189,33,32,.075),transparent 83%);
+  padding-left:13px;
+  position:relative;
+}
+.detail-layout .toc a.is-active::before {
+  content:"";
+  position:absolute;
+  left:0;top:11px;bottom:11px;width:3px;
+  background:var(--red);
+  border-radius:3px;
+}
+.detail-layout .toc a:focus-visible,
+.campus-gallery button:focus-visible,
+.campus-gallery a:focus-visible {
+  outline:2px solid var(--red);
+  outline-offset:3px;
+}
+.campus-gallery {
+  width:100%;
+  min-width:0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:9px;
+  align-self:center;
+}
+.campus-gallery-stage {
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  aspect-ratio:16/10;
+  max-height:300px;
+  background:#ece9e2;
+}
+.campus-gallery-view {
+  width:100%;height:100%;
+  padding:0;border:0;background:transparent;cursor:zoom-in;
+  display:block;
+}
+.campus-gallery-view > img {
+  display:block;width:100%;height:100%;object-fit:cover;
+}
+.campus-gallery-expand {
+  position:absolute;top:10px;right:10px;
+  display:grid;place-items:center;
+  width:30px;height:30px;
+  color:#fff;background:rgba(20,24,29,.68);
+  border-radius:var(--radius);
+  font-size:1.35rem;
+}
+.campus-gallery-arrow {
+  position:absolute;
+  top:50%;transform:translateY(-50%);
+  display:grid;place-items:center;
+  width:44px;height:46px;
+  background:rgba(17,21,25,.67);
+  color:#fff;
+  border:1px solid #fff6;
+  border-radius:var(--radius);
+  cursor:pointer;
+  font:400 2.2rem/1 var(--display);
+  z-index:2;
+}
+.campus-gallery-prev {left:9px;}
+.campus-gallery-next {right:9px;}
+.campus-gallery-arrow:hover{background:rgba(17,21,25,.87);}
+.campus-gallery-count {
+  position:absolute;bottom:9px;right:10px;
+  color:#fff;background:#161d27ba;
+  border-radius:var(--radius);padding:4px 9px;
+  font-size:.77rem;font-weight:600;pointer-events:none;
+}
+.campus-gallery-thumbs {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+}
+.campus-gallery-thumb {
+  position:relative;
+  height:60px;
+  min-width:0;
+  padding:2px;
+  border:2px solid transparent;
+  border-radius:var(--radius);
+  background:transparent;
+  cursor:pointer;
+}
+.campus-gallery-thumb[aria-pressed="true"]{border-color:var(--red);}
+.campus-gallery-thumb img {width:100%;height:100%;display:block;object-fit:cover;border-radius:2px;}
+.campus-gallery-attribution {
+  display:grid;gap:4px;
+  color:var(--muted);
+  font-size:.73rem;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+.campus-gallery-attribution a {color:var(--muted);text-decoration:underline;text-underline-offset:2px;}
+.campus-gallery-dialog {
+  width:min(94vw,1050px);
+  max-width:94vw;
+  padding:20px;
+  border:0;border-radius:var(--radius);
+  background:var(--paper);color:var(--ink);
+  box-shadow:0 24px 100px #13131377;
+}
+.campus-gallery-dialog::backdrop {background:rgba(12,14,18,.83);}
+.campus-gallery-dialog img {display:block;width:100%;height:auto;max-height:80vh;object-fit:contain;}
+.campus-gallery-dialog p {font-size:.9rem;margin:8px 0 0;}
+.campus-gallery-close {
+  position:absolute;top:9px;right:9px;
+  width:44px;height:44px;border-radius:var(--radius);
+  border:1px solid var(--line);color:var(--ink);
+  background:var(--surface);font-size:1.6rem;cursor:pointer;
+}
+/* Reverse (white-only) legacy logo images were invisible on white.
+   Use an accessible deep-navy presentation rather than a dark rectangle. */
+.logo-tile, .card-logo, .detail-logo-art {background:#fff;}
+img.university-logo[src$="/nanjing-university.png"],
+img.university-logo[src$="/shanghai-jiao-tong-university.png"],
+img.university-logo[src$="/shanghai-university.png"],
+img.university-logo[src$="/university-of-science-and-technology-of-china.png"],
+img.university-logo[src$="/wuhan-university.png"],
+img.university-logo[src$="/zhejiang-university.png"] {
+  filter:brightness(0) saturate(100%) invert(19%) sepia(17%) saturate(1138%) hue-rotate(174deg) brightness(93%) contrast(96%);
+}
+@media(max-width:760px){
+  .campus-gallery-stage {max-height:none;aspect-ratio:16/10;}
+  .campus-gallery-thumb {height:56px;min-height:48px;}
+  .campus-gallery-attribution {font-size:.75rem;}
+  .detail-layout .toc a.is-active {padding-left:12px;}
+  .campus-gallery-dialog {padding:12px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .campus-gallery *{scroll-behavior:auto!important;animation:none!important;transition:none!important;}
+}
