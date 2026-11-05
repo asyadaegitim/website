@@ -870,13 +870,14 @@ body { line-height: 1.58; }
   gap:9px;
   align-self:center;
 }
+.detail-hero:has(.campus-gallery) { align-items:center; }
 .campus-gallery-stage {
   position:relative;
   overflow:hidden;
   border:1px solid var(--line);
   border-radius:var(--radius);
   aspect-ratio:16/10;
-  max-height:300px;
+  max-height:260px;
   background:#ece9e2;
 }
 .campus-gallery-view {
@@ -923,7 +924,7 @@ body { line-height: 1.58; }
 }
 .campus-gallery-thumb {
   position:relative;
-  height:60px;
+  height:54px;
   min-width:0;
   padding:2px;
   border:2px solid transparent;
