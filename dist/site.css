@@ -572,3 +572,153 @@ html[lang="en"] .home-hero h1 { font-size: clamp(2.1rem, 4.5vw, 4.5rem); }
 @media (prefers-reduced-motion: reduce){
  .skip-link{transition:none}
 }
+
+
+/*
+ * Compact editorial layout · 2026-11-05
+ * Shared by Asya'da Eğitim and Education in Asia.
+ * Reduce empty space, not information or accessible interaction targets.
+ */
+body { line-height: 1.58; }
+.header-action { min-height: 44px; }
+.home-hero { padding: 28px 0 14px; }
+.home-intro-row { gap: 40px; padding: 14px 0 22px; }
+.home-hero h1 { font-size: clamp(3rem, 5.3vw, 4.8rem); }
+.home-hero p { margin-bottom: 16px; }
+.hero-accordion { height: min(350px, 29vw); min-height: 295px; }
+.hero-panel-content { inset: auto 16px 18px; }
+.hero-hint { padding-top: 8px; }
+.country-bar a { padding: 12px 11px; }
+
+.section { padding: 40px 0; }
+.section-head { gap: 25px; margin-bottom: 20px; }
+.section-head h2 { font-size: clamp(2rem, 3vw, 3rem); margin-top: 8px; }
+.card-grid { gap: 14px; }
+.school-card { min-height: 248px; padding: 18px; }
+.school-card h3 { font-size: clamp(1.35rem, 1.8vw, 1.65rem); margin: 12px 0 6px; }
+.school-card .link { padding-top: 12px; }
+.card-logo { width: 146px; height: 66px; padding: 5px; margin-top: 12px; }
+.card-logo .university-logo { width: 135px; height: 54px; }
+.more-row { margin-top: 16px; }
+.featured-track { gap: 14px; padding-bottom: 12px; }
+.featured-photo { height: 180px; }
+.featured-body { min-height: 184px; padding: 17px; }
+.featured-body h3 { margin-top: 10px; }
+.featured-foot { padding-top: 14px; }
+.logo-section { margin-top: 25px; padding-top: 16px; }
+.logo-track { padding: 14px 0 10px; }
+.logo-tile { min-height: 120px; padding: 12px; }
+.field-card { min-height: 100px; padding: 16px; gap: 12px; }
+
+.page-hero { padding: 28px 0 24px; }
+.page-hero h1 { font-size: clamp(2.65rem, 4.65vw, 4.35rem); margin: 16px 0; }
+.country-hero { gap: 32px; }
+.country-art { height: 260px; }
+.subnav { padding: 7px 0; margin-top: 22px; }
+.country-intro { gap: 42px; }
+.country-intro h2 { font-size: clamp(2rem, 3vw, 2.9rem); }
+.country-intro p { margin-bottom: 14px; }
+.route-panel { gap: 12px; }
+.route-link { padding: 16px; min-height: 132px; gap: 12px; }
+.feature-band, .cta-strip { padding: 30px 0; }
+.feature-band h2 { margin: 8px 0; }
+.cta-strip h2 { margin-top: 8px; }
+.detail-hero { gap: 34px; }
+.detail-hero .tags { margin-top: 16px; }
+.detail-campus, .detail-logo-art { height: 268px; }
+.detail-layout { gap: 38px; }
+.toc a { padding: 11px 0; }
+.detail-content section { padding-bottom: 25px; margin-bottom: 25px; }
+.detail-content h2 { margin: 8px 0 14px; font-size: clamp(1.85rem, 2.4vw, 2.35rem); }
+.detail-content .field-card { min-height: 100px; }
+.detail-content .note-box { margin-top: 16px; }
+.facts { margin-top: 18px; }
+.facts > div { padding: 15px; }
+.facts strong { margin-top: 7px; }
+.steps { gap: 14px; }
+.step { padding-top: 12px; }
+.step p { margin: 7px 0 0; }
+.guide-steps { margin-top: 18px; }
+
+.list-controls { margin: 18px 0 12px; }
+.school-row { padding: 15px 10px; gap: 14px; }
+.program-card { min-height: 185px; padding: 20px; }
+.program-card h2 { margin: 12px 0 10px; }
+.program-card .bottom { margin-top: 14px; }
+.contact-layout { gap: 38px; }
+.contact-layout h2 { margin: 12px 0; }
+.contact-form { padding: 20px; gap: 16px; }
+.credit-list li { padding-bottom: 10px; }
+.section.discovery-country { padding: 22px 0 26px; }
+.section.discovery-university, .section.discovery-programs { padding: 38px 0 46px; }
+.discovery-heading { margin-bottom: 16px; }
+.discovery-shortcuts { margin: 16px 0; }
+.discovery-item { min-height: 52px; padding: 10px 14px; }
+.discovery-program-card { padding: 17px; gap: 9px; }
+
+.footer { padding: 30px 0 16px; }
+.footer-main { gap: clamp(20px, 2.6vw, 40px); }
+.footer-eyebrow { margin-bottom: 12px; }
+.footer-contact { margin: 16px 0 8px; }
+.footer-office-relay .footer-eyebrow, .footer-office-ankara .footer-eyebrow { margin-bottom: 11px; }
+.footer-office-secondary { gap: 14px; }
+.footer-nav-links { gap: 6px; }
+.footer-bottom { margin-top: 22px; padding-top: 12px; }
+
+@media (max-width: 1140px) {
+  .home-intro-row { gap: 20px; }
+  .hero-accordion { height: 310px; min-height: 0; }
+  .detail-layout { gap: 28px; }
+  .footer-main { gap: 24px; }
+}
+@media (max-width: 760px) {
+  .home-hero { padding: 22px 0 12px; }
+  .home-intro-row { padding: 14px 0 19px; gap: 14px; }
+  /* Protect the two-line Turkish hero slogan from horizontal overflow. */
+  .home-hero h1 { font-size: clamp(2rem, 9.5vw, 4rem); }
+  .home-hero p { margin-bottom: 14px; }
+  .hero-accordion { height: 256px; min-height: 0; }
+  .hero-panel-content { inset: auto 14px 16px; }
+  .hero-panel strong { font-size: 1.6rem; }
+  .country-bar a { min-height: 51px; padding: 9px 10px; }
+  .section { padding: 28px 0; }
+  .section-head { margin-bottom: 16px; }
+  .section-head h2 { font-size: clamp(1.9rem, 6.4vw, 2.6rem); }
+  .section-head p { margin-top: 10px; }
+  .featured-photo { height: 166px; }
+  .featured-body { padding: 15px; min-height: 165px; }
+  .featured-body h3 { font-size: 1.5rem; }
+  .logo-section { margin-top: 22px; }
+  .logo-tile { flex-basis: 138px; min-height: 114px; }
+  .school-card { min-height: 0; padding: 16px; }
+  .school-card h3 { font-size: 1.45rem; margin: 10px 0 5px; }
+  .school-card .link { padding-top: 10px; }
+  .page-hero { padding: 23px 0; }
+  .page-hero h1 { font-size: clamp(2.35rem, 7.4vw, 3.25rem); margin: 14px 0; }
+  .country-hero, .detail-hero, .country-intro, .detail-layout, .contact-layout { gap: 19px; }
+  .country-intro h2 { font-size: 2rem; }
+  .country-art, .detail-campus, .detail-logo-art { height: 218px; }
+  .subnav { margin-top: 18px; padding: 5px 0; }
+  .subnav a { min-height: 44px; padding: 8px 11px; }
+  .toc { gap: 16px; }
+  .toc a { min-height: 44px; }
+  .detail-content h2 { font-size: 1.9rem; }
+  .steps { gap: 12px; }
+  .step { padding-top: 10px; }
+  .guide-steps { margin-top: 14px; }
+  .school-row { padding: 13px 0; }
+  .school-row strong { font-size: 1.3rem; }
+  .contact-form { padding: 18px; gap: 14px; }
+  .feature-band, .cta-strip { padding: 25px 0; }
+  .feature-band .button, .cta-strip .button { margin-top: 16px; min-height: 44px; }
+  .section.discovery-university, .section.discovery-programs { padding: 28px 0 34px; }
+  .section.discovery-country { padding: 19px 0 22px; }
+  .footer { padding: 24px 0 14px; }
+  .footer-main { gap: 20px; }
+  .footer-logo { width: 175px; }
+  .footer-contact { margin-top: 12px; }
+  .footer-office-grid { gap: 14px; }
+  .footer-office-secondary { gap: 12px; }
+  .footer-nav-links { gap: 5px 14px; }
+  .footer-bottom { margin-top: 18px; }
+}
