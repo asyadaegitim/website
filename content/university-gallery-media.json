@@ -12,7 +12,8 @@
           "license": "CC0",
           "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
           "tr": "Tsinghua kampüsünde gölet ve ağaçlar",
-          "en": "Tsinghua campus pond and trees"
+          "en": "Tsinghua campus pond and trees",
+          "thumb": "tsinghua-pond-thumb.webp"
         },
         {
           "file": "tsinghua-autumn.webp",
@@ -21,7 +22,8 @@
           "license": "CC0",
           "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
           "tr": "Tsinghua kampüsünde sonbahar köprüsü",
-          "en": "Autumn bridges on the Tsinghua campus"
+          "en": "Autumn bridges on the Tsinghua campus",
+          "thumb": "tsinghua-autumn-thumb.webp"
         },
         {
           "file": "tsinghua-old-gate.webp",
@@ -30,7 +32,8 @@
           "license": "CC BY-SA 3.0",
           "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
           "tr": "Tsinghua Üniversitesi tarihî kampüs kapısı",
-          "en": "Historic Tsinghua University campus gate"
+          "en": "Historic Tsinghua University campus gate",
+          "thumb": "tsinghua-old-gate-thumb.webp"
         }
       ]
     },
@@ -44,7 +47,8 @@
           "license": "CC BY-SA 2.0",
           "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
           "tr": "Peking Üniversitesi tarihî kampüs girişi",
-          "en": "Historic entrance to Peking University"
+          "en": "Historic entrance to Peking University",
+          "thumb": "peking-gate-thumb.webp"
         },
         {
           "file": "peking-lake.webp",
@@ -53,7 +57,8 @@
           "license": "CC0",
           "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
           "tr": "Peking Üniversitesi Weiming Gölü",
-          "en": "Weiming Lake on Peking University campus"
+          "en": "Weiming Lake on Peking University campus",
+          "thumb": "peking-lake-thumb.webp"
         },
         {
           "file": "peking-lake-view.webp",
@@ -62,7 +67,8 @@
           "license": "CC0",
           "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
           "tr": "Peking Üniversitesi Weiming Gölü ve bahçeleri",
-          "en": "Weiming Lake and gardens at Peking University"
+          "en": "Weiming Lake and gardens at Peking University",
+          "thumb": "peking-lake-view-thumb.webp"
         }
       ]
     },
@@ -76,7 +82,8 @@
           "license": "CC BY-SA 4.0",
           "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
           "tr": "Fudan Üniversitesi Jiangwan kampüsü",
-          "en": "Fudan University Jiangwan campus"
+          "en": "Fudan University Jiangwan campus",
+          "thumb": "fudan-jiangwan-thumb.webp"
         },
         {
           "file": "fudan-guanghua.webp",
@@ -85,7 +92,8 @@
           "license": "CC BY-SA 4.0",
           "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
           "tr": "Fudan Üniversitesi Guanghua Kulesi",
-          "en": "Guanghua Tower at Fudan University"
+          "en": "Guanghua Tower at Fudan University",
+          "thumb": "fudan-guanghua-thumb.webp"
         },
         {
           "file": "fudan-handan-dusk.webp",
@@ -94,7 +102,8 @@
           "license": "CC BY-SA 4.0",
           "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
           "tr": "Fudan Üniversitesi Handan kampüsünün gün batımındaki görünümü",
-          "en": "Fudan Handan campus at dusk"
+          "en": "Fudan Handan campus at dusk",
+          "thumb": "fudan-handan-dusk-thumb.webp"
         }
       ]
     }

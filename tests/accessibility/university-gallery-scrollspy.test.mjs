@@ -20,6 +20,8 @@ test('three licensed images and accessible controls exist on six China profile g
    assert.ok(p.tr&&p.en&&p.artist);
    assert.ok(statSync(join(root,'assets','campus-galleries',p.file)).size>10_000);
    assert.ok(statSync(join(root,'assets','campus-galleries',p.file)).size<450_000);
+   assert.equal(p.thumb,p.file.replace(/\\.webp$/,'-thumb.webp'));
+   assert.ok(statSync(join(root,'assets','campus-galleries',p.thumb)).size<50000);
   }
   for(const locale of ['tr','en']){
    const html=read('/universiteler/'+slug+'/',locale);

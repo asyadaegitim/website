@@ -25,7 +25,7 @@ function markup(slug,group,locale){
   const originalUrl=new URL(p.source),licenseUrl=new URL(p.licenseUrl);
   if(originalUrl.hostname!=='commons.wikimedia.org'||licenseUrl.hostname!=='creativecommons.org')throw Error('Unapproved photo credit URL '+slug+' '+i);
   return '<button class="campus-gallery-thumb" type="button" data-gallery-item data-image="'+h(url(p.file))+'" data-alt="'+h(en?p.en:p.tr)+'" data-artist="'+h(p.artist)+'" data-license="'+h(p.license)+'" data-source="'+h(p.source)+'" data-license-url="'+h(p.licenseUrl)+'" aria-label="'+h((en?'Show photo ':'Fotoğrafı göster ')+(i+1))+'" aria-pressed="'+(i===0?'true':'false')+'">'
-  +'<img src="'+h(url(p.file))+'" width="150" height="96" loading="lazy" decoding="async" alt=""></button>';
+  +'<img src="'+h(url(p.thumb||p.file))+'" width="250" height="166" loading="lazy" decoding="async" alt=""></button>';
  }).join('');
  const credit=(en?'Photo: ':'Fotoğraf: ')+first.artist;
  return '<div class="campus-gallery" data-campus-gallery data-university="'+h(slug)+'" aria-label="'+h(group.name+(en?' campus photo gallery':' kampüs fotoğraf galerisi'))+'">'
