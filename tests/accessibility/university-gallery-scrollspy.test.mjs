@@ -63,3 +63,11 @@ test('scrollspy uses aria-current and gallery respects reduced motion and visibi
  assert.match(css,/\.detail-layout \.toc a\.is-active/);
  assert.match(css,/\.campus-gallery-dialog::backdrop/);
 });
+
+test('white-background Xi’an Jiaotong logo is used in every local university listing',()=>{
+ assert.ok(statSync(join(root,'assets','university-logos','xian-jiaotong-university-white.webp')).size>5000);
+ for(const {trPath} of ROUTE_PAIRS)for(const locale of ['tr','en']){
+  const html=read(trPath,locale);
+  assert.doesNotMatch(html,/src="\/assets\/university-logos\/xian-jiaotong-university\.png"/,locale+' '+trPath);
+ }
+});

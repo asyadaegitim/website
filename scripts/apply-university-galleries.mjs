@@ -34,6 +34,7 @@ function markup(slug,group,locale){
   +'<img data-gallery-main src="'+h(url(first.file))+'" alt="'+h(en?first.en:first.tr)+'" width="1100" height="740" loading="eager" decoding="async" fetchpriority="high">'
   +'<span class="campus-gallery-expand" aria-hidden="true">⤢</span></button>'
   +control('prev','‹',en?'Previous photo':'Önceki fotoğraf')+control('next','›',en?'Next photo':'Sonraki fotoğraf')
+  +'<span class="campus-gallery-brand" aria-hidden="true"><img class="university-logo" src="/assets/university-logos/'+h(slug)+'.png" width="180" height="60" alt="" loading="lazy"></span>'
   +'<span class="campus-gallery-count" data-gallery-count>1 / '+pictures.length+'</span>'
   +'</div><div class="campus-gallery-thumbs" role="group" aria-label="'+(en?'Choose campus photo':'Kampüs fotoğrafını seç')+'">'+thumbs+'</div>'
   +'<div class="campus-gallery-attribution"><span data-gallery-description>'+h(en?first.en:first.tr)+'</span>'
