@@ -21,16 +21,21 @@ test('all 94 published pages exclude legacy competitor and obsolete China Educat
   }
 });
 
-test('three university profiles have two official admissions references in both languages',()=>{
+test('university profiles retain official admissions references and China pilot adds sourced 2027 guidance',()=>{
   for(const [slug,officialUrl] of Object.entries(OFFICIAL)){
     const path='/universiteler/'+slug+'/';
     for(const locale of ['tr','en']){
       const html=read(path,locale);
-      assert.equal(html.split('href="'+officialUrl+'"').length-1,2,locale+' '+slug);
+      const expected=slug==='tsinghua-university'?1:2;
+      assert.equal(html.split('href="'+officialUrl+'"').length-1,expected,locale+' '+slug);
+      if(slug==='tsinghua-university'){
+        assert.ok(html.includes('https://yz.tsinghua.edu.cn/en/info/1035/1581.htm'),locale+' new 2027 admissions source');
+        assert.ok(html.includes('data-university-profile="tsinghua-university"'),locale+' sourced content');
+      }
       const label=slug==='tsinghua-university'
         ?(locale==='tr'?'Üniversitenin resmî sitesi':'Official university website')
         :(locale==='tr'?'Resmî uluslararası başvuru sayfası':'Official international admissions page');
-      assert.equal(html.split('>'+label+'</a>').length-1,2,locale+' '+slug+' label');
+      assert.equal(html.split('>'+label+'</a>').length-1,expected,locale+' '+slug+' label');
       assert.match(html,/<a class="button" href="\/(?:en\/on-gorusme|on-gorusme|free-consultation)\/">/);
     }
   }
