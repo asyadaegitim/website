@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/generate-en.mjs && node scripts/apply-china-university-profiles.mjs && node scripts/apply-china-program-content.mjs && node scripts/apply-seo-descriptions.mjs && node scripts/apply-discovery.mjs && node scripts/apply-accessibility.mjs && node scripts/optimize-images.mjs && node scripts/apply-performance-delivery.mjs && node scripts/generate-security-headers.mjs",
+    "build": "node scripts/generate-en.mjs && node scripts/apply-china-university-profiles.mjs && node scripts/apply-university-galleries.mjs && node scripts/apply-china-program-content.mjs && node scripts/apply-seo-descriptions.mjs && node scripts/apply-discovery.mjs && node scripts/apply-logo-variants.mjs && node scripts/apply-accessibility.mjs && node scripts/optimize-images.mjs && node scripts/apply-performance-delivery.mjs && node scripts/generate-security-headers.mjs",
     "test": "npm run build && node --test tests/seo/*.test.mjs tests/hardening/*.test.mjs tests/conversion/*.test.mjs tests/navigation/*.test.mjs tests/discovery/*.test.mjs tests/accessibility/*.test.mjs tests/performance/*.test.mjs",
     "test:routes": "node --test tests/seo/routes.test.mjs",
     "preview:tr": "npx wrangler dev --config wrangler.jsonc",

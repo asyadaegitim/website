@@ -1,0 +1,111 @@
+{
+  "checkedAt": "2026-11-05",
+  "source": "Wikimedia Commons; optimized local WebP copies (resize and compression only).",
+  "universities": {
+    "tsinghua-university": {
+      "name": "Tsinghua University",
+      "images": [
+        {
+          "file": "tsinghua-pond.webp",
+          "source": "https://commons.wikimedia.org/wiki/File:2015%E5%B9%B4%E6%B8%85%E8%8F%AF%E6%A0%A1%E6%B2%B3(2021%E9%87%8D%E8%B0%83%E8%89%B2%E7%89%88).jpg",
+          "artist": "清華匿名學生",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "tr": "Tsinghua kampüsünde gölet ve ağaçlar",
+          "en": "Tsinghua campus pond and trees",
+          "thumb": "tsinghua-pond-thumb.webp"
+        },
+        {
+          "file": "tsinghua-autumn.webp",
+          "source": "https://commons.wikimedia.org/wiki/File:2018%E5%B9%B4%E6%B8%85%E8%8F%AF%E7%A7%8B%E6%99%AF1.jpg",
+          "artist": "清華匿名學生",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "tr": "Tsinghua kampüsünde sonbahar köprüsü",
+          "en": "Autumn bridges on the Tsinghua campus",
+          "thumb": "tsinghua-autumn-thumb.webp"
+        },
+        {
+          "file": "tsinghua-old-gate.webp",
+          "source": "https://commons.wikimedia.org/wiki/File:TsinghuaUniversityGate.JPG",
+          "artist": "Wwbread",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "tr": "Tsinghua Üniversitesi tarihî kampüs kapısı",
+          "en": "Historic Tsinghua University campus gate",
+          "thumb": "tsinghua-old-gate-thumb.webp"
+        }
+      ]
+    },
+    "peking-university": {
+      "name": "Peking University",
+      "images": [
+        {
+          "file": "peking-gate.webp",
+          "source": "https://commons.wikimedia.org/wiki/File:Peking_University_gate_1.jpg",
+          "artist": "storyvillegirl",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "tr": "Peking Üniversitesi tarihî kampüs girişi",
+          "en": "Historic entrance to Peking University",
+          "thumb": "peking-gate-thumb.webp"
+        },
+        {
+          "file": "peking-lake.webp",
+          "source": "https://commons.wikimedia.org/wiki/File:Weiming_Lake,_Peking_University,_2011042201.jpg",
+          "artist": "Huangdan2060",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "tr": "Peking Üniversitesi Weiming Gölü",
+          "en": "Weiming Lake on Peking University campus",
+          "thumb": "peking-lake-thumb.webp"
+        },
+        {
+          "file": "peking-lake-view.webp",
+          "source": "https://commons.wikimedia.org/wiki/File:Weiming_Lake,_Peking_University,_2011042205.jpg",
+          "artist": "Huangdan2060",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "tr": "Peking Üniversitesi Weiming Gölü ve bahçeleri",
+          "en": "Weiming Lake and gardens at Peking University",
+          "thumb": "peking-lake-view-thumb.webp"
+        }
+      ]
+    },
+    "fudan-university": {
+      "name": "Fudan University",
+      "images": [
+        {
+          "file": "fudan-jiangwan.webp",
+          "source": "https://commons.wikimedia.org/wiki/File:Fudan_University_Jiangwan_Campus.jpg",
+          "artist": "Prcmise",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "tr": "Fudan Üniversitesi Jiangwan kampüsü",
+          "en": "Fudan University Jiangwan campus",
+          "thumb": "fudan-jiangwan-thumb.webp"
+        },
+        {
+          "file": "fudan-guanghua.webp",
+          "source": "https://commons.wikimedia.org/wiki/File:Guanghua_Tower_of_Fudan_University.jpg",
+          "artist": "谢宇杰",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "tr": "Fudan Üniversitesi Guanghua Kulesi",
+          "en": "Guanghua Tower at Fudan University",
+          "thumb": "fudan-guanghua-thumb.webp"
+        },
+        {
+          "file": "fudan-handan-dusk.webp",
+          "source": "https://commons.wikimedia.org/wiki/File:%E5%A4%8D%E6%97%A6%E5%A4%A7%E5%AD%A6%E9%82%AF%E9%83%B8%E6%A0%A1%E5%8C%BA%E9%BB%84%E6%98%8F.jpg",
+          "artist": "Suginami",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "tr": "Fudan Üniversitesi Handan kampüsünün gün batımındaki görünümü",
+          "en": "Fudan Handan campus at dusk",
+          "thumb": "fudan-handan-dusk-thumb.webp"
+        }
+      ]
+    }
+  }
+}
