@@ -580,6 +580,7 @@ html[lang="en"] .home-hero h1 { font-size: clamp(2.1rem, 4.5vw, 4.5rem); }
  * Reduce empty space, not information or accessible interaction targets.
  */
 body { line-height: 1.58; }
+.header-action { min-height: 44px; }
 .home-hero { padding: 28px 0 14px; }
 .home-intro-row { gap: 40px; padding: 14px 0 22px; }
 .home-hero h1 { font-size: clamp(3rem, 5.3vw, 4.8rem); }
