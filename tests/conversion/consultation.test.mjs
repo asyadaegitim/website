@@ -42,7 +42,7 @@ test('both homepages place the consultation action before the WhatsApp button',(
   const block=html.slice(consult,whatsapp);
   assert.match(block,/class="consultation-mark"/);
   assert.ok(block.includes(label),locale+' consultation label');
-  assert.match(html,/class="hero-discover-link" href="\\/(?:en\\/)?ulkeler\\/"/);
+  assert.ok(html.includes('class="hero-discover-link" href="'+(locale==='tr'?'/ulkeler/':'/en/ulkeler/')+'"'),locale+' destination link');
  }
 });
 
